@@ -44,26 +44,61 @@ font-weight:bold;
 }
 
 .hero{
-height:90vh;
+
+min-height:100vh;
+
 display:flex;
+
 justify-content:center;
+
 align-items:center;
+
 text-align:center;
-background:linear-gradient(135deg,#0B7A3D,#159957);
+
+padding:120px 20px 80px;
+
+position:relative;
+
+background:
+
+linear-gradient(rgba(11,122,61,.75),rgba(11,122,61,.75)),
+
+url("../assets/hero-banner.jpg");
+
+background-size:cover;
+
+background-position:center;
+
+background-repeat:no-repeat;
+
 color:white;
-padding:20px;
-padding-top:90px;
+
 }
 
 .hero h1{
-font-size:52px;
-margin-bottom:20px;
+
+font-size:60px;
+
+font-weight:700;
+
+line-height:1.2;
+
+margin-bottom:25px;
+
 }
 
 .hero p{
-font-size:20px;
-margin-bottom:35px;
+
+font-size:22px;
+
 max-width:700px;
+
+margin:auto;
+
+margin-bottom:35px;
+
+line-height:1.8;
+
 }
 
 .hero-buttons{
@@ -74,10 +109,17 @@ flex-wrap:wrap;
 }
 
 .btn{
-padding:15px 30px;
-border-radius:8px;
-text-decoration:none;
+
+padding:16px 34px;
+
+border-radius:10px;
+
+font-size:17px;
+
 font-weight:bold;
+
+transition:.35s;
+
 }
 
 .btn-primary{
