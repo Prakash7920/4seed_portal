@@ -281,3 +281,54 @@ font-size:14px;
 color:#bbb;
 
 }
+.stats{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+
+gap:25px;
+
+padding:70px 10%;
+
+background:white;
+
+}
+
+.stat-box{
+
+padding:35px;
+
+text-align:center;
+
+border-radius:15px;
+
+box-shadow:0 5px 20px rgba(0,0,0,.08);
+
+transition:.3s;
+
+}
+
+.stat-box:hover{
+
+transform:translateY(-8px);
+
+}
+
+.stat-box h2{
+
+font-size:42px;
+
+color:#0B7A3D;
+
+margin-bottom:10px;
+
+}
+
+.stat-box p{
+
+color:#666;
+
+font-weight:bold;
+
+}
