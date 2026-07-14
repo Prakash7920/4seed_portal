@@ -318,7 +318,10 @@ registerBtn.addEventListener("click", async () => {
 // Success Screen
 // =====================================
 
-function showSuccess(){
+function showSuccess(partnerId){
+
+    document.getElementById("partnerIdText").textContent =
+    partnerId;
 
     step1.classList.remove("active");
     step2.classList.remove("active");
@@ -326,20 +329,11 @@ function showSuccess(){
 
     successPage.classList.add("active");
 
-    let count = 3;
+    setTimeout(()=>{
 
-    const timer = setInterval(()=>{
+        window.location.href="login.html";
 
-        count--;
+    },3000);
 
-        if(count===0){
-
-            clearInterval(timer);
-
-            window.location.href="login.html";
-
-        }
-
-    },1000);
-
+}
 }
