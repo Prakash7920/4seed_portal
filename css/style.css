@@ -703,3 +703,142 @@ color:white;
 background:#ddd;
 
 }
+.review-box{
+
+background:#F8FFF8;
+
+border:1px solid #d8e8d8;
+
+padding:20px;
+
+border-radius:12px;
+
+margin-bottom:25px;
+
+}
+
+.review-box p{
+
+margin:12px 0;
+
+font-size:16px;
+
+}
+
+.review-box strong{
+
+color:#0B7A3D;
+
+}
+.terms{
+
+display:flex;
+
+align-items:center;
+
+gap:12px;
+
+margin:25px 0;
+
+font-size:15px;
+
+}
+
+.terms input{
+
+width:20px;
+
+height:20px;
+
+cursor:pointer;
+
+}
+.success-card{
+
+text-align:center;
+
+padding:30px;
+
+}
+
+.success-card h2{
+
+font-size:34px;
+
+color:#0B7A3D;
+
+margin-bottom:20px;
+
+}
+
+.success-card h1{
+
+font-size:48px;
+
+color:#F4B400;
+
+margin:25px 0;
+
+}
+
+.success-card p{
+
+color:#555;
+
+font-size:18px;
+
+}
+footer{
+
+text-align:center;
+
+padding:30px;
+
+color:#666;
+
+font-size:15px;
+
+}
+@media(max-width:768px){
+
+.register-container{
+
+margin:90px 15px 30px;
+
+padding:25px;
+
+}
+
+.page-header h1{
+
+font-size:28px;
+
+}
+
+.button-group{
+
+flex-direction:column;
+
+}
+
+.step-indicator{
+
+gap:8px;
+
+}
+
+.circle{
+
+width:38px;
+
+height:38px;
+
+}
+
+.review-box{
+
+font-size:15px;
+
+}
+
+}
