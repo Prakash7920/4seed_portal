@@ -1,3 +1,4 @@
+
 // ================================
 // 4Seed Portal API Service
 // ================================
@@ -9,12 +10,13 @@ const WEB_APP_URL =
 async function verifySponsor(sponsorId){
 
 const res = await fetch(
-
 WEB_APP_URL +
 "?action=verifySponsor&sponsorId=" +
-encodeURIComponent(sponsorId)
-
+encodeURIComponent(sponsorId) +
+"&t=" + Date.now()
 );
+
+alert("HTTP Status = " + res.status);
 
 return await res.json();
 
