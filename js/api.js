@@ -1,1 +1,46 @@
+// ================================
+// 4Seed Portal API Service
+// ================================
 
+const WEB_APP_URL =
+"https://YOUR_WEB_APP_URL/exec";
+
+// Verify Sponsor
+async function verifySponsor(sponsorId){
+
+const res = await fetch(
+
+WEB_APP_URL +
+"?action=verifySponsor&sponsorId=" +
+encodeURIComponent(sponsorId)
+
+);
+
+return await res.json();
+
+}
+
+// Register Partner
+async function registerPartner(data){
+
+const res = await fetch(
+
+WEB_APP_URL,
+
+{
+
+method:"POST",
+
+headers:{
+"Content-Type":"text/plain;charset=utf-8"
+},
+
+body:JSON.stringify(data)
+
+}
+
+);
+
+return await res.json();
+
+}
