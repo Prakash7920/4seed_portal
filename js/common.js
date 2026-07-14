@@ -42,3 +42,35 @@ animateValue("partnerCount",500,5);
 animateValue("cityCount",25,40);
 
 animateValue("teamCount",150,15);
+const menuToggle=document.getElementById("menuToggle");
+
+const navLinks=document.querySelector(".nav-links");
+
+menuToggle.addEventListener("click",()=>{
+
+navLinks.classList.toggle("active");
+
+});
+const reveals=document.querySelectorAll(".reveal");
+
+window.addEventListener("scroll",revealSections);
+
+function revealSections(){
+
+reveals.forEach(section=>{
+
+const top=section.getBoundingClientRect().top;
+
+const windowHeight=window.innerHeight;
+
+if(top<windowHeight-120){
+
+section.classList.add("active");
+
+}
+
+});
+
+}
+
+revealSections();
