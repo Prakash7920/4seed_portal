@@ -1,108 +1,111 @@
-// ==========================
-// Registration Wizard
-// ==========================
+// =====================================
+// 4Seed Portal V3 - Register Module
+// Part 1 : Wizard Navigation
+// =====================================
 
+// ---------- Current Step ----------
 let currentStep = 1;
 
+// ---------- Step Elements ----------
 const step1 = document.getElementById("step1");
 const step2 = document.getElementById("step2");
 const step3 = document.getElementById("step3");
+const successPage = document.getElementById("successPage");
 
+// ---------- Progress ----------
 const progressFill = document.getElementById("progressFill");
 const progressText = document.getElementById("progressText");
 const stepText = document.getElementById("stepText");
 
-const steps = document.querySelectorAll(".step");
+// ---------- Step Indicator ----------
+const stepItems = document.querySelectorAll(".step");
 
-// Show Current Step
+// ---------- Show Step ----------
 function showStep(step){
 
-step1.classList.remove("active");
-step2.classList.remove("active");
-step3.classList.remove("active");
+    currentStep = step;
 
-steps.forEach(s=>s.classList.remove("active"));
+    // Hide all
+    step1.classList.remove("active");
+    step2.classList.remove("active");
+    step3.classList.remove("active");
 
-document.getElementById("step"+step).classList.add("active");
+    if(successPage){
+        successPage.classList.remove("active");
+    }
 
-steps[step-1].classList.add("active");
+    // Remove active
+    stepItems.forEach(item=>item.classList.remove("active"));
 
-currentStep=step;
+    // Show selected
+    document.getElementById("step"+step).classList.add("active");
 
-updateProgress();
+    // Highlight completed/current
+    for(let i=0;i<step;i++){
+        stepItems[i].classList.add("active");
+    }
+
+    updateProgress();
 
 }
 
-// Update Progress Bar
+// ---------- Progress ----------
 function updateProgress(){
 
-if(currentStep===1){
+    const percent = [33,66,100];
 
-progressFill.style.width="33%";
-progressText.innerHTML="33%";
-stepText.innerHTML="Step 1 of 3";
+    progressFill.style.width = percent[currentStep-1]+"%";
 
-}
+    progressText.innerHTML =
+    percent[currentStep-1]+"%";
 
-if(currentStep===2){
-
-progressFill.style.width="66%";
-progressText.innerHTML="66%";
-stepText.innerHTML="Step 2 of 3";
+    stepText.innerHTML =
+    "Step "+currentStep+" of 3";
 
 }
 
-if(currentStep===3){
+// ---------- Navigation ----------
 
-progressFill.style.width="100%";
-progressText.innerHTML="100%";
-stepText.innerHTML="Step 3 of 3";
+document
+.getElementById("prevStep2")
+.addEventListener("click",()=>{
 
-}
+    showStep(1);
 
-}
+});
 
-// Navigation Buttons
-document.getElementById("nextStep1").onclick=function(){
+document
+.getElementById("prevStep3")
+.addEventListener("click",()=>{
 
-showStep(2);
+    showStep(2);
 
-}
+});
 
-document.getElementById("prevStep2").onclick=function(){
-
+// ---------- Initial ----------
 showStep(1);
 
-}
+// =====================================
+// Part 2 : Sponsor Verification
+// =====================================
 
-document.getElementById("nextStep2").onclick=function(){
-
-showStep(3);
-
-}
-
-document.getElementById("prevStep3").onclick=function(){
-
-showStep(2);
-
-}
-// ==========================
-// Validation
-// ==========================
-
+// Form Elements
 const sponsorId = document.getElementById("sponsorId");
 const sponsorName = document.getElementById("sponsorName");
 const status = document.getElementById("status");
 
-const fullName = document.getElementById("fullName");
-const mobile = document.getElementById("mobile");
-const email = document.getElementById("email");
-const place = document.getElementById("place");
+const verifyBtn = document.getElementById("verifySponsorBtn");
+const nextStep1 = document.getElementById("nextStep1");
 
-// Step 1 Validation
-document.getElementById("nextStep1").onclick = function(){
+// Disable Next initially
+nextStep1.disabled = true;
 
-    if(sponsorId.value.trim()===""){
+// Verify Sponsor
+verifyBtn.addEventListener("click", async ()=>{
+
+    const id = sponsorId.value.trim();
+
+    if(id===""){
 
         alert("Please enter Sponsor ID");
 
@@ -112,24 +115,92 @@ document.getElementById("nextStep1").onclick = function(){
 
     }
 
-    if(sponsorName.value.trim()===""){
+    verifyBtn.disabled = true;
+    verifyBtn.innerHTML = "Verifying...";
 
-        alert("Please verify Sponsor");
+    status.innerHTML = "";
+    sponsorName.value = "";
 
-        return;
+    try{
+
+        const result = await verifySponsor(id);
+
+        if(result.status){
+
+            sponsorName.value = result.sponsorName;
+
+            status.innerHTML = "✅ Sponsor Verified";
+
+            status.style.color = "green";
+
+            nextStep1.disabled = false;
+
+            sponsorId.readOnly = true;
+
+            verifyBtn.innerHTML = "Verified";
+
+        }else{
+
+            status.innerHTML = "❌ Invalid Sponsor ID";
+
+            status.style.color = "red";
+
+            verifyBtn.disabled = false;
+
+            verifyBtn.innerHTML = "Verify Sponsor";
+
+        }
+
+    }catch(err){
+
+        console.error(err);
+
+        status.innerHTML = "❌ Server Error";
+
+        status.style.color = "red";
+
+        verifyBtn.disabled = false;
+
+        verifyBtn.innerHTML = "Verify Sponsor";
 
     }
 
+});
+
+// Next Button
+nextStep1.addEventListener("click",()=>{
+
     showStep(2);
 
-};
+});
 
-// Step 2 Validation
-document.getElementById("nextStep2").onclick = function(){
+// =====================================
+// Part 3 : Personal Details & Review
+// =====================================
 
+// Personal Details
+const fullName = document.getElementById("fullName");
+const mobile = document.getElementById("mobile");
+const email = document.getElementById("email");
+const place = document.getElementById("place");
+
+// Review Fields
+const reviewSponsorId = document.getElementById("reviewSponsorId");
+const reviewSponsorName = document.getElementById("reviewSponsorName");
+const reviewFullName = document.getElementById("reviewFullName");
+const reviewMobile = document.getElementById("reviewMobile");
+const reviewEmail = document.getElementById("reviewEmail");
+const reviewPlace = document.getElementById("reviewPlace");
+
+const nextStep2 = document.getElementById("nextStep2");
+
+// Next Button - Step 2
+nextStep2.addEventListener("click",()=>{
+
+    // Full Name
     if(fullName.value.trim()===""){
 
-        alert("Enter Full Name");
+        alert("Please enter Full Name");
 
         fullName.focus();
 
@@ -137,9 +208,10 @@ document.getElementById("nextStep2").onclick = function(){
 
     }
 
-    if(mobile.value.trim().length!=10){
+    // Mobile
+    if(!/^[0-9]{10}$/.test(mobile.value.trim())){
 
-        alert("Enter valid Mobile Number");
+        alert("Please enter a valid 10-digit Mobile Number");
 
         mobile.focus();
 
@@ -147,9 +219,10 @@ document.getElementById("nextStep2").onclick = function(){
 
     }
 
+    // Place
     if(place.value.trim()===""){
 
-        alert("Enter Place");
+        alert("Please enter Place");
 
         place.focus();
 
@@ -158,92 +231,14 @@ document.getElementById("nextStep2").onclick = function(){
     }
 
     // Review Screen
-
-    document.getElementById("reviewSponsorId").innerHTML =
-    sponsorId.value;
-
-    document.getElementById("reviewSponsorName").innerHTML =
-    sponsorName.value;
-
-    document.getElementById("reviewFullName").innerHTML =
-    fullName.value;
-
-    document.getElementById("reviewMobile").innerHTML =
-    mobile.value;
-
-    document.getElementById("reviewEmail").innerHTML =
-    email.value || "Not Provided";
-
-    document.getElementById("reviewPlace").innerHTML =
-    place.value;
+    reviewSponsorId.textContent = sponsorId.value;
+    reviewSponsorName.textContent = sponsorName.value;
+    reviewFullName.textContent = fullName.value;
+    reviewMobile.textContent = mobile.value;
+    reviewEmail.textContent =
+        email.value.trim()==="" ? "Not Provided" : email.value;
+    reviewPlace.textContent = place.value;
 
     showStep(3);
 
-};
-// ==========================
-// Sponsor Verification
-// ==========================
-
-document.getElementById("verifySponsorBtn").onclick = async function(){
-
-const id = sponsorId.value.trim();
-
-if(id===""){
-
-alert("Enter Sponsor ID");
-
-return;
-
-}
-
-status.innerHTML="Verifying...";
-
-status.style.color="blue";
-
-try{
-
-
-    const result = await verifySponsor(id);
-    
-
-}catch(err){
-
-    alert(err.toString());
-
-    console.error(err);
-
-    status.innerHTML="❌ Server Error";
-
-    status.style.color="red";
-
-}
-
-console.log(result);
-    
-if(result.status){
-
-sponsorName.value=result.sponsorName;
-
-status.innerHTML="✅ Sponsor Verified";
-
-status.style.color="green";
-
-}else{
-
-sponsorName.value="";
-
-status.innerHTML="❌ Invalid Sponsor ID";
-
-status.style.color="red";
-
-}
-
-}catch(err){
-
-status.innerHTML="❌ Server Error";
-
-status.style.color="red";
-
-}
-
-}
+});
