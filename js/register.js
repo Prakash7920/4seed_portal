@@ -127,17 +127,20 @@ verifyBtn.addEventListener("click", async ()=>{
 
         if(result.status){
 
-            sponsorName.value = result.sponsorName;
+    sponsorName.value = result.sponsorName;
 
-            status.innerHTML = "✅ Sponsor Verified";
+    status.innerHTML = "✅ Sponsor Verified";
 
-            status.style.color = "green";
+    status.style.color = "green";
 
-            nextStep1.disabled = false;
+    nextStep1.disabled = false;
 
-            sponsorId.readOnly = true;
+    sponsorId.readOnly = true;
 
-            verifyBtn.innerHTML = "Verified";
+    verifyBtn.innerHTML = "✅ Verified";
+    verifyBtn.style.background = "#28a745";
+    verifyBtn.style.color = "#ffffff";
+    verifyBtn.disabled = true;
 
         }else{
 
