@@ -202,9 +202,23 @@ status.style.color="blue";
 
 try{
 
-alert("Calling API...");
-const result = await verifySponsor(id);
-alert(JSON.stringify(result));
+    alert("Calling API...");
+
+    const result = await verifySponsor(id);
+
+    alert(JSON.stringify(result));
+
+}catch(err){
+
+    alert(err.toString());
+
+    console.error(err);
+
+    status.innerHTML="❌ Server Error";
+
+    status.style.color="red";
+
+}
     
 if(result.status){
 
