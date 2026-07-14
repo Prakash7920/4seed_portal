@@ -217,6 +217,8 @@ try{
     status.style.color="red";
 
 }
+
+console.log(result);
     
 if(result.status){
 
