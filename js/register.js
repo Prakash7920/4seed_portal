@@ -179,3 +179,54 @@ document.getElementById("nextStep2").onclick = function(){
     showStep(3);
 
 };
+// ==========================
+// Sponsor Verification
+// ==========================
+
+document.getElementById("verifySponsorBtn").onclick = async function(){
+
+const id = sponsorId.value.trim();
+
+if(id===""){
+
+alert("Enter Sponsor ID");
+
+return;
+
+}
+
+status.innerHTML="Verifying...";
+
+status.style.color="blue";
+
+try{
+
+const result = await verifySponsor(id);
+
+if(result.status){
+
+sponsorName.value=result.sponsorName;
+
+status.innerHTML="✅ Sponsor Verified";
+
+status.style.color="green";
+
+}else{
+
+sponsorName.value="";
+
+status.innerHTML="❌ Invalid Sponsor ID";
+
+status.style.color="red";
+
+}
+
+}catch(err){
+
+status.innerHTML="❌ Server Error";
+
+status.style.color="red";
+
+}
+
+}
