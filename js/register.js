@@ -289,7 +289,7 @@ registerBtn.addEventListener("click", async () => {
             document.getElementById("partnerIdText").innerHTML =
             result.partnerId;
 
-            showSuccess();
+            showSuccess(result.partnerId);
 
         }else{
 
@@ -320,8 +320,7 @@ registerBtn.addEventListener("click", async () => {
 
 function showSuccess(partnerId){
 
-    document.getElementById("partnerIdText").textContent =
-    partnerId;
+    document.getElementById("partnerIdText").textContent = partnerId;
 
     step1.classList.remove("active");
     step2.classList.remove("active");
@@ -330,10 +329,7 @@ function showSuccess(partnerId){
     successPage.classList.add("active");
 
     setTimeout(()=>{
-
-        window.location.href="login.html";
-
+        window.location.href = "login.html";
     },3000);
 
-}
 }
