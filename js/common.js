@@ -15,3 +15,30 @@ window.addEventListener("scroll", function () {
     }
 
 });
+function animateValue(id,end,speed){
+
+let current=0;
+
+const obj=document.getElementById(id);
+
+const timer=setInterval(()=>{
+
+current++;
+
+obj.innerHTML=current+"+";
+
+if(current>=end){
+
+clearInterval(timer);
+
+}
+
+},speed);
+
+}
+
+animateValue("partnerCount",500,5);
+
+animateValue("cityCount",25,40);
+
+animateValue("teamCount",150,15);
