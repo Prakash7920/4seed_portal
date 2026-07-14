@@ -881,3 +881,10 @@ font-weight:bold;
 text-align:center;
 
 }
+#nextStep1:disabled{
+
+opacity:.5;
+
+cursor:not-allowed;
+
+}
