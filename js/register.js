@@ -270,19 +270,19 @@ registerBtn.addEventListener("click", async () => {
 
         const result = await registerPartner({
 
-            sponsorId: sponsorId.value,
+    sponsorId: sponsorId.value.trim(),
 
-            sponsorName: sponsorName.value,
+    sponsorName: sponsorName.value.trim(),
 
-            fullName: fullName.value,
+    fullName: fullName.value.trim(),
 
-            mobile: mobile.value,
+    mobile: mobile.value.trim(),
 
-            email: email.value,
+    email: email.value.trim(),
 
-            place: place.value
+    place: place.value.trim()
 
-        });
+});
 
         if(result.success){
 
