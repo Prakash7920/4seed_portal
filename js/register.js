@@ -202,11 +202,9 @@ status.style.color="blue";
 
 try{
 
-    alert("Calling API...");
 
     const result = await verifySponsor(id);
-
-    alert(JSON.stringify(result));
+    
 
 }catch(err){
 
