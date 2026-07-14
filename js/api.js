@@ -23,24 +23,18 @@ return await res.json();
 // Register Partner
 async function registerPartner(data){
 
-const res = await fetch(
+    const response = await fetch(WEB_APP_URL,{
 
-WEB_APP_URL,
+        method:"POST",
 
-{
+        headers:{
+            "Content-Type":"text/plain;charset=utf-8"
+        },
 
-method:"POST",
+        body:JSON.stringify(data)
 
-headers:{
-"Content-Type":"text/plain;charset=utf-8"
-},
+    });
 
-body:JSON.stringify(data)
-
-}
-
-);
-
-return await res.json();
+    return await response.json();
 
 }
