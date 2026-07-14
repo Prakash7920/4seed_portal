@@ -201,8 +201,10 @@ status.style.color="blue";
 
 try{
 
+alert("Calling API...");
 const result = await verifySponsor(id);
-
+alert(JSON.stringify(result));
+    
 if(result.status){
 
 sponsorName.value=result.sponsorName;
