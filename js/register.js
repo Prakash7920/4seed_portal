@@ -86,3 +86,96 @@ document.getElementById("prevStep3").onclick=function(){
 showStep(2);
 
 }
+// ==========================
+// Validation
+// ==========================
+
+const sponsorId = document.getElementById("sponsorId");
+const sponsorName = document.getElementById("sponsorName");
+
+const fullName = document.getElementById("fullName");
+const mobile = document.getElementById("mobile");
+const email = document.getElementById("email");
+const place = document.getElementById("place");
+
+// Step 1 Validation
+document.getElementById("nextStep1").onclick = function(){
+
+    if(sponsorId.value.trim()===""){
+
+        alert("Please enter Sponsor ID");
+
+        sponsorId.focus();
+
+        return;
+
+    }
+
+    if(sponsorName.value.trim()===""){
+
+        alert("Please verify Sponsor");
+
+        return;
+
+    }
+
+    showStep(2);
+
+};
+
+// Step 2 Validation
+document.getElementById("nextStep2").onclick = function(){
+
+    if(fullName.value.trim()===""){
+
+        alert("Enter Full Name");
+
+        fullName.focus();
+
+        return;
+
+    }
+
+    if(mobile.value.trim().length!=10){
+
+        alert("Enter valid Mobile Number");
+
+        mobile.focus();
+
+        return;
+
+    }
+
+    if(place.value.trim()===""){
+
+        alert("Enter Place");
+
+        place.focus();
+
+        return;
+
+    }
+
+    // Review Screen
+
+    document.getElementById("reviewSponsorId").innerHTML =
+    sponsorId.value;
+
+    document.getElementById("reviewSponsorName").innerHTML =
+    sponsorName.value;
+
+    document.getElementById("reviewFullName").innerHTML =
+    fullName.value;
+
+    document.getElementById("reviewMobile").innerHTML =
+    mobile.value;
+
+    document.getElementById("reviewEmail").innerHTML =
+    email.value || "Not Provided";
+
+    document.getElementById("reviewPlace").innerHTML =
+    place.value;
+
+    showStep(3);
+
+};
