@@ -16,8 +16,6 @@ encodeURIComponent(sponsorId) +
 "&t=" + Date.now()
 );
 
-alert("HTTP Status = " + res.status);
-
 return await res.json();
 
 }
