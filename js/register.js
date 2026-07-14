@@ -92,6 +92,7 @@ showStep(2);
 
 const sponsorId = document.getElementById("sponsorId");
 const sponsorName = document.getElementById("sponsorName");
+const status = document.getElementById("status");
 
 const fullName = document.getElementById("fullName");
 const mobile = document.getElementById("mobile");
