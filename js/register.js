@@ -242,3 +242,101 @@ nextStep2.addEventListener("click",()=>{
     showStep(3);
 
 });
+// =====================================
+// Part 4 : Registration Submit
+// =====================================
+
+const registerBtn = document.getElementById("registerBtn");
+const agree = document.getElementById("agree");
+
+registerBtn.addEventListener("click", async () => {
+
+    // Terms Check
+    if(!agree.checked){
+
+        alert("Please accept the Terms & Conditions");
+
+        return;
+
+    }
+
+    registerBtn.disabled = true;
+    registerBtn.innerHTML = "Registering...";
+
+    try{
+
+        const result = await registerPartner({
+
+            sponsorId: sponsorId.value,
+
+            sponsorName: sponsorName.value,
+
+            fullName: fullName.value,
+
+            mobile: mobile.value,
+
+            email: email.value,
+
+            place: place.value
+
+        });
+
+        if(result.success){
+
+            document.getElementById("partnerIdText").innerHTML =
+            result.partnerId;
+
+            showSuccess();
+
+        }else{
+
+            alert(result.message || "Registration Failed");
+
+            registerBtn.disabled = false;
+
+            registerBtn.innerHTML = "Register";
+
+        }
+
+    }catch(err){
+
+        console.error(err);
+
+        alert("Server Error");
+
+        registerBtn.disabled = false;
+
+        registerBtn.innerHTML = "Register";
+
+    }
+
+});
+// =====================================
+// Success Screen
+// =====================================
+
+function showSuccess(){
+
+    step1.classList.remove("active");
+    step2.classList.remove("active");
+    step3.classList.remove("active");
+
+    successPage.classList.add("active");
+
+    let count = 3;
+
+    const timer = setInterval(()=>{
+
+        count--;
+
+        if(count===0){
+
+            clearInterval(timer);
+
+            window.location.href="login.html";
+
+        }
+
+    },1000);
+
+}
