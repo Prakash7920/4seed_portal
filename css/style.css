@@ -15,24 +15,61 @@ color:#222;
 }
 
 .navbar{
+
 position:fixed;
-top:0;
-left:0;
-width:100%;
+
+top:15px;
+
+left:50%;
+
+transform:translateX(-50%);
+
+width:94%;
+
+max-width:1300px;
+
 display:flex;
+
 justify-content:space-between;
+
 align-items:center;
-padding:18px 40px;
-background:rgba(11,122,61,.95);
-backdrop-filter:blur(10px);
+
+padding:16px 30px;
+
+background:rgba(255,255,255,.12);
+
+backdrop-filter:blur(18px);
+
+-webkit-backdrop-filter:blur(18px);
+
+border:1px solid rgba(255,255,255,.18);
+
+border-radius:18px;
+
+box-shadow:0 10px 30px rgba(0,0,0,.15);
+
 z-index:999;
-transition:.3s;
+
+transition:.35s ease;
+
 }
 
 .logo{
-font-size:28px;
-font-weight:bold;
+
+font-size:30px;
+
+font-weight:700;
+
+letter-spacing:.5px;
+
 color:#fff;
+
+display:flex;
+
+align-items:center;
+
+gap:10px;
+
 }
 
 .nav-links{
@@ -42,9 +79,27 @@ gap:25px;
 }
 
 .nav-links a{
+
 color:#fff;
+
 text-decoration:none;
-font-weight:bold;
+
+font-weight:600;
+
+padding:10px 16px;
+
+border-radius:10px;
+
+transition:.3s;
+
+}
+
+.nav-links a:hover{
+
+background:rgba(255,255,255,.15);
+
+color:#FFD54F;
+
 }
 
 .hero{
