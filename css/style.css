@@ -77,6 +77,78 @@ background-repeat:no-repeat;
 
 color:white;
 
+overflow:hidden;
+
+isolation:isolate;
+
+background-attachment:fixed;
+
+transition:.5s;
+
+}
+
+.hero::before{
+
+content:"";
+
+position:absolute;
+
+width:650px;
+
+height:650px;
+
+background:rgba(255,255,255,.08);
+
+border-radius:50%;
+
+top:-220px;
+
+left:-180px;
+
+filter:blur(40px);
+
+animation:float1 12s ease-in-out infinite;
+
+z-index:0;
+
+}
+
+.hero::after{
+
+content:"";
+
+position:absolute;
+
+width:450px;
+
+height:450px;
+
+background:rgba(255,255,255,.05);
+
+border-radius:50%;
+
+bottom:-120px;
+
+right:-120px;
+
+filter:blur(30px);
+
+animation:float2 10s ease-in-out infinite;
+
+z-index:0;
+
+}
+
+.hero-content{
+
+position:relative;
+
+z-index:2;
+
+max-width:800px;
+
+padding:20px;
+
 }
 
 .hero h1{
@@ -890,5 +962,36 @@ text-align:center;
 opacity:.5;
 
 cursor:not-allowed;
+
+}
+@keyframes float1{
+
+0%,100%{
+
+transform:translateY(0);
+
+}
+
+50%{
+
+transform:translateY(35px);
+
+}
+
+}
+
+@keyframes float2{
+
+0%,100%{
+
+transform:translateY(0);
+
+}
+
+50%{
+
+transform:translateY(-35px);
+
+}
 
 }
