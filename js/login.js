@@ -51,9 +51,9 @@ async function login(e){
 
     }catch(err){
 
-        alert("Server Error");
+    console.error(err);
 
-        console.log(err);
+    alert(err.message);
 
     }
 
