@@ -185,10 +185,8 @@ nextStep1.addEventListener("click",()=>{
 const fullName = document.getElementById("fullName");
 const mobile = document.getElementById("mobile");
 const email = document.getElementById("email");
-const password =
-document.getElementById("password").value;
-const confirmPassword =
-document.getElementById("confirmPassword").value;
+const password = document.getElementById("password");
+const confirmPassword = document.getElementById("confirmPassword");
 const place = document.getElementById("place");
 
 // Review Fields
@@ -226,9 +224,11 @@ nextStep2.addEventListener("click",()=>{
 
     }
     
-    if(password !== confirmPassword){
+    if(password.value !== confirmPassword.value){
 
     alert("Password and Confirm Password do not match");
+
+    password.focus();
 
     return;
 
@@ -292,7 +292,9 @@ registerBtn.addEventListener("click", async () => {
 
     email: email.value.trim(),
 
-    place: place.value.trim()
+    place: place.value.trim(),
+
+    password: password.value
 
 });
 
