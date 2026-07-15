@@ -4,7 +4,7 @@
 // ================================
 
 const WEB_APP_URL =
-"https://script.google.com/macros/s/AKfycbwN-myKLG44F4bEjH4pxluLxuafOsQA3owuwsM8NZhU4JgoRBlH7_upURQK8bK-WhEy/exec";
+"https://script.google.com/macros/s/AKfycbw2TQh9Iwor-M0b0kTduVRmUqRNUK3RLzgMRzTXkdsSpWJsJqi2TmKggeT72a7-KDIf/exec";
 
 // Verify Sponsor
 async function verifySponsor(sponsorId){
