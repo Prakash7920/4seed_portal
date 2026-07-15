@@ -12,3 +12,10 @@ document.getElementById("partnerId").textContent =
 
 document.getElementById("sponsorName").textContent =
     partner.sponsorName;
+document.getElementById("logoutBtn").addEventListener("click", function () {
+
+    localStorage.removeItem("partner");
+
+    window.location.href = "login.html";
+
+});
