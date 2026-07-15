@@ -1,3 +1,7 @@
+@import url("theme.css");
+@import url("components.css");
+@import url("animations.css");
+@import url("responsive.css");
 *{
 margin:0;
 padding:0;
