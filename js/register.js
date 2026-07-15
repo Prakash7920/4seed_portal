@@ -185,6 +185,10 @@ nextStep1.addEventListener("click",()=>{
 const fullName = document.getElementById("fullName");
 const mobile = document.getElementById("mobile");
 const email = document.getElementById("email");
+const password =
+document.getElementById("password").value;
+const confirmPassword =
+document.getElementById("confirmPassword").value;
 const place = document.getElementById("place");
 
 // Review Fields
@@ -221,7 +225,15 @@ nextStep2.addEventListener("click",()=>{
         return;
 
     }
+    
+    if(password !== confirmPassword){
 
+    alert("Password and Confirm Password do not match");
+
+    return;
+
+    }
+    
     // Place
     if(place.value.trim()===""){
 
