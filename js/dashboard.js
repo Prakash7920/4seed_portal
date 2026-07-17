@@ -19,3 +19,25 @@ document.getElementById("logoutBtn").addEventListener("click", function () {
     window.location.href = "login.html";
 
 });
+document.getElementById("logoutBtn").addEventListener("click", function () {
+
+    localStorage.removeItem("partner");
+
+    window.location.href = "login.html";
+
+});
+
+// ====================================
+// Dashboard Statistics
+// ====================================
+
+document.getElementById("welcomeTitle").innerHTML =
+"Welcome, " + partner.name + " 👋";
+
+document.getElementById("walletBalance").innerHTML = "₹0";
+
+document.getElementById("teamCount").innerHTML = "0";
+
+document.getElementById("businessVolume").innerHTML = "₹0";
+
+document.getElementById("rankName").innerHTML = "Starter";
