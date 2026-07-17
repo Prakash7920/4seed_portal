@@ -45,8 +45,8 @@ async function login(e){
 
         }else{
 
-            alert("Invalid Partner ID or Password");
-
+            console.log(data);
+alert(JSON.stringify(data));
         }
 
     }catch(err){
