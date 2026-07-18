@@ -158,3 +158,37 @@ function searchPartner(){
     loadPartners(filtered);
 
 }
+
+function toggleStatus(partnerId,status){
+
+    fetch(WEB_APP_URL,{
+        method:"POST",
+        body:JSON.stringify({
+            action:"toggleStatus",
+            partnerId:partnerId
+        })
+    })
+    .then(res=>res.json())
+    .then(data=>{
+
+        if(data.success){
+
+            fetch(WEB_APP_URL,{
+                method:"POST",
+                body:JSON.stringify({
+                    action:"getAllPartners"
+                })
+            })
+            .then(res=>res.json())
+            .then(data=>{
+
+                allPartners = data.partners;
+                loadPartners(allPartners);
+
+            });
+
+        }
+
+    });
+
+}
