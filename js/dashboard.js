@@ -42,11 +42,15 @@ function closeWithdraw(){
 }
 
 function sendWithdrawRequest(){
-    alert("Button clicked");
 
     const amount = document.getElementById("withdrawAmount").value;
 
-    fetch(WEB_APP_URL,{
+    if(amount=="" || Number(amount)<=0){
+        alert("Enter a valid amount");
+        return;
+    }
+
+    fetch("https://script.google.com/macros/s/AKfycbw9P5iUDKYl3nXAaFfTdEO_rf7PfHSiLkwTjXq7HIpic7tOdg85aqIIeexbF63qrzIU/exec",{
         method:"POST",
         body:JSON.stringify({
             action:"withdrawRequest",
@@ -55,16 +59,24 @@ function sendWithdrawRequest(){
             amount:amount
         })
     })
-    .then(res=>res.text())
+    .then(res=>res.json())
     .then(data=>{
-        alert(data);
+
+        if(data.success){
+            alert("Withdrawal request submitted successfully.");
+            closeWithdraw();
+            document.getElementById("withdrawAmount").value="";
+        }else{
+            alert(data.message || "Submission failed");
+        }
+
     })
-    .catch(err=>{
-        alert(err);
+    .catch(error=>{
+        console.log(error);
+        alert("Network Error");
     });
 
 }
-
 // ====================================
 // Dashboard Statistics
 // ====================================
