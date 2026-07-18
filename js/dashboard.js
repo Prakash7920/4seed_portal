@@ -46,15 +46,12 @@ function closeWithdraw(){
 
 }
 function sendWithdrawRequest(){
+alert("Button clicked");
 
+}
     const amount = document.getElementById("withdrawAmount").value;
 
-    if(amount=="" || Number(amount)<=0){
-        alert("Enter a valid amount");
-        return;
-    }
-
-    fetch(WEB_APP_URL,{
+    fetch("https://script.google.com/macros/s/AKfycbw9P5iUDKYl3nXAaFfTdEO_rf7PfHSiLkwTjXq7HIpic7tOdg85aqIIeexbF63qrzIU/exec",{
         method:"POST",
         body:JSON.stringify({
             action:"withdrawRequest",
@@ -63,22 +60,13 @@ function sendWithdrawRequest(){
             amount:amount
         })
     })
-    .then(res=>res.json())
+    .then(res=>res.text())
     .then(data=>{
-
-        if(data.success){
-            alert("Withdrawal request submitted successfully.");
-            closeWithdraw();
-            document.getElementById("withdrawAmount").value="";
-        }else{
-            alert(data.message || "Submission failed");
-        }
-
+        alert(data);
     })
-    .catch(error=>{
-    console.log(error);
-    alert(error);
-});
+    .catch(err=>{
+        alert(err);
+    });
 
 }
 
