@@ -1,3 +1,4 @@
+const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbw9P5iUDKYl3nXAaFfTdEO_rf7PfHSiLkwTjXq7HIpic7tOdg85aqIIeexbF63qrzIU/exec";
 const partner = JSON.parse(localStorage.getItem("partner"));
 
 if (!partner) {
@@ -83,7 +84,7 @@ document.getElementById("businessVolume").innerHTML = "₹0";
 
 document.getElementById("rankName").innerHTML = "Starter";
 
-fetch("https://script.google.com/macros/s/AKfycbw9P5iUDKYl3nXAaFfTdEO_rf7PfHSiLkwTjXq7HIpic7tOdg85aqIIeexbF63qrzIU/exec", {
+fetch(WEB_APP_URL,{", {
     method: "POST",
     body: JSON.stringify({
         action: "getTeam",
