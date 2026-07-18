@@ -34,7 +34,7 @@ fetch("https://script.google.com/macros/s/AKfycbw9P5iUDKYl3nXAaFfTdEO_rf7PfHSiLk
                     <b>${data.team[i].name}</b><br>
                     ${data.team[i].partnerId}
                 `;
-                slot.dataset.partnerId = data.team[i].partnerId;
+                slot.dataset.name = data.team[i].name;
                 
             } else {
 
@@ -52,49 +52,23 @@ fetch("https://script.google.com/macros/s/AKfycbw9P5iUDKYl3nXAaFfTdEO_rf7PfHSiLk
     }
 
 });
-function loadTeam(card) {
+function loadTeam(card){
 
     const partnerId = card.dataset.partnerId;
 
-    if (!partnerId) return;
+    if(!partnerId) return;
 
-    fetch(WEB_APP_URL, {
-        method: "POST",
-        body: JSON.stringify({
-            action: "getTeam",
-            partnerId: partnerId
-        })
-    })
-    .then(res => res.json())
-    .then(data => {
+    document.getElementById("popupName").textContent = card.dataset.name;
+    document.getElementById("popupId").textContent = "Partner ID : " + partnerId;
+    document.getElementById("popupSponsor").textContent = "Sponsor : " + partner.partnerId;
 
-        for (let i = 0; i < 5; i++) {
-
-    const slot = document.getElementById("slot" + (i + 1));
-
-    if (data.team[i]) {
-
-        slot.innerHTML = `
-            <b>${data.team[i].name}</b><br>
-            ${data.team[i].partnerId}
-        `;
-
-        slot.dataset.partnerId = data.team[i].partnerId;
-
-    } else {
-
-        slot.innerHTML = `
-            <div class="empty-slot">
-                <div class="plus">+</div>
-                <div>Empty Slot</div>
-            </div>
-        `;
-
-        delete slot.dataset.partnerId;
-    }
-
+    document.getElementById("memberPopup").style.display = "flex";
+}
+function closePopup(){
+    document.getElementById("memberPopup").style.display = "none";
 }
 
-        // Next step: we'll replace this alert with an expandable tree.
-    });
+function viewDownline(){
+    closePopup();
+    // Next we'll load this member's team here.
 }
