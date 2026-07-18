@@ -1,5 +1,7 @@
 const partner = JSON.parse(localStorage.getItem("partner"));
 
+let navigationStack = [];
+let currentPartnerId = partner.partnerId;
 let selectedPartnerId = "";
 
 if (!partner) {
