@@ -54,7 +54,7 @@ function sendWithdrawRequest(){
         return;
     }
 
-    fetch(WEB_APP_URL',{
+    fetch(WEB_APP_URL,{
         method:"POST",
         body:JSON.stringify({
             action:"withdrawRequest",
