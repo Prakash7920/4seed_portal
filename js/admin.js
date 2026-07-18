@@ -1,5 +1,7 @@
 const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbw9P5iUDKYl3nXAaFfTdEO_rf7PfHSiLkwTjXq7HIpic7tOdg85aqIIeexbF63qrzIU/exec";
 
+let allPartners = [];
+
 fetch("https://script.google.com/macros/s/AKfycbw9P5iUDKYl3nXAaFfTdEO_rf7PfHSiLkwTjXq7HIpic7tOdg85aqIIeexbF63qrzIU/exec",{
     method:"POST",
     body:JSON.stringify({
@@ -11,7 +13,9 @@ fetch("https://script.google.com/macros/s/AKfycbw9P5iUDKYl3nXAaFfTdEO_rf7PfHSiLk
 
     if(data.success){
 
-        loadPartners(data.partners);
+    allPartners = data.partners;
+
+    loadPartners(allPartners);
 
     }
 
@@ -127,5 +131,24 @@ fetch(WEB_APP_URL,{
         }
 
     });
+
+}
+
+function searchPartner(){
+
+    const keyword = document
+        .getElementById("searchBox")
+        .value
+        .toLowerCase();
+
+    const filtered = allPartners.filter(partner =>
+
+        partner.partnerId.toLowerCase().includes(keyword) ||
+
+        partner.name.toLowerCase().includes(keyword)
+
+    );
+
+    loadPartners(filtered);
 
 }
