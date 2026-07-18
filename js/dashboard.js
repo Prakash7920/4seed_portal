@@ -44,32 +44,26 @@ document.getElementById("welcomeTitle").innerHTML =
 
 document.getElementById("walletBalance").innerHTML = "₹0";
 
-document.getElementById("teamCount").innerHTML = "0";
-
 document.getElementById("businessVolume").innerHTML = "₹0";
 
 document.getElementById("rankName").innerHTML = "Starter";
 
-function animateValue(id, endValue) {
+fetch("https://script.google.com/macros/s/AKfycbw9P5iUDKYl3nXAaFfTdEO_rf7PfHSiLkwTjXq7HIpic7tOdg85aqIIeexbF63qrzIU/exec", {
+    method: "POST",
+    body: JSON.stringify({
+        action: "getTeam",
+        partnerId: partner.partnerId
+    })
+})
+.then(res => res.json())
+.then(data => {
 
-    let start = 0;
+    if (data.success) {
 
-    const element = document.getElementById(id);
+        document.getElementById("teamCount").textContent =
+            data.team.length;
 
-    const timer = setInterval(() => {
+    }
 
-        start++;
-
-        element.textContent = start;
-
-        if (start >= endValue) {
-
-            clearInterval(timer);
-
-        }
-
-    }, 30);
-
-}
-
-animateValue("teamCount", 0);
+})
+.catch(error => console.log(error));
