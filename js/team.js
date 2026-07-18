@@ -35,7 +35,10 @@ fetch("https://script.google.com/macros/s/AKfycbw9P5iUDKYl3nXAaFfTdEO_rf7PfHSiLk
                 
             } else {
 
-                slot.innerHTML = "Empty";
+                slot.innerHTML = `
+                ➕<br>
+                Empty Slot
+                `;
 
             }
 
