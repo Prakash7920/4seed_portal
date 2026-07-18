@@ -4,7 +4,6 @@ if (!partner) {
     location.href = "login.html";
 }
 
-document.getElementById("teamCount").textContent = data.team.length;
 document.getElementById("myName").textContent = partner.name;
 document.getElementById("myId").textContent =
 "Partner ID : " + partner.partnerId;
