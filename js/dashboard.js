@@ -45,6 +45,41 @@ function closeWithdraw(){
     document.getElementById("withdrawPopup").style.display="none";
 
 }
+function sendWithdrawRequest(){
+
+    const amount = document.getElementById("withdrawAmount").value;
+
+    if(amount=="" || Number(amount)<=0){
+        alert("Enter a valid amount");
+        return;
+    }
+
+    fetch(WEB_APP_URL,{
+        method:"POST",
+        body:JSON.stringify({
+            action:"withdrawRequest",
+            partnerId:partner.partnerId,
+            name:partner.name,
+            amount:amount
+        })
+    })
+    .then(res=>res.json())
+    .then(data=>{
+
+        if(data.success){
+            alert("Withdrawal request submitted successfully.");
+            closeWithdraw();
+            document.getElementById("withdrawAmount").value="";
+        }else{
+            alert(data.message || "Submission failed");
+        }
+
+    })
+    .catch(()=>{
+        alert("Network Error");
+    });
+
+}
 
 // ====================================
 // Dashboard Statistics
