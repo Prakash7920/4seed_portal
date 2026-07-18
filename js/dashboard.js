@@ -34,6 +34,17 @@ document.getElementById("logoutBtn").addEventListener("click", function () {
 
     }
 });
+function openWithdraw(){
+
+    document.getElementById("withdrawPopup").style.display="flex";
+
+}
+
+function closeWithdraw(){
+
+    document.getElementById("withdrawPopup").style.display="none";
+
+}
 
 // ====================================
 // Dashboard Statistics
