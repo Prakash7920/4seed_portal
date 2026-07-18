@@ -36,8 +36,10 @@ fetch("https://script.google.com/macros/s/AKfycbw9P5iUDKYl3nXAaFfTdEO_rf7PfHSiLk
             } else {
 
                 slot.innerHTML = `
-                ➕<br>
-                Empty Slot
+                <div class="empty-slot">
+                <div class="plus">+</div>
+                <div>Empty Slot</div>
+                </div>
                 `;
 
             }
