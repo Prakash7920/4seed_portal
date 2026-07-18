@@ -61,3 +61,39 @@ function closePopup(){
     document.getElementById("editPopup").style.display="none";
 
 }
+function savePartner(){
+
+    fetch("https://script.google.com/macros/s/AKfycbw9P5iUDKYl3nXAaFfTdEO_rf7PfHSiLkwTjXq7HIpic7tOdg85aqIIeexbF63qrzIU/exec",{
+        method:"POST",
+        body:JSON.stringify({
+
+            action:"updatePartner",
+
+            partnerId:document.getElementById("editPartnerId").value,
+
+            name:document.getElementById("editName").value,
+
+            wallet:document.getElementById("editWallet").value
+
+        })
+    })
+    .then(res=>res.json())
+    .then(data=>{
+
+        if(data.success){
+
+            alert("Partner Updated Successfully");
+
+            closePopup();
+
+            location.reload();
+
+        }else{
+
+            alert("Update Failed");
+
+        }
+
+    });
+
+}
