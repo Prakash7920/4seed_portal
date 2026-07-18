@@ -31,7 +31,8 @@ fetch("https://script.google.com/macros/s/AKfycbw9P5iUDKYl3nXAaFfTdEO_rf7PfHSiLk
                     <b>${data.team[i].name}</b><br>
                     ${data.team[i].partnerId}
                 `;
-
+                slot.dataset.partnerId = data.team[i].partnerId;
+                
             } else {
 
                 slot.innerHTML = "Empty";
@@ -43,3 +44,27 @@ fetch("https://script.google.com/macros/s/AKfycbw9P5iUDKYl3nXAaFfTdEO_rf7PfHSiLk
     }
 
 });
+function loadTeam(card) {
+
+    const partnerId = card.dataset.partnerId;
+
+    if (!partnerId) return;
+
+    fetch(WEB_APP_URL, {
+        method: "POST",
+        body: JSON.stringify({
+            action: "getTeam",
+            partnerId: partnerId
+        })
+    })
+    .then(res => res.json())
+    .then(data => {
+
+        alert(
+            "Selected: " + partnerId +
+            "\nDirect Members: " + data.team.length
+        );
+
+        // Next step: we'll replace this alert with an expandable tree.
+    });
+}
