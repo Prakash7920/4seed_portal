@@ -107,7 +107,18 @@ function savePartner(){
 
             closePopup();
 
-            location.reload();
+fetch(WEB_APP_URL,{
+    method:"POST",
+    body:JSON.stringify({
+        action:"getAllPartners"
+    })
+})
+.then(res=>res.json())
+.then(data=>{
+    if(data.success){
+        loadPartners(data.partners);
+    }
+});
 
         }else{
 
