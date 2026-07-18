@@ -16,6 +16,27 @@ fetch("https://script.google.com/macros/s/AKfycbw9P5iUDKYl3nXAaFfTdEO_rf7PfHSiLk
     }
 
 });
+
+fetch("https://script.google.com/macros/s/AKfycbw9P5iUDKYl3nXAaFfTdEO_rf7PfHSiLkwTjXq7HIpic7tOdg85aqIIeexbF63qrzIU/exec",{
+    method:"POST",
+    body:JSON.stringify({
+        action:"getDashboardStats"
+    })
+})
+.then(res=>res.json())
+.then(data=>{
+
+    if(data.success){
+
+        document.getElementById("totalPartners").textContent = data.total;
+        document.getElementById("activePartners").textContent = data.active;
+        document.getElementById("blockedPartners").textContent = data.blocked;
+        document.getElementById("walletAmount").textContent = "₹" + data.wallet;
+
+    }
+
+});
+
 function loadPartners(partners){
 
     const tbody = document.querySelector("#partnerTable tbody");
