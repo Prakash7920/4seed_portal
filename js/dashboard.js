@@ -20,21 +20,15 @@ document.getElementById("welcomeTitle").textContent =
 
 document.getElementById("logoutBtn").addEventListener("click", function () {
 
-    localStorage.removeItem("partner");
-
-    window.location.href = "login.html";
-
-});
-document.getElementById("logoutBtn").addEventListener("click", function () {
-
     if (confirm("Are you sure you want to logout?")) {
 
-    localStorage.removeItem("partner");
+        localStorage.removeItem("partner");
 
-    window.location.href = "login.html";
+        window.location.href = "login.html";
 
     }
 });
+
 function openWithdraw(){
 
     document.getElementById("withdrawPopup").style.display="flex";
@@ -46,10 +40,10 @@ function closeWithdraw(){
     document.getElementById("withdrawPopup").style.display="none";
 
 }
-function sendWithdrawRequest(){
-alert("Button clicked");
 
-}
+function sendWithdrawRequest(){
+    alert("Button clicked");
+
     const amount = document.getElementById("withdrawAmount").value;
 
     fetch(WEB_APP_URL,{
@@ -75,16 +69,13 @@ alert("Button clicked");
 // Dashboard Statistics
 // ====================================
 
-document.getElementById("welcomeTitle").innerHTML =
-"Welcome, " + partner.name + " 👋";
-
 document.getElementById("walletBalance").innerHTML = "₹0";
 
 document.getElementById("businessVolume").innerHTML = "₹0";
 
 document.getElementById("rankName").innerHTML = "Starter";
 
-fetch(WEB_APP_URL,{", {
+fetch(WEB_APP_URL,{
     method: "POST",
     body: JSON.stringify({
         action: "getTeam",
