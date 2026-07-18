@@ -79,10 +79,23 @@ function loadTeamByPartnerId(partnerId){
 
             if(data.team[i]){
 
-                slot.innerHTML=`
-                <b>${data.team[i].name}</b><br>
-                ${data.team[i].partnerId}
-                `;
+                slot.innerHTML = `
+<div class="member-card">
+
+<div class="avatar">👤</div>
+
+<b>${data.team[i].name}</b><br>
+
+🆔 ${data.team[i].partnerId}<br>
+
+👥 ${data.team[i].directTeam} Direct<br>
+
+🟢 ${data.team[i].status}<br>
+
+🏆 ${data.team[i].rank}
+
+</div>
+`;
 
                 slot.dataset.name=data.team[i].name;
                 slot.dataset.partnerId=data.team[i].partnerId;
