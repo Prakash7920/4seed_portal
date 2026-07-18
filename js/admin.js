@@ -46,3 +46,18 @@ Edit</button>
     });
 
 }
+function editPartner(id,name,wallet){
+
+    document.getElementById("editPartnerId").value=id;
+    document.getElementById("editName").value=name;
+    document.getElementById("editWallet").value=wallet;
+
+    document.getElementById("editPopup").style.display="flex";
+
+}
+
+function closePopup(){
+
+    document.getElementById("editPopup").style.display="none";
+
+}
