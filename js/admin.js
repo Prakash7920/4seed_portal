@@ -36,7 +36,8 @@ function loadPartners(partners){
             <td>${partner.status}</td>
 
             <td>
-                <button>Edit</button>
+                <button onclick="editPartner('${partner.partnerId}','${partner.name}','${partner.wallet}')">
+Edit</button>
             </td>
 
         </tr>
