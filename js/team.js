@@ -19,6 +19,9 @@ fetch("https://script.google.com/macros/s/AKfycbw9P5iUDKYl3nXAaFfTdEO_rf7PfHSiLk
 .then(res => res.json())
 .then(data => {
 
+    document.getElementById("directCount").textContent = data.team.length;
+    document.getElementById("emptyCount").textContent = 5 - data.team.length;
+
     if (data.success) {
 
         for (let i = 0; i < 5; i++) {
