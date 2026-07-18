@@ -58,7 +58,13 @@ function loadPartners(partners){
 
             <td>₹${partner.wallet}</td>
 
-            <td>${partner.status}</td>
+            <td>
+${partner.status}
+<br>
+<button onclick="toggleStatus('${partner.partnerId}','${partner.status}')">
+${partner.status=="Active" ? "Block" : "Unblock"}
+</button>
+</td>
 
             <td>
                 <button onclick="editPartner('${partner.partnerId}','${partner.name}','${partner.wallet}')">
