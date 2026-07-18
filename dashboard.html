@@ -70,6 +70,8 @@ onclick="window.location='referral.html'">
 <p id="walletBalance">₹0</p>
         </div>
 
+        <div class="card">
+    <button onclick="openWithdraw()">💸 Withdraw</button>
         </div>
 
         <div class="dashboard-card"
@@ -98,6 +100,31 @@ onclick="window.location='rank.html'">
 </body>
 
 <div class="dashboard-container">
+
+</div>
+
+<div id="withdrawPopup" class="popup">
+
+    <div class="popup-content">
+
+        <h2>Withdraw Request</h2>
+
+        <input
+            type="number"
+            id="withdrawAmount"
+            placeholder="Enter Amount">
+
+        <br><br>
+
+        <button onclick="sendWithdrawRequest()">
+            Submit
+        </button>
+
+        <button onclick="closeWithdraw()">
+            Cancel
+        </button>
+
+    </div>
 
 </div>
 
