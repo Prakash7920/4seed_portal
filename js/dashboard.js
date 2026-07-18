@@ -75,9 +75,10 @@ function sendWithdrawRequest(){
         }
 
     })
-    .catch(()=>{
-        alert("Network Error");
-    });
+    .catch(error=>{
+    console.log(error);
+    alert(error);
+});
 
 }
 
