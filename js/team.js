@@ -4,6 +4,7 @@ if (!partner) {
     location.href = "login.html";
 }
 
+document.getElementById("teamCount").textContent = data.team.length;
 document.getElementById("myName").textContent = partner.name;
 document.getElementById("myId").textContent =
 "Partner ID : " + partner.partnerId;
@@ -20,8 +21,6 @@ fetch("https://script.google.com/macros/s/AKfycbw9P5iUDKYl3nXAaFfTdEO_rf7PfHSiLk
 .then(data => {
 
     if (data.success) {
-
-        document.getElementById("teamCount").textContent = data.team.length;
 
         for (let i = 0; i < 5; i++) {
 
