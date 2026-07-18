@@ -9,7 +9,7 @@ document.getElementById("myId").textContent =
 "Partner ID : " + partner.partnerId;
 
 // Load Team
-fetch(WEB_APP_URL, {
+fetch("https://script.google.com/macros/s/AKfycbw9P5iUDKYl3nXAaFfTdEO_rf7PfHSiLkwTjXq7HIpic7tOdg85aqIIeexbF63qrzIU/exec", {
     method: "POST",
     body: JSON.stringify({
         action: "getTeam",
