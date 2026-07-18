@@ -90,6 +90,8 @@ function loadTeamByPartnerId(partnerId){
 
 👥 ${data.team[i].directTeam} Direct<br>
 
+💰 ₹${data.team[i].wallet}<br>
+
 🟢 ${data.team[i].status}<br>
 
 🏆 ${data.team[i].rank}
