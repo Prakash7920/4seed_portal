@@ -57,38 +57,21 @@ fetch("https://script.google.com/macros/s/AKfycbw9P5iUDKYl3nXAaFfTdEO_rf7PfHSiLk
     }
 
 });
-function loadTeam(card){
 
-    const partnerId = card.dataset.partnerId;
-    selectedPartnerId = partnerId;
-
-    if(!partnerId) return;
-
-    document.getElementById("popupName").textContent = card.dataset.name;
-    document.getElementById("popupId").textContent = "Partner ID : " + partnerId;
-    document.getElementById("popupSponsor").textContent = "Sponsor : " + partner.partnerId;
-
-    document.getElementById("memberPopup").style.display = "flex";
-}
-function closePopup(){
-    document.getElementById("memberPopup").style.display = "none";
-}
-
-function viewDownline(){
-
-    closePopup();
-    navigationStack.push(currentPartnerId);
-    currentPartnerId = selectedPartnerId;
+function loadTeamByPartnerId(partnerId){
 
     fetch("https://script.google.com/macros/s/AKfycbw9P5iUDKYl3nXAaFfTdEO_rf7PfHSiLkwTjXq7HIpic7tOdg85aqIIeexbF63qrzIU/exec",{
         method:"POST",
         body:JSON.stringify({
             action:"getTeam",
-            partnerId:selectedPartnerId
+            partnerId:partnerId
         })
     })
     .then(res=>res.json())
     .then(data=>{
+
+        document.getElementById("directCount").textContent = data.team.length;
+        document.getElementById("emptyCount").textContent = 5 - data.team.length;
 
         for(let i=0;i<5;i++){
 
@@ -117,9 +100,33 @@ function viewDownline(){
                 delete slot.dataset.partnerId;
             }
         }
-
     });
+}
 
+function loadTeam(card){
+
+    const partnerId = card.dataset.partnerId;
+    selectedPartnerId = partnerId;
+
+    if(!partnerId) return;
+
+    document.getElementById("popupName").textContent = card.dataset.name;
+    document.getElementById("popupId").textContent = "Partner ID : " + partnerId;
+    document.getElementById("popupSponsor").textContent = "Sponsor : " + partner.partnerId;
+
+    document.getElementById("memberPopup").style.display = "flex";
+}
+function closePopup(){
+    document.getElementById("memberPopup").style.display = "none";
+}
+
+function viewDownline(){
+
+    closePopup();
+    navigationStack.push(currentPartnerId);
+    currentPartnerId = selectedPartnerId;
+
+    loadTeamByPartnerId(selectedPartnerId);
 }
 
 function goHome(){
@@ -127,6 +134,5 @@ function goHome(){
     navigationStack = [];
     currentPartnerId = partner.partnerId;
 
-    location.reload();
-
+    loadTeamByPartnerId(partner.partnerId);
 }
