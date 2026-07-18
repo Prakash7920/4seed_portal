@@ -77,6 +77,8 @@ function closePopup(){
 function viewDownline(){
 
     closePopup();
+    navigationStack.push(currentPartnerId);
+    currentPartnerId = selectedPartnerId;
 
     fetch("https://script.google.com/macros/s/AKfycbw9P5iUDKYl3nXAaFfTdEO_rf7PfHSiLkwTjXq7HIpic7tOdg85aqIIeexbF63qrzIU/exec",{
         method:"POST",
@@ -117,5 +119,14 @@ function viewDownline(){
         }
 
     });
+
+}
+
+function goHome(){
+
+    navigationStack = [];
+    currentPartnerId = partner.partnerId;
+
+    location.reload();
 
 }
