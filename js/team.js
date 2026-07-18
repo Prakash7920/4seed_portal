@@ -35,6 +35,7 @@ fetch("https://script.google.com/macros/s/AKfycbw9P5iUDKYl3nXAaFfTdEO_rf7PfHSiLk
                     ${data.team[i].partnerId}
                 `;
                 slot.dataset.name = data.team[i].name;
+                slot.dataset.partnerId = data.team[i].partnerId;
                 
             } else {
 
