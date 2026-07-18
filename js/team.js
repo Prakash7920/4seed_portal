@@ -65,10 +65,32 @@ function loadTeam(card) {
     .then(res => res.json())
     .then(data => {
 
-        alert(
-            "Selected: " + partnerId +
-            "\nDirect Members: " + data.team.length
-        );
+        for (let i = 0; i < 5; i++) {
+
+    const slot = document.getElementById("slot" + (i + 1));
+
+    if (data.team[i]) {
+
+        slot.innerHTML = `
+            <b>${data.team[i].name}</b><br>
+            ${data.team[i].partnerId}
+        `;
+
+        slot.dataset.partnerId = data.team[i].partnerId;
+
+    } else {
+
+        slot.innerHTML = `
+            <div class="empty-slot">
+                <div class="plus">+</div>
+                <div>Empty Slot</div>
+            </div>
+        `;
+
+        delete slot.dataset.partnerId;
+    }
+
+}
 
         // Next step: we'll replace this alert with an expandable tree.
     });
