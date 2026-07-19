@@ -43,40 +43,15 @@ function closeWithdraw(){
 
 function sendWithdrawRequest(){
 
-    const amount = document.getElementById("withdrawAmount").value;
-
-    if(amount=="" || Number(amount)<=0){
-        alert("Enter a valid amount");
-        return;
-    }
-
-    fetch("https://script.google.com/macros/s/AKfycbw9P5iUDKYl3nXAaFfTdEO_rf7PfHSiLkwTjXq7HIpic7tOdg85aqIIeexbF63qrzIU/exec",{
-        method:"POST",
-        body:JSON.stringify({
-            action:"withdrawRequest",
-            partnerId:partner.partnerId,
-            name:partner.name,
-            amount:amount
-        })
-    })
-    .then(res=>res.json())
-    .then(data=>{
-
-        if(data.success){
-            alert("Withdrawal request submitted successfully.");
-            closeWithdraw();
-            document.getElementById("withdrawAmount").value="";
-        }else{
-            alert(data.message || "Submission failed");
-        }
-
-    })
-    .catch(error=>{
-        console.log(error);
-        alert("Network Error");
-    });
+    alert(JSON.stringify({
+        action:"withdrawRequest",
+        partnerId:partner.partnerId,
+        name:partner.name,
+        amount:document.getElementById("withdrawAmount").value
+    }));
 
 }
+
 // ====================================
 // Dashboard Statistics
 // ====================================
