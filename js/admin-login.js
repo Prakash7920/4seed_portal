@@ -5,6 +5,7 @@ function adminLogin(){
     const username=document.getElementById("username").value;
     const password=document.getElementById("password").value;
 
+    alert("Login button clicked");
     fetch(WEB_APP_URL,{
         method:"POST",
         body:JSON.stringify({
