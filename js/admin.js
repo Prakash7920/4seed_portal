@@ -255,3 +255,49 @@ function loadWithdrawRequests(requests){
     });
 
 }
+function approveWithdraw(requestId){
+
+    fetch(WEB_APP_URL,{
+        method:"POST",
+        body:JSON.stringify({
+            action:"approveWithdraw",
+            requestId:requestId
+        })
+    })
+    .then(res=>res.json())
+    .then(data=>{
+
+        if(data.success){
+
+            alert("Withdrawal Approved");
+
+            location.reload();
+
+        }
+
+    });
+
+}
+function rejectWithdraw(requestId){
+
+    fetch(WEB_APP_URL,{
+        method:"POST",
+        body:JSON.stringify({
+            action:"rejectWithdraw",
+            requestId:requestId
+        })
+    })
+    .then(res=>res.json())
+    .then(data=>{
+
+        if(data.success){
+
+            alert("Withdrawal Rejected");
+
+            location.reload();
+
+        }
+
+    });
+
+}
