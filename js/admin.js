@@ -47,6 +47,23 @@ fetch("https://script.google.com/macros/s/AKfycbw9P5iUDKYl3nXAaFfTdEO_rf7PfHSiLk
 
 });
 
+fetch(WEB_APP_URL,{
+    method:"POST",
+    body:JSON.stringify({
+        action:"getWithdrawRequests"
+    })
+})
+.then(res=>res.json())
+.then(data=>{
+
+    if(data.success){
+
+        loadWithdrawRequests(data.requests);
+
+    }
+
+});
+
 function loadPartners(partners){
 
     const tbody = document.querySelector("#partnerTable tbody");
@@ -194,6 +211,46 @@ function toggleStatus(partnerId,status){
             });
 
         }
+
+    });
+
+}
+
+function loadWithdrawRequests(requests){
+
+    const tbody=document.querySelector("#withdrawTable tbody");
+
+    tbody.innerHTML="";
+
+    requests.forEach(req=>{
+
+        tbody.innerHTML += `
+        <tr>
+
+            <td>${req.requestId}</td>
+
+            <td>${req.partnerId}</td>
+
+            <td>${req.name}</td>
+
+            <td>₹${req.amount}</td>
+
+            <td>${req.status}</td>
+
+            <td>
+
+                <button onclick="approveWithdraw('${req.requestId}')">
+                    ✅ Approve
+                </button>
+
+                <button onclick="rejectWithdraw('${req.requestId}')">
+                    ❌ Reject
+                </button>
+
+            </td>
+
+        </tr>
+        `;
 
     });
 
