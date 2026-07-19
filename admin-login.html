@@ -1,21 +1,41 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Admin Login</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4Seed Admin Login</title>
+
     <link rel="stylesheet" href="css/style.css">
 </head>
-
 <body>
 
-<div class="login-box">
+<div class="login-container">
 
-<h2>Admin Login</h2>
+    <div class="page-header">
+        <div class="logo">🌱</div>
+        <h1>Admin Login</h1>
+        <p>Login to 4Seed Admin Panel</p>
+    </div>
 
-<input type="text" id="username" placeholder="Username">
+    <label>Username</label>
+    <input
+        type="text"
+        id="username"
+        placeholder="Enter Username">
 
-<input type="password" id="password" placeholder="Password">
+    <label>Password</label>
+    <input
+        type="password"
+        id="password"
+        placeholder="Enter Password">
 
-<button onclick="adminLogin()">Login</button>
+    <br><br>
+
+    <button
+        id="loginBtn"
+        onclick="adminLogin()">
+        Login
+    </button>
 
 </div>
 
