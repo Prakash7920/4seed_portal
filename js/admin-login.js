@@ -5,8 +5,6 @@ function adminLogin(){
     const username=document.getElementById("username").value;
     const password=document.getElementById("password").value;
 
-    alert("Login button clicked");
-    
     fetch(WEB_APP_URL,{
         method:"POST",
         body:JSON.stringify({
@@ -18,7 +16,9 @@ function adminLogin(){
     .then(res=>res.json())
     .then(data=>{
 
-        if(data.success){
+    alert(JSON.stringify(data));
+
+    if(data.success){
 
             localStorage.setItem("admin","true");
 
