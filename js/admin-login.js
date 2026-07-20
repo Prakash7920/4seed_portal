@@ -32,6 +32,8 @@ function adminLogin() {
             throw new Error(`HTTP error! status: ${res.status}`);
         }
         return res.json();
+        .then(data => {
+    alert(JSON.stringify(data));
     })
     .then(data => {
         if (data.success) {
@@ -44,9 +46,8 @@ function adminLogin() {
         }
     })
     .catch(err => {
-        console.error("Login error:", err);
-        alert("An error occurred. Please try again later.");
-        loginBtn.disabled = false;
-        loginBtn.textContent = "Login";
-    });
-}
+    console.error(err);
+    alert("Error: " + err.message);
+    loginBtn.disabled = false;
+    loginBtn.textContent = "Login";
+});
