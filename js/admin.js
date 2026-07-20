@@ -4,11 +4,11 @@ if(localStorage.getItem("admin")!="true"){
 
 }
 
-const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbx_y7TYGA-qICmgj4zBCBGa3QGvmjSKqBaxbgoFfdJAdScFvwMnzFhR2xxi0D0VkbQ/exec";
+const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbwhub93htUz8GehM7tbfugo0YejhohT2j-Dx3M7mOn6aqzvuq8YBc2OOdD_wmJCyGRe/exec";
 
 let allPartners = [];
 
-fetch("https://script.google.com/macros/s/AKfycbw9P5iUDKYl3nXAaFfTdEO_rf7PfHSiLkwTjXq7HIpic7tOdg85aqIIeexbF63qrzIU/exec",{
+fetch("https://script.google.com/macros/s/AKfycbwhub93htUz8GehM7tbfugo0YejhohT2j-Dx3M7mOn6aqzvuq8YBc2OOdD_wmJCyGRe/exec",{
     method:"POST",
     body:JSON.stringify({
         action:"getAllPartners"
@@ -27,7 +27,7 @@ fetch("https://script.google.com/macros/s/AKfycbw9P5iUDKYl3nXAaFfTdEO_rf7PfHSiLk
 
 });
 
-fetch("https://script.google.com/macros/s/AKfycbw9P5iUDKYl3nXAaFfTdEO_rf7PfHSiLkwTjXq7HIpic7tOdg85aqIIeexbF63qrzIU/exec",{
+fetch("https://script.google.com/macros/s/AKfycbwhub93htUz8GehM7tbfugo0YejhohT2j-Dx3M7mOn6aqzvuq8YBc2OOdD_wmJCyGRe/exec",{
     method:"POST",
     body:JSON.stringify({
         action:"getDashboardStats"
@@ -117,7 +117,7 @@ function closePopup(){
 }
 function savePartner(){
 
-    fetch("https://script.google.com/macros/s/AKfycbw9P5iUDKYl3nXAaFfTdEO_rf7PfHSiLkwTjXq7HIpic7tOdg85aqIIeexbF63qrzIU/exec",{
+    fetch("https://script.google.com/macros/s/AKfycbwhub93htUz8GehM7tbfugo0YejhohT2j-Dx3M7mOn6aqzvuq8YBc2OOdD_wmJCyGRe/exec",{
         method:"POST",
         body:JSON.stringify({
 
