@@ -32,7 +32,7 @@ function adminLogin() {
     .then(data => {
         alert(JSON.stringify(data));
         if (data.success) {
-            localStorage.setItem("admin", JSON.stringify(data));
+            localStorage.setItem("admin", "true");
             window.location.href = "admin.html";
         } else {
             alert(data.message || "Invalid Username or Password");
@@ -41,8 +41,8 @@ function adminLogin() {
         }
     })
     .catch(err => {
-        console.error(err);
-        alert("Error: " + err.message);
+        console.error("Login error:", err);
+        alert("An error occurred. Please try again later.");
         loginBtn.disabled = false;
         loginBtn.textContent = "Login";
     });
