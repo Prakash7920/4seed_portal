@@ -1,3 +1,4 @@
+alert("admin-login.js loaded");
 const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbx_y7TYGA-qICmgj4zBCBGa3QGvmjSKqBaxbgoFfdJAdScFvwMnzFhR2xxi0D0VkbQ/exec";
 
 function adminLogin() {
