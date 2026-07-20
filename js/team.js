@@ -13,7 +13,7 @@ document.getElementById("myId").textContent =
 "Partner ID : " + partner.partnerId;
 
 // Load Team
-fetch("https://script.google.com/macros/s/AKfycbx_y7TYGA-qICmgj4zBCBGa3QGvmjSKqBaxbgoFfdJAdScFvwMnzFhR2xxi0D0VkbQ/exec", {
+fetch("https://script.google.com/macros/s/AKfycbwhub93htUz8GehM7tbfugo0YejhohT2j-Dx3M7mOn6aqzvuq8YBc2OOdD_wmJCyGRe/exec", {
     method: "POST",
     body: JSON.stringify({
         action: "getTeam",
@@ -60,7 +60,7 @@ fetch("https://script.google.com/macros/s/AKfycbx_y7TYGA-qICmgj4zBCBGa3QGvmjSKqB
 
 function loadTeamByPartnerId(partnerId){
 
-    fetch("https://script.google.com/macros/s/AKfycbx_y7TYGA-qICmgj4zBCBGa3QGvmjSKqBaxbgoFfdJAdScFvwMnzFhR2xxi0D0VkbQ/exec",{
+    fetch("https://script.google.com/macros/s/AKfycbwhub93htUz8GehM7tbfugo0YejhohT2j-Dx3M7mOn6aqzvuq8YBc2OOdD_wmJCyGRe/exec",{
         method:"POST",
         body:JSON.stringify({
             action:"getTeam",
