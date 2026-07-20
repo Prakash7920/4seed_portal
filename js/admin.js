@@ -8,7 +8,7 @@ const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbwhub93htUz8GehM7tb
 
 let allPartners = [];
 
-fetch("https://script.google.com/macros/s/AKfycbwhub93htUz8GehM7tbfugo0YejhohT2j-Dx3M7mOn6aqzvuq8YBc2OOdD_wmJCyGRe/exec",{
+fetch(WEB_APP_URL,{
     method:"POST",
     body:JSON.stringify({
         action:"getAllPartners"
@@ -27,7 +27,7 @@ fetch("https://script.google.com/macros/s/AKfycbwhub93htUz8GehM7tbfugo0YejhohT2j
 
 });
 
-fetch("https://script.google.com/macros/s/AKfycbwhub93htUz8GehM7tbfugo0YejhohT2j-Dx3M7mOn6aqzvuq8YBc2OOdD_wmJCyGRe/exec",{
+fetch(WEB_APP_URL,{
     method:"POST",
     body:JSON.stringify({
         action:"getDashboardStats"
