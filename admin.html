@@ -85,7 +85,29 @@
     </table>
 
 </div>
+<!-- Edit Partner Popup -->
+<div id="editPopup" class="popup">
 
+    <div class="popup-content">
+
+        <h2>Edit Partner</h2>
+
+        <input type="hidden" id="editPartnerId">
+
+        <label>Partner Name</label>
+        <input type="text" id="editName">
+
+        <label>Wallet Amount</label>
+        <input type="number" id="editWallet">
+
+        <div class="popup-buttons">
+            <button onclick="savePartner()">💾 Save</button>
+            <button onclick="closePopup()">❌ Cancel</button>
+        </div>
+
+    </div>
+
+</div>
 <script src="js/admin.js"></script>
 
 </body>
