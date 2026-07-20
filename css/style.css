@@ -2121,3 +2121,18 @@ cursor:pointer;
 .popup-buttons button{
     width:48%;
 }
+
+.logout-btn{
+    float:right;
+    background:#e53935;
+    color:#fff;
+    border:none;
+    padding:10px 20px;
+    border-radius:8px;
+    cursor:pointer;
+    margin-bottom:20px;
+}
+
+.logout-btn:hover{
+    background:#c62828;
+}
