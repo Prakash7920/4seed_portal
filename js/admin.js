@@ -4,15 +4,6 @@ if(localStorage.getItem("admin")!="true"){
 
 }
 
-alert("Admin value = " + localStorage.getItem("admin"));
-
-if(localStorage.getItem("admin") != "true"){
-    alert("Redirecting to login");
-    location.href = "admin-login.html";
-}else{
-    alert("Admin Login Success");
-}
-
 const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbwhub93htUz8GehM7tbfugo0YejhohT2j-Dx3M7mOn6aqzvuq8YBc2OOdD_wmJCyGRe/exec";
 
 let allPartners = [];
@@ -308,5 +299,17 @@ function rejectWithdraw(requestId){
         }
 
     });
+
+}
+
+function logout(){
+
+    if(confirm("Are you sure you want to logout?")){
+
+        localStorage.removeItem("admin");
+
+        location.href = "admin-login.html";
+
+    }
 
 }
