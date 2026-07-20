@@ -34,8 +34,6 @@ function adminLogin() {
         return res.json();
         .then(data => {
     alert(JSON.stringify(data));
-    })
-    .then(data => {
         if (data.success) {
             localStorage.setItem("admin", JSON.stringify(data));
             window.location.href = "admin.html";
