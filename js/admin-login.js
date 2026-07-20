@@ -32,8 +32,9 @@ function adminLogin() {
             throw new Error(`HTTP error! status: ${res.status}`);
         }
         return res.json();
-        .then(data => {
-    alert(JSON.stringify(data));
+    })
+    .then(data => {
+        alert(JSON.stringify(data));
         if (data.success) {
             localStorage.setItem("admin", JSON.stringify(data));
             window.location.href = "admin.html";
@@ -44,8 +45,9 @@ function adminLogin() {
         }
     })
     .catch(err => {
-    console.error(err);
-    alert("Error: " + err.message);
-    loginBtn.disabled = false;
-    loginBtn.textContent = "Login";
-});
+        console.error(err);
+        alert("Error: " + err.message);
+        loginBtn.disabled = false;
+        loginBtn.textContent = "Login";
+    });
+}
