@@ -111,6 +111,36 @@
     </div>
 
 </div>
+<div id="walletPopup" class="popup">
+
+    <div class="popup-content">
+
+        <h2>Wallet Management</h2>
+
+        <input type="hidden" id="walletPartnerId">
+
+        <label>Current Wallet</label>
+        <input type="number" id="currentWallet" readonly>
+
+        <label>Amount</label>
+        <input type="number" id="walletAmountInput">
+
+        <label>Action</label>
+
+        <select id="walletAction">
+            <option value="credit">Credit</option>
+            <option value="debit">Debit</option>
+        </select>
+
+        <div class="popup-buttons">
+            <button onclick="updateWallet()">Save</button>
+            <button onclick="closeWalletPopup()">Cancel</button>
+        </div>
+
+    </div>
+
+</div>
+
 <script src="js/admin.js"></script>
 
 </body>
