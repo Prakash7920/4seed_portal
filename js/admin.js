@@ -387,3 +387,28 @@ function closeViewPopup(){
     document.getElementById("viewPopup").style.display = "none";
 
 }
+function sendAnnouncement(){
+
+    fetch(WEB_APP_URL,{
+        method:"POST",
+        body:JSON.stringify({
+            action:"sendAnnouncement",
+            title:document.getElementById("announcementTitle").value,
+            message:document.getElementById("announcementMessage").value
+        })
+    })
+    .then(res=>res.json())
+    .then(data=>{
+
+        if(data.success){
+
+            alert("Announcement Published");
+
+            document.getElementById("announcementTitle").value="";
+            document.getElementById("announcementMessage").value="";
+
+        }
+
+    });
+
+}
