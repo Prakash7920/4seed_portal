@@ -90,6 +90,8 @@ ${partner.status=="Active" ? "Block" : "Unblock"}
 </td>
 
             <td>
+    <button onclick="viewPartner('${partner.partnerId}')">👁 View</button>
+
     <button onclick="editPartner('${partner.partnerId}','${partner.name}','${partner.wallet}')">
         ✏️ Edit
     </button>
