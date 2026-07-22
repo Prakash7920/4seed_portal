@@ -4,7 +4,7 @@ if(localStorage.getItem("admin")!="true"){
 
 }
 
-const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzc5Sqt9QqkKkYVoBzg2x8rKLkBEjvvCa2--xuIY-Zlvk-JsBLp0m4uoY_hcs7RyBlG/exec";
+const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbxC1UjRR9IjmwH8VviWNj9NGf0bO9uLdJ1JoBleiOwW9iYB_v-TadwvQEK0E5oDzqnA/exec";
 
 let allPartners = [];
 
@@ -124,7 +124,7 @@ function closePopup(){
 }
 function savePartner(){
 
-    fetch("https://script.google.com/macros/s/AKfycbzc5Sqt9QqkKkYVoBzg2x8rKLkBEjvvCa2--xuIY-Zlvk-JsBLp0m4uoY_hcs7RyBlG/exec",{
+    fetch("https://script.google.com/macros/s/AKfycbxC1UjRR9IjmwH8VviWNj9NGf0bO9uLdJ1JoBleiOwW9iYB_v-TadwvQEK0E5oDzqnA/exec",{
         method:"POST",
         body:JSON.stringify({
 
