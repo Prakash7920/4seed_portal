@@ -2136,3 +2136,9 @@ cursor:pointer;
 .logout-btn:hover{
     background:#c62828;
 }
+.popup select{
+    width:100%;
+    padding:10px;
+    margin-top:10px;
+    margin-bottom:15px;
+}
