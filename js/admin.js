@@ -355,7 +355,7 @@ function updateWallet(){
 
         }else{
 
-            alert("Wallet Update Failed");
+            alert(data.message);
 
         }
 
