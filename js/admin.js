@@ -365,3 +365,25 @@ function updateWallet(){
     });
 
 }
+function viewPartner(partnerId){
+
+    const partner = allPartners.find(p => p.partnerId === partnerId);
+
+    if(!partner) return;
+
+    document.getElementById("vPartnerId").textContent = partner.partnerId;
+    document.getElementById("vName").textContent = partner.name;
+    document.getElementById("vMobile").textContent = partner.mobile;
+    document.getElementById("vEmail").textContent = partner.email;
+    document.getElementById("vStatus").textContent = partner.status;
+    document.getElementById("vWallet").textContent = partner.wallet;
+
+    document.getElementById("viewPopup").style.display = "flex";
+
+}
+
+function closeViewPopup(){
+
+    document.getElementById("viewPopup").style.display = "none";
+
+}
