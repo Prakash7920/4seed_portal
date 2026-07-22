@@ -74,12 +74,11 @@ function loadPartners(partners){
 
         tbody.innerHTML += `
         <tr>
-
-            <td>${partner.partnerId}</td>
-
-            <td>${partner.name}</td>
-
-            <td>₹${partner.wallet}</td>
+   <td>${partner.partnerId}</td>
+   <td>${partner.name}</td>
+   <td>₹${partner.wallet}</td>
+   <td>${partner.rank || "No Rank"}</td>
+   <td>${partner.status}</td>
 
             <td>
 ${partner.status}
