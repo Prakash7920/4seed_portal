@@ -331,7 +331,7 @@ function closeWalletPopup(){
     document.getElementById("walletPopup").style.display = "none";
 
 }
-alert(WEB_APP_URL);
+
 function updateWallet(){
 
     fetch(WEB_APP_URL,{
