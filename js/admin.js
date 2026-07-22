@@ -412,3 +412,34 @@ function sendAnnouncement(){
     });
 
 }
+fetch(WEB_APP_URL,{
+    method:"POST",
+    body:JSON.stringify({
+        action:"getTeamTree"
+    })
+})
+.then(res=>res.json())
+.then(data=>{
+    if(data.success){
+        loadTeamTree(data.partners);
+    }
+});
+
+function loadTeamTree(partners){
+
+    const tree = document.getElementById("teamTree");
+    tree.innerHTML = "";
+
+    partners.forEach(p=>{
+
+        tree.innerHTML += `
+        <div class="tree-node">
+            <strong>${p.partnerId}</strong><br>
+            ${p.name}<br>
+            Sponsor: ${p.sponsorId}
+        </div>
+        `;
+
+    });
+
+}
