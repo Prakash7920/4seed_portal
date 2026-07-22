@@ -90,9 +90,14 @@ ${partner.status=="Active" ? "Block" : "Unblock"}
 </td>
 
             <td>
-                <button onclick="editPartner('${partner.partnerId}','${partner.name}','${partner.wallet}')">
-Edit</button>
-            </td>
+    <button onclick="editPartner('${partner.partnerId}','${partner.name}','${partner.wallet}')">
+        ✏️ Edit
+    </button>
+
+    <button onclick="walletPopup('${partner.partnerId}','${partner.wallet}')">
+        💰 Wallet
+    </button>
+</td>
 
         </tr>
         `;
@@ -311,5 +316,18 @@ function logout(){
         location.href = "admin-login.html";
 
     }
+
+}
+function walletPopup(partnerId,wallet){
+
+    document.getElementById("walletPartnerId").value = partnerId;
+    document.getElementById("currentWallet").value = wallet;
+    document.getElementById("walletPopup").style.display = "flex";
+
+}
+
+function closeWalletPopup(){
+
+    document.getElementById("walletPopup").style.display = "none";
 
 }
