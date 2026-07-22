@@ -74,32 +74,23 @@ function loadPartners(partners){
 
         tbody.innerHTML += `
         <tr>
-   <td>${partner.partnerId}</td>
-   <td>${partner.name}</td>
-   <td>₹${partner.wallet}</td>
-   <td>${partner.rank || "No Rank"}</td>
-   <td>${partner.status}</td>
-
+            <td>${partner.partnerId}</td>
+            <td>${partner.name}</td>
+            <td>₹${partner.wallet}</td>
+            <td>${partner.rank || "No Rank"}</td>
+            <td>${partner.status}</td>
             <td>
-${partner.status}
-<br>
-<button onclick="toggleStatus('${partner.partnerId}','${partner.status}')">
-${partner.status=="Active" ? "Block" : "Unblock"}
-</button>
-</td>
-
-            <td>
-    <button onclick="viewPartner('${partner.partnerId}')">👁 View</button>
-
-    <button onclick="editPartner('${partner.partnerId}','${partner.name}','${partner.wallet}')">
-        ✏️ Edit
-    </button>
-
-    <button onclick="walletPopup('${partner.partnerId}','${partner.wallet}')">
-        💰 Wallet
-    </button>
-</td>
-
+                <button onclick="toggleStatus('${partner.partnerId}','${partner.status}')">
+                    ${partner.status=="Active" ? "Block" : "Unblock"}
+                </button>
+                <button onclick="viewPartner('${partner.partnerId}')">👁 View</button>
+                <button onclick="editPartner('${partner.partnerId}','${partner.name}','${partner.wallet}')">
+                    ✏️ Edit
+                </button>
+                <button onclick="walletPopup('${partner.partnerId}','${partner.wallet}')">
+                    💰 Wallet
+                </button>
+            </td>
         </tr>
         `;
 
