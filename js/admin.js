@@ -331,3 +331,34 @@ function closeWalletPopup(){
     document.getElementById("walletPopup").style.display = "none";
 
 }
+function updateWallet(){
+
+    fetch(WEB_APP_URL,{
+        method:"POST",
+        body:JSON.stringify({
+            action:"updateWallet",
+            partnerId:document.getElementById("walletPartnerId").value,
+            amount:document.getElementById("walletAmountInput").value,
+            type:document.getElementById("walletAction").value
+        })
+    })
+    .then(res=>res.json())
+    .then(data=>{
+
+        if(data.success){
+
+            alert("Wallet Updated Successfully");
+
+            closeWalletPopup();
+
+            location.reload();
+
+        }else{
+
+            alert("Wallet Update Failed");
+
+        }
+
+    });
+
+}
