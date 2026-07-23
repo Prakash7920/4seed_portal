@@ -4,7 +4,7 @@ if(localStorage.getItem("admin")!="true"){
 
 }
 
-const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzVAWto6z4O99rXbxpfQqn2RnZIk1xJ6mE7jYFbZoogQ4O8DTTq5pfqGC0nurVqJH_h/exec";
+const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbyKyuCWCyYzjbysgSm-jG7zGhE66sO8XQ43yWt7vySdkPSsclgNCJtrY85S6zC7A0EG/exec";
 
 let allPartners = [];
 
@@ -114,7 +114,7 @@ function closePopup(){
 }
 function savePartner(){
 
-    fetch("</div><h2>🌳 Team Tree</h2>",{
+    fetch(WEB_APP_URL,{
         method:"POST",
         body:JSON.stringify({
 
