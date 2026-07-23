@@ -1,1 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>My Profile - 4Seed</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/style.css">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="dashboard-container">
+
+    <div class="dashboard-welcome">
+        <h2>👤 My Profile</h2>
+        <p>View and update your profile details.</p>
+    </div>
+
+    <div class="profile-form">
+
+        <label>Partner ID</label>
+        <input
+            type="text"
+            id="partnerId"
+            readonly>
+
+        <label>Sponsor ID</label>
+        <input
+            type="text"
+            id="sponsorId"
+            readonly>
+
+        <label>Sponsor Name</label>
+        <input
+            type="text"
+            id="sponsorName"
+            readonly>
+
+        <label>Full Name</label>
+        <input
+            type="text"
+            id="name"
+            placeholder="Enter Full Name">
+
+        <label>Mobile Number</label>
+        <input
+            type="tel"
+            id="mobile"
+            placeholder="Enter Mobile Number">
+
+        <label>Email Address</label>
+        <input
+            type="email"
+            id="email"
+            placeholder="Enter Email Address">
+
+        <label>Address</label>
+        <textarea
+            id="address"
+            rows="4"
+            placeholder="Enter Address"></textarea>
+
+        <br><br>
+
+        <button onclick="updateProfile()">
+            💾 Update Profile
+        </button>
+
+        <button
+            onclick="window.location='dashboard.html'"
+            style="margin-top:10px;">
+            ⬅ Back to Dashboard
+        </button>
+
+    </div>
+
+</div>
+
+<script src="js/profile.js"></script>
+
+</body>
+
+</html>
