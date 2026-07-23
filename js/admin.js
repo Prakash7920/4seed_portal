@@ -424,12 +424,6 @@ function loadTeamTree(partners){
 
     const tree = document.getElementById("teamTree");
     
-    // Check if element exists
-    if(!tree){
-        console.error("Error: Element with ID 'teamTree' not found in HTML");
-        return;
-    }
-    
     tree.innerHTML = "";
 
     partners.forEach(p=>{
