@@ -64,6 +64,23 @@ fetch(WEB_APP_URL,{
 
 });
 
+// Fetch Team Tree Data
+fetch(WEB_APP_URL,{
+    method:"POST",
+    body:JSON.stringify({
+        action:"getTeamTree"
+    })
+})
+.then(res=>res.json())
+.then(data=>{
+    if(data.success){
+        loadTeamTree(data.partners);
+    }
+})
+.catch(error=>{
+    console.error("Error loading team tree:", error);
+});
+
 function loadPartners(partners){
 
     const tbody = document.querySelector("#partnerTable tbody");
@@ -402,22 +419,17 @@ function sendAnnouncement(){
     });
 
 }
-fetch(WEB_APP_URL,{
-    method:"POST",
-    body:JSON.stringify({
-        action:"getTeamTree"
-    })
-})
-.then(res=>res.json())
-.then(data=>{
-    if(data.success){
-        loadTeamTree(data.partners);
-    }
-});
 
 function loadTeamTree(partners){
 
     const tree = document.getElementById("teamTree");
+    
+    // Check if element exists
+    if(!tree){
+        console.error("Error: Element with ID 'teamTree' not found in HTML");
+        return;
+    }
+    
     tree.innerHTML = "";
 
     partners.forEach(p=>{
