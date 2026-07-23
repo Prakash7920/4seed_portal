@@ -74,17 +74,11 @@ fetch(WEB_APP_URL,{
 .then(res=>res.json())
 .then(data=>{
 
-    alert(JSON.stringify(data));
-
     if(data.success){
         loadTeamTree(data.partners);
     }else{
         alert("getTeamTree failed");
     }
-
-})
-.catch(err=>{
-    alert(err);
 });
 
 function loadPartners(partners){
