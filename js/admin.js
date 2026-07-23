@@ -73,12 +73,13 @@ fetch(WEB_APP_URL,{
 })
 .then(res=>res.json())
 .then(data=>{
+    console.log(data);
+
     if(data.success){
         loadTeamTree(data.partners);
+    }else{
+        alert(JSON.stringify(data));
     }
-})
-.catch(error=>{
-    console.error("Error loading team tree:", error);
 });
 
 function loadPartners(partners){
