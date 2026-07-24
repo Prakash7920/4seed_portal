@@ -32,38 +32,24 @@ function changePassword() {
     
     alert("Sending request...");
     fetch(WEB_APP_URL, {
-
-        method: "POST",
-
-        body: JSON.stringify({
-
-            action: "changePassword",
-
-            partnerId: partnerId,
-
-            currentPassword: currentPassword,
-
-            newPassword: newPassword
-
-        })
-
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+        action: "changePassword",
+        partnerId: partnerId,
+        currentPassword: currentPassword,
+        newPassword: newPassword
     })
-
-    .then(res => res.text())
-
-    .then(msg => {
-
-        alert(msg);
-
-        if (msg.includes("success")) {
-
-            window.location = "dashboard.html";
-
-        }
-
-    })
-
-    .catch(err => {
+})
+.then(async (res) => {
+    console.log("Status:", res.status);
+    const text = await res.text();
+    console.log("Response:", text);
+    alert(text);
+})
+.catch((err) => {
     console.error(err);
-    alert("Error: " + err.message);
+    alert(err.message);
 });
