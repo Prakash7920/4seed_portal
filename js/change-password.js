@@ -1,4 +1,4 @@
-const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzYQ7dsEoSOecNUQHfNg4yhxAASxC0GWYwXQ28EvICRA6tv-Dxbe2qu9gJSIZ7p3mb4/exec";
+const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbyhJYsJKQCjkIOynAF1cXBFbxtaFK4cLnWRBCTurRGZTv9GG2AaX2Vh8M4Pj6ghPdrD/exec";
 
 function changePassword() {
 
