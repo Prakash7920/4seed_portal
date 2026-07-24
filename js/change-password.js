@@ -4,7 +4,8 @@ const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbyvup4tkTh_nlM3S1-G
 function changePassword() {
 
     alert(localStorage.getItem("partnerId"));
-    const partnerId = localStorage.getItem("partnerId");
+    const partner = JSON.parse(localStorage.getItem("partner"));
+    const partnerId = partner.partnerId;
     alert("Partner ID: " + partnerId);
     const currentPassword =
         document.getElementById("currentPassword").value;
