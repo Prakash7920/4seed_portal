@@ -62,11 +62,6 @@ function changePassword() {
     })
 
     .catch(err => {
-
-        console.error(err);
-
-        alert("Failed to change password.");
-
-    });
-
-}
+    console.error(err);
+    alert("Error: " + err.message);
+});
