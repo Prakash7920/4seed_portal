@@ -1,4 +1,4 @@
-const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbyhJYsJKQCjkIOynAF1cXBFbxtaFK4cLnWRBCTurRGZTv9GG2AaX2Vh8M4Pj6ghPdrD/exec";
+const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbwvrf98i4rL0atUtIRF1J6dtbS44EcQGnNehURdKYPmzltCYp9nvZc6dNjh6F0lGorI/exec";
 
 document
 .getElementById("loginForm")
