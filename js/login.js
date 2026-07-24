@@ -36,13 +36,17 @@ async function login(e){
 
         if(data.status){
 
-            localStorage.setItem(
-                "partner",
-                JSON.stringify(data)
-            );
+    localStorage.setItem(
+        "partner",
+        JSON.stringify(data)
+    );
 
-            window.location.href="dashboard.html";
+    localStorage.setItem(
+        "partnerId",
+        data.partnerId
+    );
 
+    window.location.href="dashboard.html";
         }else{
 
             alert("Invalid Partner ID or Password");
