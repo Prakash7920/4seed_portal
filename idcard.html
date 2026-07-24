@@ -4,79 +4,63 @@
 <head>
 
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta name="viewport"
-content="width=device-width,initial-scale=1">
+<title>Digital ID - 4Seed</title>
 
-<title>Digital ID</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link rel="stylesheet"
-href="css/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/style.css">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 
 </head>
 
 <body>
 
-<div class="id-container">
+<div class="dashboard-container">
 
-<div class="id-card">
+<h2 style="text-align:center;">🪪 Digital ID Card</h2>
 
-<div class="id-header">
+<div class="id-card" id="idCard">
 
-🌱 4Seed
+<div style="text-align:center">
 
-</div>
+<img src="images/logo.png"
+     width="80"
+     alt="4Seed">
 
-<div class="id-photo">
-
-👤
-
-</div>
-
-<h2 id="idName">
-
-Loading...
-
-</h2>
-
-<p>
-
-Partner ID
-
-</p>
-
-<h3 id="idPartner">
-
-Loading...
-
-</h3>
-
-<p>
-
-Sponsor
-
-</p>
-
-<h3 id="idSponsor">
-
-Loading...
-
-</h3>
-
-<div id="qrcode">
-
-QR Code
+<h2>4Seed</h2>
 
 </div>
 
-<button id="downloadBtn"
-class="btn btn-primary">
+<hr>
 
-Download ID
+<p><b>Partner ID :</b> <span id="partnerId"></span></p>
 
+<p><b>Name :</b> <span id="partnerName"></span></p>
+
+<p><b>Sponsor :</b> <span id="sponsorName"></span></p>
+
+<p><b>Rank :</b> <span id="rank"></span></p>
+
+<p><b>Status :</b> <span id="status"></span></p>
+
+<div
+id="qrcode"
+style="margin-top:20px;text-align:center;">
+</div>
+
+</div>
+
+<br>
+
+<button onclick="window.location='dashboard.html'">
+⬅ Back
 </button>
-
-</div>
 
 </div>
 
