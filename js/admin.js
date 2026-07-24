@@ -4,7 +4,7 @@ if(localStorage.getItem("admin")!="true"){
 
 }
 
-const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbyKyuCWCyYzjbysgSm-jG7zGhE66sO8XQ43yWt7vySdkPSsclgNCJtrY85S6zC7A0EG/exec";
+const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzI7cDJDU1OwiM-OOrqX98wPJT6R05tIN1-UpZxdlGCEQJBlJmRxY0MvhvEkbUBFfpP/exec";
 
 let allPartners = [];
 
