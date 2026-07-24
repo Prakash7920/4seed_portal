@@ -1,5 +1,5 @@
 alert("JS Loaded");
-const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbwvrf98i4rL0atUtIRF1J6dtbS44EcQGnNehURdKYPmzltCYp9nvZc6dNjh6F0lGorI/exec";
+const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbyvup4tkTh_nlM3S1-GzzvYnIqPBzgpFlCLnOPuXzd6CB3Z-f2YuLD5RBQl2CUTLBE8/exec";
 
 function changePassword() {
 
