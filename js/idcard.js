@@ -43,7 +43,7 @@ function loadIdCard(){
 
     })
 
-    
+       .catch(err=>{
 
         console.error(err);
 
