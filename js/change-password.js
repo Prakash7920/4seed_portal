@@ -1,9 +1,10 @@
+alert("changePassword called");
 const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbyhJYsJKQCjkIOynAF1cXBFbxtaFK4cLnWRBCTurRGZTv9GG2AaX2Vh8M4Pj6ghPdrD/exec";
 
 function changePassword() {
 
     const partnerId = localStorage.getItem("partnerId");
-
+    alert("Partner ID: " + partnerId);
     const currentPassword =
         document.getElementById("currentPassword").value;
 
@@ -28,7 +29,8 @@ function changePassword() {
         return;
 
     }
-
+    
+    alert("Sending request...");
     fetch(WEB_APP_URL, {
 
         method: "POST",
