@@ -20,7 +20,7 @@ function changePassword() {
         alert("Please fill all fields.");
 
         return;
-
+        
     }
 
     if (newPassword !== confirmPassword) {
