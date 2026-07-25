@@ -1,6 +1,4 @@
-alert("JS Loaded");
-
-const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbyvup4tkTh_nlM3S1-GzzvYnIqPBzgpFlCLnOPuXzd6CB3Z-f2YuLD5RBQl2CUTLBE8/exec";
+const WEB_APP_URL = "https://script.google.com/macros/s/AKfycby0uKB-ZBB6QEiaqouBe2WWEVYA-Wyg7mswWEgOZFuTeJ_qDxhwpgPhmmN0XjrZjQE/exec";
 
 function changePassword() {
     const partner = JSON.parse(localStorage.getItem("partner"));
