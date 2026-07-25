@@ -1,4 +1,4 @@
-const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbwvrf98i4rL0atUtIRF1J6dtbS44EcQGnNehURdKYPmzltCYp9nvZc6dNjh6F0lGorI/exec";
+const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbxBIDQ3jgjaFYaMxyBWY5ngE5uzF2GOskYx1bcy0RtDa-kV5O8_-5c4lwIPP4eXq2WI/exec";
 
 document.addEventListener("DOMContentLoaded", loadProfile);
 
