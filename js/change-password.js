@@ -24,8 +24,6 @@ function changePassword() {
         return;
     }
 
-    alert("Sending request...");
-
     fetch(WEB_APP_URL, {
         method: "POST",
         headers: {
