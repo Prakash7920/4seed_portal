@@ -24,7 +24,7 @@ function changePassword() {
         return;
     }
 
-    fetch(WEB_APP_URL, {
+    fetch("https://script.google.com/macros/s/AKfycbxtg8NM_aQxAxw5IjsP5oeKsDe3qQbVpGLL2qk70HvPAvWF-5fKvhNYUox6Egsa29VJ/exec", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
