@@ -7,7 +7,7 @@ function changePassword() {
         alert("Please login again.");
         return;
     }
-
+    
     const partnerId = partner.partnerId;
 
     const currentPassword = document.getElementById("currentPassword").value.trim();
