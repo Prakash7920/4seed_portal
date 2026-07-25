@@ -33,13 +33,26 @@ function changePassword() {
             newPassword: newPassword
         })
     })
-    .then(response => response.text())
-    .then(result => {
-        console.log(result);
-        alert(result);
-    })
-    .catch(error => {
-        console.error(error);
-        alert(error.message);
-    });
+    .then(res => res.text())
+
+    .then(msg => {
+
+        alert(msg);
+
+        if (msg.includes("success")) {
+
+            window.location = "dashboard.html";
+
         }
+
+    })
+
+    .catch(err => {
+
+        console.error(err);
+
+        alert("Failed to change password.");
+
+    });
+
+}
