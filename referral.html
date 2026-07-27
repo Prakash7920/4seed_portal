@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Referral - 4Seed</title>
+
+<link rel="stylesheet" href="css/style.css">
+
+<!-- Font Awesome -->
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="page-container">
+
+<h2 class="page-title">
+🔗 My Referral
+</h2>
+
+<!-- Referral Link -->
+
+<div class="referral-card">
+
+<h3>Your Referral Link</h3>
+
+<input
+type="text"
+id="referralLink"
+readonly>
+
+<button
+class="green-btn"
+onclick="copyReferral()">
+
+<i class="fa fa-copy"></i>
+Copy Link
+
+</button>
+
+</div>
+
+<!-- Share Buttons -->
+
+<div class="share-buttons">
+
+<button
+class="whatsapp-btn"
+onclick="shareWhatsApp()">
+
+<i class="fab fa-whatsapp"></i>
+
+WhatsApp
+
+</button>
+
+<button
+class="telegram-btn"
+onclick="shareTelegram()">
+
+<i class="fab fa-telegram"></i>
+
+Telegram
+
+</button>
+
+<button
+class="email-btn"
+onclick="shareEmail()">
+
+<i class="fa fa-envelope"></i>
+
+Email
+
+</button>
+
+</div>
+
+<!-- QR Code -->
+
+<div class="referral-card">
+
+<h3>Referral QR Code</h3>
+
+<div id="qrcode"></div>
+
+</div>
+
+<!-- Total Referrals -->
+
+<div class="referral-card">
+
+<h3>Total Referrals</h3>
+
+<h1 id="totalReferrals">0</h1>
+
+</div>
+
+<!-- Recent Referrals -->
+
+<div class="table-container">
+
+<h3>Recent Referrals</h3>
+
+<table class="history-table">
+
+<thead>
+
+<tr>
+
+<th>Partner ID</th>
+<th>Name</th>
+<th>Mobile</th>
+<th>Rank</th>
+<th>Status</th>
+
+</tr>
+
+</thead>
+
+<tbody id="referralTable">
+
+<tr>
+
+<td colspan="5">
+
+Loading...
+
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+<br>
+
+<button
+class="back-btn"
+onclick="window.location='dashboard.html'">
+
+⬅ Back to Dashboard
+
+</button>
+
+</div>
+
+<!-- QRCode Library -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+<script src="js/referral.js"></script>
+
+</body>
+
+</html>
