@@ -1,113 +1,162 @@
-/* ===================================
-   4Seed Portal V3.1
-   Theme System
-=================================== */
+/* ===========================
+   4Seed Design System v1.0
+=========================== */
 
 :root{
 
 /* Brand Colors */
---primary:#0B7A3D;
---primary-dark:#075C2E;
---secondary:#16A34A;
---gold:#D4AF37;
+--primary:#2E7D32;
+--primary-light:#4CAF50;
+--primary-dark:#1B5E20;
 
---white:#FFFFFF;
---background:#F8FAFC;
+--secondary:#1976D2;
+--accent:#FFC107;
 
---dark:#0F172A;
---text:#334155;
+--success:#4CAF50;
+--warning:#FB8C00;
+--danger:#E53935;
+--info:#03A9F4;
 
---success:#22C55E;
---warning:#F59E0B;
---danger:#EF4444;
+/* Background */
+--bg:#F4F7FC;
+--surface:#FFFFFF;
+--surface-2:#FAFAFA;
+
+/* Text */
+--text:#202124;
+--text-light:#6B7280;
+--text-white:#FFFFFF;
 
 /* Border */
---border:#E2E8F0;
+--border:#E5E7EB;
 
 /* Radius */
 --radius-sm:8px;
---radius-md:14px;
---radius-lg:22px;
+--radius:14px;
+--radius-lg:20px;
 --radius-xl:30px;
 
-/* Shadow */
---shadow-sm:
-0 4px 10px rgba(0,0,0,.08);
-
---shadow-md:
-0 12px 30px rgba(0,0,0,.12);
-
---shadow-lg:
-0 20px 45px rgba(0,0,0,.18);
+/* Shadows */
+--shadow-sm:0 2px 8px rgba(0,0,0,.08);
+--shadow-md:0 8px 20px rgba(0,0,0,.12);
+--shadow-lg:0 20px 40px rgba(0,0,0,.18);
 
 /* Transition */
---transition:.35s ease;
+--transition:.30s ease;
 
-/* Container */
---container:1200px;
+/* Font */
+--font:'Segoe UI',Tahoma,sans-serif;
 
 }
+[data-theme="dark"]{
 
-/* Reset */
+--bg:#111827;
+--surface:#1F2937;
+--surface-2:#374151;
 
+--text:#F9FAFB;
+--text-light:#D1D5DB;
+
+--border:#4B5563;
+
+--shadow-sm:0 2px 8px rgba(0,0,0,.35);
+--shadow-md:0 8px 20px rgba(0,0,0,.45);
+--shadow-lg:0 20px 40px rgba(0,0,0,.60);
+
+}
 *{
-
 margin:0;
-
 padding:0;
-
 box-sizing:border-box;
-
 }
 
 html{
-
 scroll-behavior:smooth;
-
 }
 
 body{
 
-font-family:'Poppins',sans-serif;
+font-family:var(--font);
 
-background:var(--background);
+background:var(--bg);
 
 color:var(--text);
 
-line-height:1.6;
+transition:var(--transition);
 
-overflow-x:hidden;
+min-height:100vh;
 
 }
-
-/* Links */
 
 a{
-
 text-decoration:none;
-
 color:inherit;
-
 }
-
-/* Images */
 
 img{
-
 max-width:100%;
-
 display:block;
+}
+
+button{
+font-family:inherit;
+cursor:pointer;
+border:none;
+outline:none;
+}
+
+input,
+select,
+textarea{
+font-family:inherit;
+outline:none;
+}
+.container{
+
+width:min(1200px,92%);
+
+margin:auto;
 
 }
 
-/* Container */
+.page{
 
-.container{
+padding:25px;
 
-width:92%;
+}
 
-max-width:var(--container);
+.section{
 
-margin:auto;
+margin:25px 0;
+
+}
+
+.grid{
+
+display:grid;
+
+gap:20px;
+
+}
+h1{
+font-size:2rem;
+font-weight:700;
+}
+
+h2{
+font-size:1.6rem;
+font-weight:600;
+}
+
+h3{
+font-size:1.2rem;
+font-weight:600;
+}
+
+p{
+
+color:var(--text-light);
+
+line-height:1.6;
 
 }
