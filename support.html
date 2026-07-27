@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Support - 4Seed</title>
+
+<link rel="stylesheet" href="css/style.css">
+
+<style>
+body{
+    font-family:Arial,sans-serif;
+    background:#f5f5f5;
+    margin:0;
+    padding:20px;
+}
+
+.container{
+    max-width:500px;
+    margin:auto;
+    background:#fff;
+    padding:20px;
+    border-radius:12px;
+    box-shadow:0 2px 10px rgba(0,0,0,.1);
+}
+
+h2{
+    text-align:center;
+    color:#2e7d32;
+    margin-bottom:20px;
+}
+
+label{
+    font-weight:bold;
+    display:block;
+    margin-top:15px;
+}
+
+input,textarea{
+    width:100%;
+    padding:12px;
+    margin-top:6px;
+    border:1px solid #ccc;
+    border-radius:8px;
+    box-sizing:border-box;
+    font-size:15px;
+}
+
+textarea{
+    resize:none;
+    height:140px;
+}
+
+button{
+    width:100%;
+    padding:14px;
+    margin-top:20px;
+    border:none;
+    border-radius:8px;
+    background:#2e7d32;
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#1b5e20;
+}
+
+.back-btn{
+    background:#666;
+    margin-top:10px;
+}
+</style>
+
+</head>
+<body>
+
+<div class="container">
+
+<h2>🎫 Support Ticket</h2>
+
+<label>Subject</label>
+
+<input
+type="text"
+id="subject"
+placeholder="Enter Subject">
+
+<label>Message</label>
+
+<textarea
+id="message"
+placeholder="Describe your issue here..."></textarea>
+
+<button onclick="submitTicket()">
+Submit Ticket
+</button>
+
+<button
+class="back-btn"
+onclick="window.location='dashboard.html'">
+Back to Dashboard
+</button>
+
+</div>
+
+<script src="js/support.js"></script>
+
+</body>
+</html>
