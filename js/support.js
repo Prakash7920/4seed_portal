@@ -14,9 +14,6 @@ function submitTicket(){
 
     fetch(WEB_APP_URL,{
         method:"POST",
-        headers:{
-            "Content-Type":"application/json"
-        },
         body:JSON.stringify({
             action:"submitSupport",
             partnerId:partner.partnerId,
