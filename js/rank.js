@@ -8,9 +8,6 @@ function loadRank() {
 
     fetch(WEB_APP_URL, {
         method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
         body: JSON.stringify({
             action: "getRankDetails",
             partnerId: partner.partnerId
