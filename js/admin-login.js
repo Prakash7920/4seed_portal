@@ -1,4 +1,4 @@
-const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbxBIDQ3jgjaFYaMxyBWY5ngE5uzF2GOskYx1bcy0RtDa-kV5O8_-5c4lwIPP4eXq2WI/exec";
+const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzo36Z1_t1_dzpEPd4tNWv7vZjRv9zcGOLvNf5m048Yy1CY_A29JtZqZDQhx5lYqNbV/exec";
 
 function adminLogin() {
     const username = document.getElementById("username").value.trim();
