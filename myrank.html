@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>My Rank - 4Seed</title>
+
+<link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+<div class="page-container">
+
+<h2 class="page-title">🏆 My Rank</h2>
+
+<!-- Current Rank -->
+
+<div class="rank-card">
+
+<h3>Current Rank</h3>
+
+<h1 id="currentRank">Loading...</h1>
+
+</div>
+
+<!-- Progress -->
+
+<div class="rank-card">
+
+<h3>Next Rank Progress</h3>
+
+<progress
+id="rankProgress"
+value="0"
+max="100">
+</progress>
+
+<p id="progressText">0%</p>
+
+</div>
+
+<!-- Statistics -->
+
+<div class="table-container">
+
+<table class="history-table">
+
+<tr>
+
+<th>Direct Members</th>
+
+<td id="directMembers">0</td>
+
+</tr>
+
+<tr>
+
+<th>Bronze Members</th>
+
+<td id="bronzeMembers">0</td>
+
+</tr>
+
+<tr>
+
+<th>Silver Members</th>
+
+<td id="silverMembers">0</td>
+
+</tr>
+
+<tr>
+
+<th>Gold Members</th>
+
+<td id="goldMembers">0</td>
+
+</tr>
+
+<tr>
+
+<th>Diamond Members</th>
+
+<td id="diamondMembers">0</td>
+
+</tr>
+
+<tr>
+
+<th>Released Wallet</th>
+
+<td id="releasedWallet">₹0</td>
+
+</tr>
+
+<tr>
+
+<th>Locked Wallet</th>
+
+<td id="lockedWallet">₹0</td>
+
+</tr>
+
+</table>
+
+</div>
+
+<button
+class="back-btn"
+onclick="window.location='dashboard.html'">
+
+⬅ Back to Dashboard
+
+</button>
+
+</div>
+
+<script src="js/rank.js"></script>
+
+</body>
+
+</html>
