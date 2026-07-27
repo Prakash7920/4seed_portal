@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Income History</title>
+
+<link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+<div class="page-container">
+
+<h2 class="page-title">💵 Income History</h2>
+
+<div class="table-container">
+
+<table class="history-table">
+
+<thead>
+<tr>
+<th>Date</th>
+<th>Income Type</th>
+<th>Amount</th>
+<th>From Partner</th>
+<th>Status</th>
+</tr>
+</thead>
+
+<tbody id="incomeTable">
+<tr>
+<td colspan="5" class="no-data">Loading...</td>
+</tr>
+</tbody>
+
+</table>
+
+</div>
+
+<button class="back-btn"
+onclick="window.location='dashboard.html'">
+⬅ Back to Dashboard
+</button>
+
+</div>
+
+<script src="js/income-history.js"></script>
+
+</body>
+</html>
