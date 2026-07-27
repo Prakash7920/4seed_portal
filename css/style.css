@@ -2414,3 +2414,126 @@ cursor:pointer;
 }
 
 }
+/* ===========================
+   Referral Page
+=========================== */
+
+.referral-card{
+    background:#ffffff;
+    border-radius:12px;
+    padding:20px;
+    margin-bottom:20px;
+    box-shadow:0 2px 10px rgba(0,0,0,.1);
+    text-align:center;
+}
+
+.referral-card h3{
+    margin-bottom:15px;
+    color:#2e7d32;
+}
+
+#referralLink{
+    width:100%;
+    padding:12px;
+    border:1px solid #ccc;
+    border-radius:8px;
+    font-size:15px;
+    margin-bottom:15px;
+    box-sizing:border-box;
+    background:#f8f8f8;
+}
+
+.green-btn{
+    background:#2e7d32;
+    color:#fff;
+    border:none;
+    padding:12px 20px;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:15px;
+    transition:.3s;
+}
+
+.green-btn:hover{
+    background:#1b5e20;
+}
+
+.share-buttons{
+    display:flex;
+    flex-wrap:wrap;
+    gap:15px;
+    justify-content:center;
+    margin-bottom:20px;
+}
+
+.share-buttons button{
+    flex:1;
+    min-width:160px;
+    padding:12px;
+    border:none;
+    border-radius:8px;
+    color:#fff;
+    font-size:15px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.whatsapp-btn{
+    background:#25D366;
+}
+
+.whatsapp-btn:hover{
+    background:#1da851;
+}
+
+.telegram-btn{
+    background:#0088cc;
+}
+
+.telegram-btn:hover{
+    background:#006fa6;
+}
+
+.email-btn{
+    background:#ff5722;
+}
+
+.email-btn:hover{
+    background:#e64a19;
+}
+
+#qrcode{
+    display:flex;
+    justify-content:center;
+    margin-top:15px;
+}
+
+#totalReferrals{
+    color:#2e7d32;
+    font-size:42px;
+    margin:0;
+}
+
+.referral-card h1{
+    margin-top:10px;
+}
+
+@media(max-width:768px){
+
+.share-buttons{
+    flex-direction:column;
+}
+
+.share-buttons button{
+    width:100%;
+}
+
+#referralLink{
+    font-size:14px;
+}
+
+#totalReferrals{
+    font-size:32px;
+}
+
+}
