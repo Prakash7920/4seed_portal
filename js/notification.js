@@ -4,9 +4,6 @@ const partner = JSON.parse(localStorage.getItem("partner"));
 
 fetch(WEB_APP_URL,{
     method:"POST",
-    headers:{
-        "Content-Type":"application/json"
-    },
     body:JSON.stringify({
         action:"getNotifications",
         partnerId:partner.partnerId
@@ -32,4 +29,11 @@ fetch(WEB_APP_URL,{
 
     document.getElementById("notificationTable").innerHTML=html;
 
+});
+fetch(WEB_APP_URL,{
+    method:"POST",
+    body:JSON.stringify({
+        action:"markNotificationsRead",
+        partnerId:partner.partnerId
+    })
 });
