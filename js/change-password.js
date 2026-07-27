@@ -1,4 +1,4 @@
-const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbxBIDQ3jgjaFYaMxyBWY5ngE5uzF2GOskYx1bcy0RtDa-kV5O8_-5c4lwIPP4eXq2WI/exec";
+const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbwanXCETRWQKWAuEr4t3CZpi8JFcl4iwuh_jYudYxuKxiTqU98oz9MUCj7c9jgQTpbe/exec";
 
 function changePassword() {
     const partner = JSON.parse(localStorage.getItem("partner"));
