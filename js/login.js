@@ -30,8 +30,8 @@ async function login(e){
 
         const data = await response.json();
 
-        console.log("API Response:", data);
-
+        console.log("Response:", data);
+        
         if(data.status){
 
             console.log("✅ Login Success");
