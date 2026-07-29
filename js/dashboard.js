@@ -1,4 +1,4 @@
-const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzo36Z1_t1_dzpEPd4tNWv7vZjRv9zcGOLvNf5m048Yy1CY_A29JtZqZDQhx5lYqNbV/exec";
+const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbz2tVokoOFyFsjtYugYr8Ve6WUUkVCo50HpA5KJ8XaHcnFs9lYWuhHHXSPVTGEuz11M/exec";
 const partner = JSON.parse(localStorage.getItem("partner"));
 
 if (!partner) {
@@ -50,7 +50,7 @@ function sendWithdrawRequest(){
         return;
     }
 
-    fetch("https://script.google.com/macros/s/AKfycbzo36Z1_t1_dzpEPd4tNWv7vZjRv9zcGOLvNf5m048Yy1CY_A29JtZqZDQhx5lYqNbV/exec",{
+    fetch("https://script.google.com/macros/s/AKfycbz2tVokoOFyFsjtYugYr8Ve6WUUkVCo50HpA5KJ8XaHcnFs9lYWuhHHXSPVTGEuz11M/exec",{
         method:"POST",
         body:JSON.stringify({
             action:"withdrawRequest",
