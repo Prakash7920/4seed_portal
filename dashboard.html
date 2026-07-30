@@ -1,30 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
+<header class="topbar">
 
-<meta charset="UTF-8">
+<button id="menuBtn">☰</button>
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<div class="logo">
 
-<title>Dashboard - 4Seed</title>
+<img src="images/logo.png">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
+<span>4Seed</span>
 
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+</div>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<button id="notificationBtn">
 
-<link rel="stylesheet" href="css/style.css">
+🔔
 
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-
-<button id="themeToggle" class="btn">
-    🌙
 </button>
 
-</head>
+</header>
 
 <body>
 
@@ -48,6 +43,20 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
 
     </div>
 
+    <section class="summary">
+
+<div class="wallet-card">
+    Wallet Balance
+    <h2 id="wallet">₹0</h2>
+</div>
+
+<div class="team-card">
+    My Team
+    <h2 id="teamCount">0</h2>
+</div>
+
+    </section>
+    
     <div class="dashboard-grid">
 
         <div class="dashboard-card" onclick="window.location='announcement.html'">
