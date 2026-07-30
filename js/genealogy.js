@@ -1,6 +1,6 @@
 const partner = JSON.parse(localStorage.getItem("partner"));
 
-fetch("https://script.google.com/macros/s/AKfycbzo36Z1_t1_dzpEPd4tNWv7vZjRv9zcGOLvNf5m048Yy1CY_A29JtZqZDQhx5lYqNbV/exec",{
+fetch("https://script.google.com/macros/s/AKfycbxtg8NM_aQxAxw5IjsP5oeKsDe3qQbVpGLL2qk70HvPAvWF-5fKvhNYUox6Egsa29VJ/exec",{
     method:"POST",
     body:JSON.stringify({
         action:"getGenealogy",
