@@ -1,167 +1,769 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>4Seed Admin Panel</title>
 
-    <link rel="stylesheet" href="css/style.css" />
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>4Seed Admin Panel</title>
+
+<link rel="stylesheet" href="css/style.css">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 </head>
+
 <body>
 
-<div class="dashboard-container">
+<div class="admin-layout">
 
-    <h1>🌱 4Seed Admin Panel</h1>
-    <button class="logout-btn" onclick="logout()">🚪 Logout</button>
+<!-- Sidebar -->
 
-    <div class="stats">
-        <div class="stat-card">
-            <h3 id="totalPartners">0</h3>
-            <p>Total Partners</p>
+<aside class="sidebar">
+
+<div class="logo">
+
+<div class="logo-icon">
+🌱
+</div>
+
+<div class="logo-text">
+
+<h2>4Seed</h2>
+
+<span>Admin Panel</span>
+
+</div>
+
+</div>
+
+<ul class="menu">
+
+<li class="active">
+<i class="fas fa-home"></i>
+<span>Dashboard</span>
+</li>
+
+<li>
+<i class="fas fa-users"></i>
+<span>Partners</span>
+</li>
+
+<li>
+<i class="fas fa-wallet"></i>
+<span>Wallet</span>
+</li>
+
+<li>
+<i class="fas fa-money-check-dollar"></i>
+<span>Withdraw</span>
+</li>
+
+<li>
+<i class="fas fa-sitemap"></i>
+<span>Genealogy</span>
+</li>
+
+<li>
+<i class="fas fa-ranking-star"></i>
+<span>Ranks</span>
+</li>
+
+<li>
+<i class="fas fa-bullhorn"></i>
+<span>Announcement</span>
+</li>
+
+<li>
+<i class="fas fa-gear"></i>
+<span>Settings</span>
+</li>
+
+</ul>
+
+<div class="sidebar-footer">
+
+<button class="logout-btn"
+onclick="logout()">
+
+<i class="fas fa-right-from-bracket"></i>
+
+Logout
+
+</button>
+
+</div>
+
+</aside>
+
+<!-- Main -->
+
+<main class="main-content">
+
+<header class="topbar">
+
+<div>
+
+<h1>Dashboard</h1>
+
+<p>Welcome back Administrator</p>
+
+</div>
+
+<div class="top-actions">
+
+<div class="search-box">
+
+<i class="fas fa-search"></i>
+
+<input
+type="text"
+id="searchBox"
+placeholder="Search Partner..."
+onkeyup="searchPartner()">
+
+</div>
+
+<button class="icon-btn">
+
+<i class="fas fa-bell"></i>
+
+</button>
+
+<div class="profile">
+
+<div class="avatar">
+
+A
+
+</div>
+
+<div>
+
+<h4>Administrator</h4>
+
+<p>Super Admin</p>
+
+</div>
+
+</div>
+
+</div>
+
+</header>
+
+<section class="stats-grid">
+
+<div class="stat-card">
+
+<div>
+
+<h3 id="totalPartners">
+
+0
+
+</h3>
+
+<p>Total Partners</p>
+
+</div>
+
+<i class="fas fa-users"></i>
+
+</div>
+
+<div class="stat-card">
+
+<div>
+
+<h3 id="activePartners">
+
+0
+
+</h3>
+
+<p>Active Partners</p>
+
+</div>
+
+<i class="fas fa-user-check"></i>
+
+</div>
+
+<div class="stat-card">
+
+<div>
+
+<h3 id="blockedPartners">
+
+0
+
+</h3>
+
+<p>Blocked</p>
+
+</div>
+
+<i class="fas fa-user-lock"></i>
+
+</div>
+
+<div class="stat-card">
+
+<div>
+
+<h3 id="walletAmount">
+
+₹0
+
+</h3>
+
+<p>Total Wallet</p>
+
+</div>
+
+<i class="fas fa-wallet"></i>
+
+</div>
+
+</section>
+
+<section class="chart-section">
+
+<div class="card">
+
+<div class="card-header">
+
+<h2>Partner Growth</h2>
+
+</div>
+
+<canvas id="growthChart"></canvas>
+
+</div>
+
+</section>
+
+<section class="content-grid">
+
+    <!-- Partner Management -->
+
+    <div class="card">
+
+        <div class="card-header">
+
+            <h2>Partner Management</h2>
+
+            <button class="primary-btn"
+                onclick="updateRanks()">
+
+                <i class="fas fa-ranking-star"></i>
+
+                Update Ranks
+
+            </button>
+
         </div>
 
-        <div class="stat-card">
-            <h3 id="activePartners">0</h3>
-            <p>Active</p>
+        <div class="table-wrapper">
+
+            <table id="partnerTable">
+
+                <thead>
+
+                    <tr>
+
+                        <th>Partner ID</th>
+
+                        <th>Name</th>
+
+                        <th>Wallet</th>
+
+                        <th>Rank</th>
+
+                        <th>Status</th>
+
+                        <th>Action</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                </tbody>
+
+            </table>
+
         </div>
 
-        <div class="stat-card">
-            <h3 id="blockedPartners">0</h3>
-            <p>Blocked</p>
-        </div>
-
-        <div class="stat-card">
-            <h3 id="walletAmount">₹0</h3>
-            <p>Total Wallet</p>
-        </div>
     </div>
 
-    <br />
+    <!-- Withdraw -->
 
-    <input
-        type="text"
-        id="searchBox"
-        placeholder="Search Partner..."
-        onkeyup="searchPartner()" />
+    <div class="card">
 
-    <br /><br />
-    
-    <button onclick="updateRanks()">🏅 Update All Ranks</button>
+        <div class="card-header">
 
-<br><br>
+            <h2>Withdrawal Requests</h2>
 
-    <table id="partnerTable" border="1" width="100%">
-        <thead>
-            <tr>
-                <th>Partner ID</th>
-                <th>Name</th>
-                <th>Wallet</th>
-                <th>Rank</th>
-                <th>Status</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody></tbody>
-    </table>
+            <span class="badge">
 
-    <br /><br />
+                Pending
 
-    <h2>Withdrawal Requests</h2>
+            </span>
 
-    <table id="withdrawTable" border="1" width="100%">
-        <thead>
-            <tr>
-                <th>Request ID</th>
-                <th>Partner ID</th>
-                <th>Name</th>
-                <th>Amount</th>
-                <th>Status</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody></tbody>
-    </table>
+        </div>
 
-    <br /><br />
+        <div class="table-wrapper">
 
-    <h2>🌳 Team Tree</h2>
-    <div id="teamTree"></div>
+            <table id="withdrawTable">
 
-    <!-- Edit Partner Popup -->
-    <div id="editPopup" class="popup" aria-hidden="true">
-        <div class="popup-content">
+                <thead>
+
+                    <tr>
+
+                        <th>Request ID</th>
+
+                        <th>Partner ID</th>
+
+                        <th>Name</th>
+
+                        <th>Amount</th>
+
+                        <th>Status</th>
+
+                        <th>Action</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- Team Tree -->
+
+<section class="card">
+
+    <div class="card-header">
+
+        <h2>
+
+            <i class="fas fa-sitemap"></i>
+
+            Team Tree
+
+        </h2>
+
+    </div>
+
+    <div id="teamTree"
+        class="team-tree">
+
+    </div>
+
+</section>
+
+<!-- Announcement -->
+
+<section class="card">
+
+    <div class="card-header">
+
+        <h2>
+
+            <i class="fas fa-bullhorn"></i>
+
+            Announcement Center
+
+        </h2>
+
+    </div>
+
+    <div class="announcement-form">
+
+        <input
+
+            type="text"
+
+            id="announcementTitle"
+
+            placeholder="Announcement Title">
+
+        <textarea
+
+            id="announcementMessage"
+
+            rows="5"
+
+            placeholder="Write Announcement Here...">
+
+        </textarea>
+
+        <button
+
+            class="primary-btn"
+
+            onclick="sendAnnouncement()">
+
+            <i class="fas fa-paper-plane"></i>
+
+            Publish Announcement
+
+        </button>
+
+    </div>
+
+</section>
+
+<!-- ========================= -->
+<!-- EDIT PARTNER POPUP -->
+<!-- ========================= -->
+
+<div id="editPopup" class="popup">
+
+    <div class="popup-content">
+
+        <div class="popup-header">
+
             <h2>Edit Partner</h2>
 
-            <input type="hidden" id="editPartnerId" />
+            <button class="close-btn"
+                onclick="closePopup()">
 
-            <label for="editName">Partner Name</label>
-            <input type="text" id="editName" />
+                <i class="fas fa-times"></i>
 
-            <label for="editWallet">Wallet Amount</label>
-            <input type="number" id="editWallet" />
+            </button>
 
-            <div class="popup-buttons">
-                <button onclick="savePartner()">💾 Save</button>
-                <button onclick="closePopup()">❌ Cancel</button>
-            </div>
         </div>
+
+        <input
+            type="hidden"
+            id="editPartnerId">
+
+        <div class="form-group">
+
+            <label>Partner Name</label>
+
+            <input
+                type="text"
+                id="editName">
+
+        </div>
+
+        <div class="form-group">
+
+            <label>Wallet Amount</label>
+
+            <input
+                type="number"
+                id="editWallet">
+
+        </div>
+
+        <div class="popup-footer">
+
+            <button
+                class="primary-btn"
+                onclick="savePartner()">
+
+                <i class="fas fa-save"></i>
+
+                Save
+
+            </button>
+
+            <button
+                class="danger-btn"
+                onclick="closePopup()">
+
+                Cancel
+
+            </button>
+
+        </div>
+
     </div>
 
-    <!-- Wallet Management Popup -->
-    <div id="walletPopup" class="popup" aria-hidden="true">
-        <div class="popup-content">
+</div>
+
+<!-- ========================= -->
+<!-- WALLET POPUP -->
+<!-- ========================= -->
+
+<div id="walletPopup" class="popup">
+
+    <div class="popup-content">
+
+        <div class="popup-header">
+
             <h2>Wallet Management</h2>
 
-            <input type="hidden" id="walletPartnerId" />
+            <button
+                class="close-btn"
+                onclick="closeWalletPopup()">
 
-            <label for="currentWallet">Current Wallet</label>
-            <input type="number" id="currentWallet" readonly />
+                <i class="fas fa-times"></i>
 
-            <label for="walletAmountInput">Amount</label>
-            <input type="number" id="walletAmountInput" />
+            </button>
 
-            <label for="walletAction">Action</label>
+        </div>
+
+        <input
+            type="hidden"
+            id="walletPartnerId">
+
+        <div class="form-group">
+
+            <label>Current Wallet</label>
+
+            <input
+                type="number"
+                id="currentWallet"
+                readonly>
+
+        </div>
+
+        <div class="form-group">
+
+            <label>Amount</label>
+
+            <input
+                type="number"
+                id="walletAmountInput">
+
+        </div>
+
+        <div class="form-group">
+
+            <label>Action</label>
+
             <select id="walletAction">
-                <option value="credit">Credit</option>
-                <option value="debit">Debit</option>
+
+                <option value="credit">
+
+                    Credit
+
+                </option>
+
+                <option value="debit">
+
+                    Debit
+
+                </option>
+
             </select>
 
-            <div class="popup-buttons">
-                <button onclick="updateWallet()">Save</button>
-                <button onclick="closeWalletPopup()">Cancel</button>
-            </div>
         </div>
+
+        <div class="popup-footer">
+
+            <button
+                class="primary-btn"
+                onclick="updateWallet()">
+
+                Save
+
+            </button>
+
+            <button
+                class="danger-btn"
+                onclick="closeWalletPopup()">
+
+                Cancel
+
+            </button>
+
+        </div>
+
     </div>
 
-    <!-- Partner View Popup -->
-    <div id="viewPopup" class="popup" aria-hidden="true">
-        <div class="popup-content">
+</div>
+
+<!-- ========================= -->
+<!-- VIEW PARTNER -->
+<!-- ========================= -->
+
+<div id="viewPopup" class="popup">
+
+    <div class="popup-content">
+
+        <div class="popup-header">
+
             <h2>Partner Details</h2>
 
-            <p><b>Partner ID:</b> <span id="vPartnerId"></span></p>
-            <p><b>Name:</b> <span id="vName"></span></p>
-            <p><b>Mobile:</b> <span id="vMobile"></span></p>
-            <p><b>Email:</b> <span id="vEmail"></span></p>
-            <p><b>Status:</b> <span id="vStatus"></span></p>
-            <p><b>Wallet:</b> ₹<span id="vWallet"></span></p>
+            <button
+                class="close-btn"
+                onclick="closeViewPopup()">
 
-            <button onclick="closeViewPopup()">Close</button>
+                <i class="fas fa-times"></i>
+
+            </button>
+
         </div>
+
+        <div class="profile-card">
+
+            <div class="profile-avatar">
+
+                <i class="fas fa-user"></i>
+
+            </div>
+
+            <h3 id="vName"></h3>
+
+            <p id="vPartnerId"></p>
+
+        </div>
+
+        <div class="details-grid">
+
+            <div>
+
+                <label>Mobile</label>
+
+                <span id="vMobile"></span>
+
+            </div>
+
+            <div>
+
+                <label>Email</label>
+
+                <span id="vEmail"></span>
+
+            </div>
+
+            <div>
+
+                <label>Status</label>
+
+                <span id="vStatus"></span>
+
+            </div>
+
+            <div>
+
+                <label>Wallet</label>
+
+                ₹<span id="vWallet"></span>
+
+            </div>
+
+        </div>
+
     </div>
 
-    <div class="announcement-card">
-        <h2>📢 Send Announcement</h2>
+</div>
 
-        <input type="text" id="announcementTitle" placeholder="Announcement Title" />
+<!-- ========================= -->
+<!-- FLOATING BUTTON -->
+<!-- ========================= -->
 
-        <textarea id="announcementMessage" placeholder="Write your announcement"></textarea>
+<button class="fab">
 
-        <button onclick="sendAnnouncement()">📤 Publish</button>
-    </div>
+    <i class="fas fa-plus"></i>
 
-</div> <!-- .dashboard-container -->
+</button>
+
+</main>
+
+</div>
+
+<!-- ========================= -->
+<!-- CHART -->
+<!-- ========================= -->
+
+<script>
+
+const ctx =
+document.getElementById("growthChart");
+
+if(ctx){
+
+new Chart(ctx,{
+
+type:"line",
+
+data:{
+
+labels:[
+"Jan",
+"Feb",
+"Mar",
+"Apr",
+"May",
+"Jun",
+"Jul"
+],
+
+datasets:[{
+
+label:"Partners",
+
+data:[
+15,
+42,
+80,
+135,
+210,
+310,
+430
+],
+
+borderWidth:3,
+
+fill:true,
+
+tension:.4
+
+}]
+
+},
+
+options:{
+
+responsive:true,
+
+plugins:{
+
+legend:{
+
+display:false
+
+}
+
+}
+
+}
+
+});
+
+}
+
+</script>
 
 <script src="js/admin.js"></script>
 
 </body>
+
 </html>
