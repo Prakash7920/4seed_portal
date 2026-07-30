@@ -98,10 +98,22 @@ function loadPartners(partners){
             <td>${partner.status}</td>
             <td>
                 <td>
+                {(<td>
     <button class="action-btn"
         onclick="showActionMenu(event,'${partner.partnerId}')">
         <i class="fas fa-ellipsis-vertical"></i>
     </button>
+</td>)
+    <button onclick="toggleStatus('${partner.partnerId}','${partner.status}')">
+                    ${partner.status=="Active" ? "Block" : "Unblock"}
+                </button>
+                <button onclick="viewPartner('${partner.partnerId}')">ðŸ‘ View</button>
+                <button onclick="editPartner('${partner.partnerId}','${partner.name}','${partner.wallet}')">
+                    âœï¸ Edit
+                </button>
+                <button onclick="walletPopup('${partner.partnerId}','${partner.wallet}')">
+                    ðŸ’° Wallet
+                </button>}
 </td>
         </tr>
         `;
