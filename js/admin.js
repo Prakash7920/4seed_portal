@@ -90,23 +90,23 @@ function loadPartners(partners){
     partners.forEach(partner=>{
 
         tbody.innerHTML += `
-        <tr>
-            <td>${partner.partnerId}</td>
-            <td>${partner.name}</td>
-            <td>₹${partner.wallet}</td>
-            <td>${partner.rank || "No Rank"}</td>
-            <td>${partner.status}</td>
-            <td>
-                <td>
-    <button class="action-btn"
-        onclick="showActionMenu(event,'${partner.partnerId}')">
-        <i class="fas fa-ellipsis-vertical"></i>
-    </button>
-</td>
-        </tr>
-        `;
+<tr>
+    <td>${partner.partnerId}</td>
+    <td>${partner.name}</td>
+    <td>₹${partner.wallet}</td>
+    <td>${partner.rank || "No Rank"}</td>
+    <td>${partner.status}</td>
 
-    });
+    <td>
+        <button class="action-btn"
+            onclick="showActionMenu(event,'${partner.partnerId}')">
+            <i class="fas fa-ellipsis-vertical"></i>
+        </button>
+    </td>
+
+</tr>
+`;
+});
 
 }
 
