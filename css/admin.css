@@ -1433,7 +1433,7 @@ transform:scale(1.08);
     border-radius:8px;
     background:#f3f4f6;
     cursor:pointer;
-    font-size:18px;
+    font-size:17px;
 }
 
 .action-btn:hover{
@@ -1461,9 +1461,9 @@ font-size:15px;
 }
 
 .action-menu button:hover{
-background:#f3f4f6;
+background:#0F9D58;
 }
 
 .action-menu i{
-width:22px;
+width:21px;
 }
