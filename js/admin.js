@@ -439,3 +439,181 @@ function loadTeamTree(partners){
     });
 
 }
+
+/*==============================
+Premium Admin UI
+==============================*/
+
+// Animate Stat Cards
+window.addEventListener("load", () => {
+
+document.querySelectorAll(".stat-card").forEach((card,index)=>{
+
+card.style.opacity="0";
+
+card.style.transform="translateY(20px)";
+
+setTimeout(()=>{
+
+card.style.transition=".5s";
+
+card.style.opacity="1";
+
+card.style.transform="translateY(0)";
+
+},index*120);
+
+});
+
+});
+
+// Sidebar Active
+
+document.querySelectorAll(".menu li").forEach(item=>{
+
+item.onclick=()=>{
+
+document.querySelectorAll(".menu li")
+.forEach(i=>i.classList.remove("active"));
+
+item.classList.add("active");
+
+};
+
+});
+
+// Mobile Sidebar
+
+const sidebar=document.querySelector(".sidebar");
+
+const menuBtn=document.getElementById("menuToggle");
+
+if(menuBtn){
+
+menuBtn.onclick=()=>{
+
+sidebar.classList.toggle("active");
+
+};
+
+}
+
+// Dark Mode
+
+function toggleDarkMode(){
+
+document.body.classList.toggle("dark");
+
+localStorage.setItem(
+
+"theme",
+
+document.body.classList.contains("dark")
+
+? "dark"
+
+: "light"
+
+);
+
+}
+
+if(localStorage.getItem("theme")=="dark"){
+
+document.body.classList.add("dark");
+
+}
+
+// Counter Animation
+
+function animateCounter(id,target){
+
+let el=document.getElementById(id);
+
+if(!el) return;
+
+let value=0;
+
+let speed=Math.ceil(target/40);
+
+let timer=setInterval(()=>{
+
+value+=speed;
+
+if(value>=target){
+
+value=target;
+
+clearInterval(timer);
+
+}
+
+el.innerHTML=id=="walletAmount"
+
+? "₹"+value
+
+: value;
+
+},20);
+
+}
+
+// Refresh Dashboard
+
+function refreshDashboard(){
+
+fetch(WEB_APP_URL,{
+
+method:"POST",
+
+body:JSON.stringify({
+
+action:"getDashboardStats"
+
+})
+
+})
+
+.then(r=>r.json())
+
+.then(data=>{
+
+if(data.success){
+
+animateCounter("totalPartners",Number(data.total));
+
+animateCounter("activePartners",Number(data.active));
+
+animateCounter("blockedPartners",Number(data.blocked));
+
+animateCounter("walletAmount",Number(data.wallet));
+
+}
+
+});
+
+}
+
+// Auto Refresh
+
+setInterval(refreshDashboard,60000);
+
+// Floating Button
+
+const fab=document.querySelector(".fab");
+
+if(fab){
+
+fab.onclick=()=>{
+
+window.scrollTo({
+
+top:0,
+
+behavior:"smooth"
+
+});
+
+};
+
+}
