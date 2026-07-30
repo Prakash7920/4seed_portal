@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width,initial-scale=1.0">
+
+<title>Wallet Management | 4Seed</title>
+
+<link rel="stylesheet"
+href="css/style.css">
+
+<link rel="preconnect"
+href="https://fonts.googleapis.com">
+
+<link rel="preconnect"
+href="https://fonts.gstatic.com"
+crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="admin-layout">
+
+<!-- Sidebar -->
+
+<aside class="sidebar">
+
+<div class="logo">
+
+<div class="logo-icon">
+
+🌱
+
+</div>
+
+<div class="logo-text">
+
+<h2>4Seed</h2>
+
+<span>Admin Panel</span>
+
+</div>
+
+</div>
+
+<ul class="menu">
+
+<li onclick="location.href='admin.html'">
+
+<i class="fas fa-home"></i>
+
+<span>Dashboard</span>
+
+</li>
+
+<li onclick="location.href='partners.html'">
+
+<i class="fas fa-users"></i>
+
+<span>Partners</span>
+
+</li>
+
+<li class="active">
+
+<i class="fas fa-wallet"></i>
+
+<span>Wallet</span>
+
+</li>
+
+<li onclick="location.href='withdraw.html'">
+
+<i class="fas fa-money-check-dollar"></i>
+
+<span>Withdraw</span>
+
+</li>
+
+<li onclick="location.href='reports.html'">
+
+<i class="fas fa-chart-line"></i>
+
+<span>Reports</span>
+
+</li>
+
+<li onclick="logout()">
+
+<i class="fas fa-right-from-bracket"></i>
+
+<span>Logout</span>
+
+</li>
+
+</ul>
+
+</aside>
+
+<!-- Main -->
+
+<main class="main-content">
+
+<header class="topbar">
+
+<div>
+
+<h1>Wallet Management</h1>
+
+<p>Manage partner wallet transactions</p>
+
+</div>
+
+<div class="top-actions">
+
+<div class="search-box">
+
+<i class="fas fa-search"></i>
+
+<input
+
+id="walletSearch"
+
+type="text"
+
+placeholder="Search Partner"
+
+onkeyup="searchWallet()">
+
+</div>
+
+<button
+
+class="primary-btn"
+
+onclick="refreshWallet()">
+
+<i class="fas fa-rotate"></i>
+
+Refresh
+
+</button>
+
+</div>
+
+</header>
+
+<!-- Summary Cards -->
+
+<section class="stats-grid">
+
+<div class="stat-card">
+
+<div>
+
+<h3 id="totalWallet">
+
+₹0
+
+</h3>
+
+<p>Total Wallet</p>
+
+</div>
+
+<i class="fas fa-wallet"></i>
+
+</div>
+
+<div class="stat-card">
+
+<div>
+
+<h3 id="creditToday">
+
+₹0
+
+</h3>
+
+<p>Today's Credit</p>
+
+</div>
+
+<i class="fas fa-arrow-down"></i>
+
+</div>
+
+<div class="stat-card">
+
+<div>
+
+<h3 id="debitToday">
+
+₹0
+
+</h3>
+
+<p>Today's Debit</p>
+
+</div>
+
+<i class="fas fa-arrow-up"></i>
+
+</div>
+
+<div class="stat-card">
+
+<div>
+
+<h3 id="pendingWallet">
+
+0
+
+</h3>
+
+<p>Pending Requests</p>
+
+</div>
+
+<i class="fas fa-clock"></i>
+
+</div>
+
+</section>
+
+<section class="card">
+
+<div class="card-header">
+
+<h2>
+
+Wallet Transactions
+
+</h2>
+
+<button
+
+class="primary-btn"
+
+onclick="exportWallet()">
+
+<i class="fas fa-file-export"></i>
+
+Export
+
+</button>
+
+</div>
+
+<div class="table-wrapper">
+
+<table id="walletTable">
+
+<thead>
+
+<tr>
+
+<th>Partner ID</th>
+
+<th>Name</th>
+
+<th>Current Wallet</th>
+
+<th>Credit</th>
+
+<th>Debit</th>
+
+<th>Updated By</th>
+
+<th>Date</th>
+
+<th>Action</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+</tbody>
+
+</table>
+
+</div>
+
+</section>
+
+<!-- ================================= -->
+<!-- Wallet Update Popup -->
+<!-- ================================= -->
+
+<div id="walletPopup" class="popup">
+
+    <div class="popup-content">
+
+        <div class="popup-header">
+
+            <h2>Wallet Management</h2>
+
+            <button
+                class="close-btn"
+                onclick="closeWalletPopup()">
+
+                <i class="fas fa-times"></i>
+
+            </button>
+
+        </div>
+
+        <input
+            type="hidden"
+            id="walletPartnerId">
+
+        <div class="form-group">
+
+            <label>Partner ID</label>
+
+            <input
+                type="text"
+                id="walletPartner"
+                readonly>
+
+        </div>
+
+        <div class="form-group">
+
+            <label>Partner Name</label>
+
+            <input
+                type="text"
+                id="walletName"
+                readonly>
+
+        </div>
+
+        <div class="form-group">
+
+            <label>Current Wallet</label>
+
+            <input
+                type="number"
+                id="currentWallet"
+                readonly>
+
+        </div>
+
+        <div class="form-group">
+
+            <label>Transaction Type</label>
+
+            <select id="walletAction">
+
+                <option value="credit">
+
+                    Credit
+
+                </option>
+
+                <option value="debit">
+
+                    Debit
+
+                </option>
+
+            </select>
+
+        </div>
+
+        <div class="form-group">
+
+            <label>Amount</label>
+
+            <input
+                type="number"
+                id="walletAmountInput"
+                placeholder="Enter Amount">
+
+        </div>
+
+        <div class="form-group">
+
+            <label>Remarks</label>
+
+            <textarea
+                id="walletRemarks"
+                rows="4"
+                placeholder="Remarks"></textarea>
+
+        </div>
+
+        <div class="popup-footer">
+
+            <button
+                class="primary-btn"
+                onclick="updateWallet()">
+
+                <i class="fas fa-save"></i>
+
+                Save
+
+            </button>
+
+            <button
+                class="danger-btn"
+                onclick="closeWalletPopup()">
+
+                Cancel
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ================================= -->
+<!-- Transaction History -->
+<!-- ================================= -->
+
+<div id="historyPopup" class="popup">
+
+    <div class="popup-content"
+         style="max-width:900px;">
+
+        <div class="popup-header">
+
+            <h2>
+
+                Wallet History
+
+            </h2>
+
+            <button
+                class="close-btn"
+                onclick="closeHistoryPopup()">
+
+                <i class="fas fa-times"></i>
+
+            </button>
+
+        </div>
+
+        <div class="table-wrapper">
+
+            <table id="historyTable">
+
+                <thead>
+
+                    <tr>
+
+                        <th>Date</th>
+
+                        <th>Type</th>
+
+                        <th>Amount</th>
+
+                        <th>Balance</th>
+
+                        <th>Remarks</th>
+
+                        <th>Updated By</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ================================= -->
+<!-- Floating Button -->
+<!-- ================================= -->
+
+<button
+class="fab"
+onclick="window.scrollTo({
+top:0,
+behavior:'smooth'
+})">
+
+<i class="fas fa-arrow-up"></i>
+
+</button>
+
+</main>
+
+</div>
+
+<script src="js/wallet.js"></script>
+
+</body>
+
+</html>
