@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width,initial-scale=1.0">
+
+<title>Withdraw Management | 4Seed</title>
+
+<link rel="stylesheet"
+href="css/style.css">
+
+<link rel="preconnect"
+href="https://fonts.googleapis.com">
+
+<link rel="preconnect"
+href="https://fonts.gstatic.com"
+crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="admin-layout">
+
+<!-- Sidebar -->
+
+<aside class="sidebar">
+
+<div class="logo">
+
+<div class="logo-icon">🌱</div>
+
+<div class="logo-text">
+
+<h2>4Seed</h2>
+
+<span>Admin Panel</span>
+
+</div>
+
+</div>
+
+<ul class="menu">
+
+<li onclick="location.href='admin.html'">
+
+<i class="fas fa-home"></i>
+
+<span>Dashboard</span>
+
+</li>
+
+<li onclick="location.href='partners.html'">
+
+<i class="fas fa-users"></i>
+
+<span>Partners</span>
+
+</li>
+
+<li onclick="location.href='wallet.html'">
+
+<i class="fas fa-wallet"></i>
+
+<span>Wallet</span>
+
+</li>
+
+<li class="active">
+
+<i class="fas fa-money-check-dollar"></i>
+
+<span>Withdraw</span>
+
+</li>
+
+<li onclick="location.href='reports.html'">
+
+<i class="fas fa-chart-line"></i>
+
+<span>Reports</span>
+
+</li>
+
+<li onclick="logout()">
+
+<i class="fas fa-right-from-bracket"></i>
+
+<span>Logout</span>
+
+</li>
+
+</ul>
+
+</aside>
+
+<!-- Main -->
+
+<main class="main-content">
+
+<header class="topbar">
+
+<div>
+
+<h1>Withdraw Requests</h1>
+
+<p>Approve or Reject partner withdrawal requests</p>
+
+</div>
+
+<div class="top-actions">
+
+<div class="search-box">
+
+<i class="fas fa-search"></i>
+
+<input
+
+id="withdrawSearch"
+
+type="text"
+
+placeholder="Search Partner"
+
+onkeyup="searchWithdraw()">
+
+</div>
+
+<button
+
+class="primary-btn"
+
+onclick="refreshWithdraw()">
+
+<i class="fas fa-rotate"></i>
+
+Refresh
+
+</button>
+
+</div>
+
+</header>
+
+<!-- Summary -->
+
+<section class="stats-grid">
+
+<div class="stat-card">
+
+<div>
+
+<h3 id="pendingCount">0</h3>
+
+<p>Pending</p>
+
+</div>
+
+<i class="fas fa-clock"></i>
+
+</div>
+
+<div class="stat-card">
+
+<div>
+
+<h3 id="approvedCount">0</h3>
+
+<p>Approved</p>
+
+</div>
+
+<i class="fas fa-circle-check"></i>
+
+</div>
+
+<div class="stat-card">
+
+<div>
+
+<h3 id="rejectedCount">0</h3>
+
+<p>Rejected</p>
+
+</div>
+
+<i class="fas fa-circle-xmark"></i>
+
+</div>
+
+<div class="stat-card">
+
+<div>
+
+<h3 id="withdrawAmount">
+
+₹0
+
+</h3>
+
+<p>Total Requested</p>
+
+</div>
+
+<i class="fas fa-indian-rupee-sign"></i>
+
+</div>
+
+</section>
+
+<!-- Filter Tabs -->
+
+<section class="card">
+
+<div class="card-header">
+
+<h2>Withdrawal Requests</h2>
+
+<div>
+
+<button
+class="primary-btn"
+onclick="filterWithdraw('Pending')">
+
+Pending
+
+</button>
+
+<button
+class="primary-btn"
+onclick="filterWithdraw('Approved')">
+
+Approved
+
+</button>
+
+<button
+class="primary-btn"
+onclick="filterWithdraw('Rejected')">
+
+Rejected
+
+</button>
+
+</div>
+
+</div>
+
+<div class="table-wrapper">
+
+<table id="withdrawTable">
+
+<thead>
+
+<tr>
+
+<th>Request ID</th>
+
+<th>Partner ID</th>
+
+<th>Name</th>
+
+<th>Amount</th>
+
+<th>UPI / Bank</th>
+
+<th>Date</th>
+
+<th>Status</th>
+
+<th>Action</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+</tbody>
+
+</table>
+
+</div>
+
+</section>
+
+
+<!-- ================================= -->
+<!-- Approve / Reject Popup -->
+<!-- ================================= -->
+
+<div id="withdrawPopup" class="popup">
+
+    <div class="popup-content">
+
+        <div class="popup-header">
+
+            <h2>Withdrawal Request</h2>
+
+            <button
+                class="close-btn"
+                onclick="closeWithdrawPopup()">
+
+                <i class="fas fa-times"></i>
+
+            </button>
+
+        </div>
+
+        <input type="hidden" id="requestId">
+
+        <div class="form-group">
+
+            <label>Partner ID</label>
+
+            <input
+                type="text"
+                id="partnerId"
+                readonly>
+
+        </div>
+
+        <div class="form-group">
+
+            <label>Partner Name</label>
+
+            <input
+                type="text"
+                id="partnerName"
+                readonly>
+
+        </div>
+
+        <div class="form-group">
+
+            <label>Requested Amount</label>
+
+            <input
+                type="number"
+                id="withdrawAmountInput"
+                readonly>
+
+        </div>
+
+        <div class="form-group">
+
+            <label>Payment Method</label>
+
+            <input
+                type="text"
+                id="paymentMethod"
+                readonly>
+
+        </div>
+
+        <div class="form-group">
+
+            <label>Admin Remarks</label>
+
+            <textarea
+                id="withdrawRemarks"
+                rows="4"
+                placeholder="Enter remarks"></textarea>
+
+        </div>
+
+        <div class="popup-footer">
+
+            <button
+                class="primary-btn"
+                onclick="approveWithdraw()">
+
+                <i class="fas fa-check"></i>
+
+                Approve
+
+            </button>
+
+            <button
+                class="danger-btn"
+                onclick="rejectWithdraw()">
+
+                <i class="fas fa-times"></i>
+
+                Reject
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ================================= -->
+<!-- View Details Popup -->
+<!-- ================================= -->
+
+<div id="viewPopup" class="popup">
+
+    <div class="popup-content"
+         style="max-width:700px;">
+
+        <div class="popup-header">
+
+            <h2>Withdrawal Details</h2>
+
+            <button
+                class="close-btn"
+                onclick="closeViewPopup()">
+
+                <i class="fas fa-times"></i>
+
+            </button>
+
+        </div>
+
+        <div class="details-grid">
+
+            <div>
+
+                <label>Partner ID</label>
+
+                <span id="viewPartnerId"></span>
+
+            </div>
+
+            <div>
+
+                <label>Name</label>
+
+                <span id="viewName"></span>
+
+            </div>
+
+            <div>
+
+                <label>Amount</label>
+
+                <span id="viewAmount"></span>
+
+            </div>
+
+            <div>
+
+                <label>Status</label>
+
+                <span id="viewStatus"></span>
+
+            </div>
+
+            <div>
+
+                <label>UPI / Bank</label>
+
+                <span id="viewBank"></span>
+
+            </div>
+
+            <div>
+
+                <label>Request Date</label>
+
+                <span id="viewDate"></span>
+
+            </div>
+
+            <div style="grid-column:1/-1;">
+
+                <label>Remarks</label>
+
+                <span id="viewRemarks"></span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ================================= -->
+<!-- Floating Scroll Button -->
+<!-- ================================= -->
+
+<button
+class="fab"
+onclick="window.scrollTo({
+top:0,
+behavior:'smooth'
+})">
+
+<i class="fas fa-arrow-up"></i>
+
+</button>
+
+</main>
+
+</div>
+
+<script src="js/withdraw.js"></script>
+
+</body>
+
+</html>
