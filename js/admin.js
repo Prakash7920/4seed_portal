@@ -469,16 +469,16 @@ card.style.transform="translateY(0)";
 
 // Sidebar Active
 
-document.querySelectorAll(".menu li").forEach(item=>{
+document.querySelectorAll(".menu li").forEach(item => {
 
-item.onclick=()=>{
+    item.addEventListener("click", function () {
 
-document.querySelectorAll(".menu li")
-.forEach(i=>i.classList.remove("active"));
+        document.querySelectorAll(".menu li")
+            .forEach(i => i.classList.remove("active"));
 
-item.classList.add("active");
+        this.classList.add("active");
 
-};
+    });
 
 });
 
