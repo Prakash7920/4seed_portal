@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Settings | 4Seed Admin</title>
+
+<link rel="stylesheet"
+href="css/admin.css">
+
+<link rel="preconnect"
+href="https://fonts.googleapis.com">
+
+<link rel="preconnect"
+href="https://fonts.gstatic.com"
+crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="admin-layout">
+
+<!-- Sidebar -->
+
+<aside class="sidebar">
+
+<div class="logo">
+
+<div class="logo-icon">🌱</div>
+
+<div class="logo-text">
+
+<h2>4Seed</h2>
+
+<span>Admin Panel</span>
+
+</div>
+
+</div>
+
+<ul class="menu">
+
+<li onclick="location.href='admin.html'">
+<i class="fas fa-home"></i>
+<span>Dashboard</span>
+</li>
+
+<li onclick="location.href='partners.html'">
+<i class="fas fa-users"></i>
+<span>Partners</span>
+</li>
+
+<li onclick="location.href='wallet.html'">
+<i class="fas fa-wallet"></i>
+<span>Wallet</span>
+</li>
+
+<li onclick="location.href='withdraw.html'">
+<i class="fas fa-money-check-dollar"></i>
+<span>Withdraw</span>
+</li>
+
+<li onclick="location.href='genealogy.html'">
+<i class="fas fa-sitemap"></i>
+<span>Genealogy</span>
+</li>
+
+<li onclick="location.href='reports.html'">
+<i class="fas fa-chart-line"></i>
+<span>Reports</span>
+</li>
+
+<li class="active">
+<i class="fas fa-gear"></i>
+<span>Settings</span>
+</li>
+
+<li onclick="logout()">
+<i class="fas fa-right-from-bracket"></i>
+<span>Logout</span>
+</li>
+
+</ul>
+
+</aside>
+
+<main class="main-content">
+
+<header class="topbar">
+
+<div>
+
+<h1>System Settings</h1>
+
+<p>Manage application configuration</p>
+
+</div>
+
+</header>
+
+<!-- Company -->
+
+<section class="card">
+
+<div class="card-header">
+
+<h2>Company Information</h2>
+
+</div>
+
+<div class="form-grid">
+
+<div class="form-group">
+
+<label>Company Name</label>
+
+<input
+type="text"
+id="companyName">
+
+</div>
+
+<div class="form-group">
+
+<label>Company Email</label>
+
+<input
+type="email"
+id="companyEmail">
+
+</div>
+
+<div class="form-group">
+
+<label>Company Mobile</label>
+
+<input
+type="text"
+id="companyPhone">
+
+</div>
+
+<div class="form-group">
+
+<label>Website</label>
+
+<input
+type="text"
+id="companyWebsite">
+
+</div>
+
+<div class="form-group">
+
+<label>Address</label>
+
+<textarea
+id="companyAddress"
+rows="3"></textarea>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- Business Settings -->
+
+<section class="card">
+
+<div class="card-header">
+
+<h2>Business Settings</h2>
+
+</div>
+
+<div class="form-grid">
+
+<div class="form-group">
+
+<label>Registration Fee</label>
+
+<input
+type="number"
+id="registrationFee">
+
+</div>
+
+<div class="form-group">
+
+<label>Joining Bonus</label>
+
+<input
+type="number"
+id="joiningBonus">
+
+</div>
+
+<div class="form-group">
+
+<label>Minimum Withdraw</label>
+
+<input
+type="number"
+id="minimumWithdraw">
+
+</div>
+
+<div class="form-group">
+
+<label>Maximum Withdraw</label>
+
+<input
+type="number"
+id="maximumWithdraw">
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ================================= -->
+<!-- Payment Settings -->
+<!-- ================================= -->
+
+<section class="card">
+
+<div class="card-header">
+
+<h2>Payment Settings</h2>
+
+</div>
+
+<div class="form-grid">
+
+<div class="form-group">
+
+<label>UPI ID</label>
+
+<input
+type="text"
+id="upiId"
+placeholder="example@upi">
+
+</div>
+
+<div class="form-group">
+
+<label>Bank Name</label>
+
+<input
+type="text"
+id="bankName">
+
+</div>
+
+<div class="form-group">
+
+<label>Account Number</label>
+
+<input
+type="text"
+id="accountNumber">
+
+</div>
+
+<div class="form-group">
+
+<label>IFSC Code</label>
+
+<input
+type="text"
+id="ifscCode">
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ================================= -->
+<!-- Admin Settings -->
+<!-- ================================= -->
+
+<section class="card">
+
+<div class="card-header">
+
+<h2>Admin Security</h2>
+
+</div>
+
+<div class="form-grid">
+
+<div class="form-group">
+
+<label>Admin Username</label>
+
+<input
+type="text"
+id="adminUsername">
+
+</div>
+
+<div class="form-group">
+
+<label>New Password</label>
+
+<input
+type="password"
+id="adminPassword">
+
+</div>
+
+<div class="form-group">
+
+<label>Confirm Password</label>
+
+<input
+type="password"
+id="confirmPassword">
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ================================= -->
+<!-- Branding -->
+<!-- ================================= -->
+
+<section class="card">
+
+<div class="card-header">
+
+<h2>Branding</h2>
+
+</div>
+
+<div class="form-grid">
+
+<div class="form-group">
+
+<label>Company Logo</label>
+
+<input
+type="file"
+id="companyLogo"
+accept="image/*">
+
+</div>
+
+<div class="form-group">
+
+<label>Website Banner</label>
+
+<input
+type="file"
+id="websiteBanner"
+accept="image/*">
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ================================= -->
+<!-- Backup -->
+<!-- ================================= -->
+
+<section class="card">
+
+<div class="card-header">
+
+<h2>Backup & Restore</h2>
+
+</div>
+
+<div style="display:flex;gap:15px;flex-wrap:wrap;">
+
+<button
+class="primary-btn"
+onclick="backupData()">
+
+<i class="fas fa-download"></i>
+
+Backup Data
+
+</button>
+
+<button
+class="primary-btn"
+onclick="restoreData()">
+
+<i class="fas fa-upload"></i>
+
+Restore Data
+
+</button>
+
+<button
+class="primary-btn"
+onclick="saveSettings()">
+
+<i class="fas fa-floppy-disk"></i>
+
+Save Settings
+
+</button>
+
+</div>
+
+</section>
+
+<!-- Floating Button -->
+
+<button
+class="fab"
+onclick="window.scrollTo({
+top:0,
+behavior:'smooth'
+})">
+
+<i class="fas fa-arrow-up"></i>
+
+</button>
+
+</main>
+
+</div>
+
+<script src="js/settings.js"></script>
+
+</body>
+
+</html>
