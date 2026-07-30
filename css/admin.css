@@ -1426,3 +1426,16 @@ transition:.3s;
 background:#087f45;
 transform:scale(1.08);
 }
+.action-btn{
+    width:40px;
+    height:40px;
+    border:none;
+    border-radius:8px;
+    background:#f3f4f6;
+    cursor:pointer;
+    font-size:18px;
+}
+
+.action-btn:hover{
+    background:#e5e7eb;
+}
