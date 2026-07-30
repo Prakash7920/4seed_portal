@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width,initial-scale=1.0">
+
+<title>Partners | 4Seed Admin</title>
+
+<link rel="stylesheet"
+href="css/style.css">
+
+<link rel="preconnect"
+href="https://fonts.googleapis.com">
+
+<link rel="preconnect"
+href="https://fonts.gstatic.com"
+crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="admin-layout">
+
+<!-- Sidebar -->
+
+<aside class="sidebar">
+
+<div class="logo">
+
+<div class="logo-icon">
+
+🌱
+
+</div>
+
+<div class="logo-text">
+
+<h2>4Seed</h2>
+
+<span>Admin</span>
+
+</div>
+
+</div>
+
+<ul class="menu">
+
+<li onclick="location.href='admin.html'">
+
+<i class="fas fa-home"></i>
+
+<span>Dashboard</span>
+
+</li>
+
+<li class="active">
+
+<i class="fas fa-users"></i>
+
+<span>Partners</span>
+
+</li>
+
+<li onclick="location.href='wallet.html'">
+
+<i class="fas fa-wallet"></i>
+
+<span>Wallet</span>
+
+</li>
+
+<li onclick="location.href='withdraw.html'">
+
+<i class="fas fa-money-check-dollar"></i>
+
+<span>Withdraw</span>
+
+</li>
+
+<li onclick="location.href='reports.html'">
+
+<i class="fas fa-chart-column"></i>
+
+<span>Reports</span>
+
+</li>
+
+<li onclick="logout()">
+
+<i class="fas fa-right-from-bracket"></i>
+
+<span>Logout</span>
+
+</li>
+
+</ul>
+
+</aside>
+
+<!-- Main -->
+
+<main class="main-content">
+
+<header class="topbar">
+
+<div>
+
+<h1>Partner Management</h1>
+
+<p>Manage all registered partners</p>
+
+</div>
+
+<div class="top-actions">
+
+<div class="search-box">
+
+<i class="fas fa-search"></i>
+
+<input
+
+id="partnerSearch"
+
+type="text"
+
+placeholder="Search Partner"
+
+onkeyup="searchPartner()">
+
+</div>
+
+<button
+class="primary-btn"
+onclick="refreshPartners()">
+
+<i class="fas fa-rotate"></i>
+
+Refresh
+
+</button>
+
+</div>
+
+</header>
+
+<section class="stats-grid">
+
+<div class="stat-card">
+
+<div>
+
+<h3 id="totalPartners">
+
+0
+
+</h3>
+
+<p>Total Partners</p>
+
+</div>
+
+<i class="fas fa-users"></i>
+
+</div>
+
+<div class="stat-card">
+
+<div>
+
+<h3 id="activePartners">
+
+0
+
+</h3>
+
+<p>Active</p>
+
+</div>
+
+<i class="fas fa-user-check"></i>
+
+</div>
+
+<div class="stat-card">
+
+<div>
+
+<h3 id="blockedPartners">
+
+0
+
+</h3>
+
+<p>Blocked</p>
+
+</div>
+
+<i class="fas fa-user-lock"></i>
+
+</div>
+
+<div class="stat-card">
+
+<div>
+
+<h3 id="todayPartners">
+
+0
+
+</h3>
+
+<p>Today's Join</p>
+
+</div>
+
+<i class="fas fa-calendar-day"></i>
+
+</div>
+
+</section>
+
+<section class="card">
+
+<div class="card-header">
+
+<h2>
+
+All Partners
+
+</h2>
+
+<button
+
+class="primary-btn"
+
+onclick="exportPartners()">
+
+<i class="fas fa-file-export"></i>
+
+Export
+
+</button>
+
+</div>
+
+<div class="table-wrapper">
+
+<table id="partnerTable">
+
+<thead>
+
+<tr>
+
+<th>ID</th>
+
+<th>Name</th>
+
+<th>Mobile</th>
+
+<th>Email</th>
+
+<th>Wallet</th>
+
+<th>Rank</th>
+
+<th>Status</th>
+
+<th>Action</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+</tbody>
+
+</table>
+
+</div>
+
+</section>
+
+<!-- ========================= -->
+<!-- VIEW PARTNER MODAL -->
+<!-- ========================= -->
+
+<div id="viewPopup" class="popup">
+
+    <div class="popup-content">
+
+        <div class="popup-header">
+
+            <h2>Partner Details</h2>
+
+            <button
+                class="close-btn"
+                onclick="closeViewPopup()">
+
+                <i class="fas fa-times"></i>
+
+            </button>
+
+        </div>
+
+        <div class="profile-card">
+
+            <div class="profile-avatar">
+
+                <i class="fas fa-user"></i>
+
+            </div>
+
+            <h3 id="vName"></h3>
+
+            <p id="vPartnerId"></p>
+
+        </div>
+
+        <div class="details-grid">
+
+            <div>
+
+                <label>Mobile</label>
+
+                <span id="vMobile"></span>
+
+            </div>
+
+            <div>
+
+                <label>Email</label>
+
+                <span id="vEmail"></span>
+
+            </div>
+
+            <div>
+
+                <label>Rank</label>
+
+                <span id="vRank"></span>
+
+            </div>
+
+            <div>
+
+                <label>Status</label>
+
+                <span id="vStatus"></span>
+
+            </div>
+
+            <div>
+
+                <label>Wallet</label>
+
+                ₹<span id="vWallet"></span>
+
+            </div>
+
+            <div>
+
+                <label>Sponsor ID</label>
+
+                <span id="vSponsor"></span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ========================= -->
+<!-- EDIT PARTNER MODAL -->
+<!-- ========================= -->
+
+<div id="editPopup" class="popup">
+
+    <div class="popup-content">
+
+        <div class="popup-header">
+
+            <h2>Edit Partner</h2>
+
+            <button
+                class="close-btn"
+                onclick="closePopup()">
+
+                <i class="fas fa-times"></i>
+
+            </button>
+
+        </div>
+
+        <input
+            type="hidden"
+            id="editPartnerId">
+
+        <div class="form-group">
+
+            <label>Name</label>
+
+            <input
+                type="text"
+                id="editName">
+
+        </div>
+
+        <div class="form-group">
+
+            <label>Wallet</label>
+
+            <input
+                type="number"
+                id="editWallet">
+
+        </div>
+
+        <div class="form-group">
+
+            <label>Status</label>
+
+            <select id="editStatus">
+
+                <option value="Active">
+
+                    Active
+
+                </option>
+
+                <option value="Blocked">
+
+                    Blocked
+
+                </option>
+
+            </select>
+
+        </div>
+
+        <div class="popup-footer">
+
+            <button
+                class="primary-btn"
+                onclick="savePartner()">
+
+                <i class="fas fa-save"></i>
+
+                Save Changes
+
+            </button>
+
+            <button
+                class="danger-btn"
+                onclick="closePopup()">
+
+                Cancel
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ========================= -->
+<!-- FLOATING BUTTON -->
+<!-- ========================= -->
+
+<button class="fab"
+onclick="window.scrollTo({top:0,behavior:'smooth'})">
+
+<i class="fas fa-arrow-up"></i>
+
+</button>
+
+</main>
+
+</div>
+
+<script src="js/partners.js"></script>
+
+</body>
+
+</html>
