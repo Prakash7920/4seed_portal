@@ -107,3 +107,21 @@ fetch(WEB_APP_URL,{
 
 })
 .catch(error => console.log(error));
+
+const btn=document.getElementById("toggleFeatures");
+
+const grid=document.getElementById("featureGrid");
+
+btn.onclick=()=>{
+
+grid.classList.toggle("show");
+
+btn.innerHTML=
+
+grid.classList.contains("show")
+
+?"More Features ▲"
+
+:"More Features ▼";
+
+}
