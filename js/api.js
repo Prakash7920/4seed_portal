@@ -26,11 +26,6 @@ async function registerPartner(data){
     const response = await fetch(WEB_APP_URL,{
 
         method:"POST",
-
-        headers:{
-            "Content-Type":"text/plain;charset=utf-8"
-        },
-
         body:JSON.stringify(data)
 
     });
