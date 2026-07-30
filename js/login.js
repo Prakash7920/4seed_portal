@@ -17,7 +17,7 @@ async function login(e){
 
     try{
 
-        const response = await fetch(WEB_APP_URL,{
+        const response = await fetch("https://script.google.com/macros/s/AKfycbzwgy9llpVtRIX2KCiFEdmLp9yDqQQCaK4qqzeFmjN351tlu_BDP425Ry0Yfgg3BCcq/exec",{
             method:"POST",
             body:JSON.stringify({
                 action:"login",
