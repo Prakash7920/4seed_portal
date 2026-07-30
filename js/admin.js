@@ -651,3 +651,22 @@ behavior:"smooth"
 };
 
 }
+
+function editPartnerById(id){
+    const p = allPartners.find(x => x.partnerId === id);
+    if(p) editPartner(p.partnerId, p.name, p.wallet);
+}
+
+function walletById(id){
+    const p = allPartners.find(x => x.partnerId === id);
+    if(p) walletPopup(p.partnerId, p.wallet);
+}
+
+function togglePartner(id){
+    const p = allPartners.find(x => x.partnerId === id);
+    if(p) toggleStatus(p.partnerId, p.status);
+}
+
+function deletePartner(id){
+    alert("Delete feature will be added next.");
+}
