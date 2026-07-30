@@ -91,29 +91,37 @@ function loadPartners(partners){
 
         tbody.innerHTML += `
         <tr>
-            <td>${partner.partnerId}</td>
-            <td>${partner.name}</td>
-            <td>₹${partner.wallet}</td>
-            <td>${partner.rank || "No Rank"}</td>
-            <td>${partner.status}</td>
             <td>
-                <button onclick="toggleStatus('${partner.partnerId}','${partner.status}')">
-                    ${partner.status=="Active" ? "Block" : "Unblock"}
-                </button>
-                <button onclick="viewPartner('${partner.partnerId}')">👁 View</button>
-                <button onclick="editPartner('${partner.partnerId}','${partner.name}','${partner.wallet}')">
-                    ✏️ Edit
-                </button>
-                <button onclick="walletPopup('${partner.partnerId}','${partner.wallet}')">
-                    💰 Wallet
-                </button>
-            </td>
+            <button class="action-btn update-btn"
+onclick="openUpdatePartner('${partner.partnerId}')"
+title="Partner Actions">
+
+<i class="fas fa-ellipsis-vertical"></i>
+
+</button>
+
+</td>
         </tr>
         `;
 
     });
 
 }
+function openUpdatePartner(partnerId){
+
+const partner = allPartners.find(p => p.partnerId === partnerId);
+
+if(!partner){
+    alert("Partner not found");
+    return;
+}
+
+// For now
+viewPartner(partnerId);
+
+// Later we'll replace this with a premium popup.
+}
+
 function editPartner(id,name,wallet){
 
     document.getElementById("editPartnerId").value=id;
@@ -123,6 +131,7 @@ function editPartner(id,name,wallet){
     document.getElementById("editPopup").style.display="flex";
 
 }
+
 
 function closePopup(){
 
