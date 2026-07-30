@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Reports | 4Seed Admin</title>
+
+<link rel="stylesheet" href="css/admin.css">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+
+<body>
+
+<div class="admin-layout">
+
+<!-- Sidebar -->
+
+<aside class="sidebar">
+
+<div class="logo">
+
+<div class="logo-icon">🌱</div>
+
+<div class="logo-text">
+
+<h2>4Seed</h2>
+
+<span>Admin Panel</span>
+
+</div>
+
+</div>
+
+<ul class="menu">
+
+<li onclick="location.href='admin.html'">
+<i class="fas fa-home"></i>
+<span>Dashboard</span>
+</li>
+
+<li onclick="location.href='partners.html'">
+<i class="fas fa-users"></i>
+<span>Partners</span>
+</li>
+
+<li onclick="location.href='wallet.html'">
+<i class="fas fa-wallet"></i>
+<span>Wallet</span>
+</li>
+
+<li onclick="location.href='withdraw.html'">
+<i class="fas fa-money-check-dollar"></i>
+<span>Withdraw</span>
+</li>
+
+<li onclick="location.href='genealogy.html'">
+<i class="fas fa-sitemap"></i>
+<span>Genealogy</span>
+</li>
+
+<li class="active">
+<i class="fas fa-chart-line"></i>
+<span>Reports</span>
+</li>
+
+<li onclick="logout()">
+<i class="fas fa-right-from-bracket"></i>
+<span>Logout</span>
+</li>
+
+</ul>
+
+</aside>
+
+<!-- Main -->
+
+<main class="main-content">
+
+<header class="topbar">
+
+<div>
+
+<h1>Reports & Analytics</h1>
+
+<p>Business insights and statistics</p>
+
+</div>
+
+<div class="top-actions">
+
+<input
+type="date"
+id="fromDate">
+
+<input
+type="date"
+id="toDate">
+
+<button
+class="primary-btn"
+onclick="loadReports()">
+
+<i class="fas fa-filter"></i>
+
+Filter
+
+</button>
+
+<button
+class="primary-btn"
+onclick="exportReport()">
+
+<i class="fas fa-download"></i>
+
+Export
+
+</button>
+
+</div>
+
+</header>
+
+<section class="stats-grid">
+
+<div class="stat-card">
+
+<div>
+
+<h3 id="reportPartners">0</h3>
+
+<p>Total Partners</p>
+
+</div>
+
+<i class="fas fa-users"></i>
+
+</div>
+
+<div class="stat-card">
+
+<div>
+
+<h3 id="reportWallet">₹0</h3>
+
+<p>Total Wallet</p>
+
+</div>
+
+<i class="fas fa-wallet"></i>
+
+</div>
+
+<div class="stat-card">
+
+<div>
+
+<h3 id="reportWithdraw">₹0</h3>
+
+<p>Total Withdraw</p>
+
+</div>
+
+<i class="fas fa-money-check-dollar"></i>
+
+</div>
+
+<div class="stat-card">
+
+<div>
+
+<h3 id="reportGrowth">0%</h3>
+
+<p>Growth</p>
+
+</div>
+
+<i class="fas fa-chart-line"></i>
+
+</div>
+
+</section>
+
+<section class="content-grid">
+
+<div class="card">
+
+<div class="card-header">
+
+<h2>Partner Growth</h2>
+
+</div>
+
+<canvas id="partnerChart"></canvas>
+
+</div>
+
+<div class="card">
+
+<div class="card-header">
+
+<h2>Wallet Analytics</h2>
+
+</div>
+
+<canvas id="walletChart"></canvas>
+
+</div>
+
+</section>
+
+<section class="content-grid">
+
+<div class="card">
+
+<div class="card-header">
+
+<h2>Withdrawal Analytics</h2>
+
+</div>
+
+<canvas id="withdrawChart"></canvas>
+
+</div>
+
+<div class="card">
+
+<div class="card-header">
+
+<h2>Rank Distribution</h2>
+
+</div>
+
+<canvas id="rankChart"></canvas>
+
+</div>
+
+</section>
+
+
+<!-- ================================= -->
+<!-- Recent Report Table -->
+<!-- ================================= -->
+
+<section class="card">
+
+    <div class="card-header">
+
+        <h2>Recent Transactions</h2>
+
+        <button
+            class="primary-btn"
+            onclick="printReport()">
+
+            <i class="fas fa-print"></i>
+
+            Print
+
+        </button>
+
+    </div>
+
+    <div class="table-wrapper">
+
+        <table id="reportTable">
+
+            <thead>
+
+                <tr>
+
+                    <th>Date</th>
+
+                    <th>Partner ID</th>
+
+                    <th>Name</th>
+
+                    <th>Type</th>
+
+                    <th>Amount</th>
+
+                    <th>Status</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</section>
+
+<!-- ================================= -->
+<!-- Floating Button -->
+<!-- ================================= -->
+
+<button
+class="fab"
+onclick="window.scrollTo({
+top:0,
+behavior:'smooth'
+})">
+
+<i class="fas fa-arrow-up"></i>
+
+</button>
+
+</main>
+
+</div>
+
+<script>
+
+const partnerCtx=document.getElementById("partnerChart");
+
+if(partnerCtx){
+
+new Chart(partnerCtx,{
+
+type:"line",
+
+data:{
+
+labels:["Jan","Feb","Mar","Apr","May","Jun","Jul"],
+
+datasets:[{
+
+label:"Partners",
+
+data:[20,45,80,130,210,310,450],
+
+borderWidth:3,
+
+fill:true,
+
+tension:.4
+
+}]
+
+},
+
+options:{
+
+responsive:true,
+
+plugins:{
+
+legend:{
+
+display:false
+
+}
+
+}
+
+}
+
+});
+
+}
+
+const walletCtx=document.getElementById("walletChart");
+
+if(walletCtx){
+
+new Chart(walletCtx,{
+
+type:"bar",
+
+data:{
+
+labels:["Credit","Debit"],
+
+datasets:[{
+
+data:[0,0]
+
+}]
+
+}
+
+});
+
+}
+
+const withdrawCtx=document.getElementById("withdrawChart");
+
+if(withdrawCtx){
+
+new Chart(withdrawCtx,{
+
+type:"doughnut",
+
+data:{
+
+labels:["Approved","Pending","Rejected"],
+
+datasets:[{
+
+data:[0,0,0]
+
+}]
+
+}
+
+});
+
+}
+
+const rankCtx=document.getElementById("rankChart");
+
+if(rankCtx){
+
+new Chart(rankCtx,{
+
+type:"pie",
+
+data:{
+
+labels:["Bronze","Silver","Gold","Diamond"],
+
+datasets:[{
+
+data:[0,0,0,0]
+
+}]
+
+}
+
+});
+
+}
+
+</script>
+
+<script src="js/reports.js"></script>
+
+</body>
+
+</html>
