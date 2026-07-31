@@ -557,6 +557,31 @@ innovation and teamwork.
 
 <script>
 
+console.log("Counter Start");
+
+const counters=document.querySelectorAll(".counter");
+
+console.log("Counter OK");
+
+const scrollBtn=document.getElementById("scrollTop");
+
+console.log("Scroll Button",scrollBtn);
+
+if(scrollBtn){
+    scrollBtn.onclick=()=>{
+        window.scrollTo({
+            top:0,
+            behavior:"smooth"
+        });
+    };
+}
+
+console.log("Reveal Start");
+
+const reveals=document.querySelectorAll(".reveal");
+
+console.log("Reveal OK");
+
 window.addEventListener("load",()=>{
 
 setTimeout(()=>{
