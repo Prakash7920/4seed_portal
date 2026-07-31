@@ -3339,3 +3339,131 @@ transform:translateY(-5px);
 background:#22C55E;
 
 }
+/* ==========================
+   Scroll Animation
+========================== */
+
+.reveal{
+
+opacity:0;
+
+transform:translateY(80px);
+
+transition:all .8s ease;
+
+}
+
+.reveal.active{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+/* ==========================
+   Premium Loader
+========================== */
+
+#loader{
+
+position:fixed;
+
+top:0;
+
+left:0;
+
+width:100%;
+
+height:100%;
+
+background:#0F172A;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+z-index:99999;
+
+transition:opacity .6s ease,visibility .6s ease;
+
+}
+
+.loader-content{
+
+text-align:center;
+
+color:white;
+
+}
+
+.seed-logo{
+
+font-size:70px;
+
+animation:bounce 1.5s infinite;
+
+}
+
+.loader-content h2{
+
+margin:20px 0;
+
+font-size:36px;
+
+letter-spacing:2px;
+
+}
+
+.loader-bar{
+
+width:260px;
+
+height:8px;
+
+background:#1E293B;
+
+border-radius:50px;
+
+overflow:hidden;
+
+margin:auto;
+
+}
+
+.loader-progress{
+
+width:0%;
+
+height:100%;
+
+background:linear-gradient(90deg,#16A34A,#22C55E,#FACC15);
+
+animation:loading 2s linear forwards;
+
+}
+
+@keyframes loading{
+
+from{width:0;}
+
+to{width:100%;}
+
+}
+
+@keyframes bounce{
+
+0%,100%{transform:translateY(0);}
+
+50%{transform:translateY(-10px);}
+
+}
+
+.loader-hide{
+
+opacity:0;
+
+visibility:hidden;
+
+}
