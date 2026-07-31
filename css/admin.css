@@ -1081,6 +1081,24 @@ overflow:auto;
 border:1px dashed #d1d5db;
 
 }
+.tree-node{
+    display:inline-block;
+    background:#fff;
+    border:2px solid #0F9D58;
+    border-radius:12px;
+    padding:15px;
+    margin:10px;
+    min-width:180px;
+    text-align:center;
+    box-shadow:0 5px 15px rgba(0,0,0,.1);
+    font-weight:500;
+}
+
+.team-tree{
+    display:flex;
+    flex-wrap:wrap;
+    gap:15px;
+}
 
 /*==================================
 Floating Action Button
