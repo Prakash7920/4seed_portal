@@ -111,8 +111,8 @@ function loadPartners(partners){
 
 let selectedPartner = "";
 
-alert("Menu clicked");
 function showActionMenu(e, partnerId) {
+    alert("Menu clicked");
     e.preventDefault();
     e.stopPropagation();
 
