@@ -1,255 +1,104 @@
-/* ===========================
-   DASHBOARD
-=========================== */
+/* =====================================
+   4Seed Premium Partner Dashboard
+===================================== */
 
-.dashboard-header{
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
 
-display:flex;
-justify-content:space-between;
-align-items:center;
-margin-bottom:30px;
-flex-wrap:wrap;
-gap:20px;
+body{
+
+    background:
+    radial-gradient(circle at top right,#22c55e22,transparent 35%),
+    linear-gradient(135deg,#081c15,#0f5132,#14532d);
+
+    color:#fff;
 
 }
 
-.welcome h1{
+/* Main Container */
 
-font-size:2rem;
-font-weight:700;
+.dashboard{
 
-}
-
-.welcome p{
-
-color:var(--text-light);
-margin-top:5px;
+    padding:30px;
 
 }
 
+/* Welcome Card */
+
+.welcome-card{
+
+    background:rgba(255,255,255,.08);
+
+    backdrop-filter:blur(18px);
+
+    border:1px solid rgba(255,255,255,.12);
+
+    border-radius:25px;
+
+    padding:30px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:30px;
+
+    box-shadow:
+    0 20px 50px rgba(0,0,0,.25);
+
+}
+
+.profile-info h2{
+
+    font-size:32px;
+
+    margin-bottom:10px;
+
+}
+
+.profile-info p{
+
+    color:#d1fae5;
+
+    margin-top:5px;
+
+}
+
+.profile-avatar{
+
+    width:90px;
+
+    height:90px;
+
+    border-radius:50%;
+
+    background:linear-gradient(135deg,#22c55e,#16a34a);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:36px;
+
+    font-weight:700;
+
+    box-shadow:
+    0 10px 30px rgba(34,197,94,.35);
+
+}
 .stats-grid{
 
 display:grid;
 
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-
-gap:20px;
-
-}
-
-.stat-card{
-
-background:linear-gradient(135deg,#2E7D32,#4CAF50);
-
-color:#fff;
-
-padding:25px;
-
-border-radius:20px;
-
-position:relative;
-
-overflow:hidden;
-
-transition:.35s;
-
-box-shadow:var(--shadow-md);
-
-}
-
-.stat-card:hover{
-
-transform:translateY(-8px);
-
-}
-
-.stat-card h4{
-
-font-size:15px;
-
-opacity:.9;
-
-}
-
-.stat-card h2{
-
-margin-top:10px;
-
-font-size:32px;
-
-}
-
-.stat-card i{
-
-position:absolute;
-
-right:20px;
-
-top:20px;
-
-font-size:40px;
-
-opacity:.25;
-
-}
-.wallet-card{
-
-background:linear-gradient(135deg,#1565C0,#42A5F5);
-
-color:white;
-
-padding:25px;
-
-border-radius:20px;
-
-box-shadow:var(--shadow-md);
-
-}
-
-.wallet-card h2{
-
-font-size:34px;
-
-margin:15px 0;
-
-}
-.rank-card{
-
-background:linear-gradient(135deg,#FB8C00,#FFC107);
-
-padding:25px;
-
-border-radius:20px;
-
-color:#fff;
-
-box-shadow:var(--shadow-md);
-
-}
-
-.rank-badge{
-
-display:inline-block;
-
-padding:8px 18px;
-
-background:white;
-
-color:#FB8C00;
-
-border-radius:30px;
-
-font-weight:bold;
-
-margin-top:15px;
-
-}
-.quick-actions{
-
-display:grid;
-
-grid-template-columns:repeat(auto-fit,minmax(170px,1fr));
-
-gap:15px;
-
-margin-top:30px;
-
-}
-
-.action-btn{
-
-background:var(--surface);
-
-padding:20px;
-
-border-radius:18px;
-
-text-align:center;
-
-transition:.3s;
-
-box-shadow:var(--shadow-sm);
-
-cursor:pointer;
-
-}
-
-.action-btn:hover{
-
-background:var(--primary);
-
-color:white;
-
-transform:translateY(-6px);
-
-}
-.activity{
-
-margin-top:30px;
-
-background:var(--surface);
-
-padding:20px;
-
-border-radius:20px;
-
-box-shadow:var(--shadow-sm);
-
-}
-
-.activity-item{
-
-display:flex;
-
-justify-content:space-between;
-
-padding:15px 0;
-
-border-bottom:1px solid var(--border);
-
-}
-.notification-card{
-
-background:linear-gradient(135deg,#8E24AA,#BA68C8);
-
-padding:20px;
-
-border-radius:20px;
-
-color:white;
-
-box-shadow:var(--shadow-md);
-
-}
-
-.notification-count{
-
-width:45px;
-
-height:45px;
-
-background:white;
-
-color:#8E24AA;
-
-border-radius:50%;
-
-display:flex;
-
-justify-content:center;
-
-align-items:center;
-
-font-weight:bold;
-
-font-size:20px;
-
-}
-.dashboard{
-
-display:grid;
-
-grid-template-columns:2fr 1fr;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
 
 gap:25px;
 
@@ -257,12 +106,54 @@ margin-top:30px;
 
 }
 
-@media(max-width:992px){
+.stat-card{
 
-.dashboard{
+background:rgba(255,255,255,.08);
 
-grid-template-columns:1fr;
+border-radius:20px;
+
+padding:25px;
+
+backdrop-filter:blur(15px);
+
+border:1px solid rgba(255,255,255,.10);
+
+transition:.35s;
 
 }
+
+.stat-card:hover{
+
+transform:translateY(-6px);
+
+box-shadow:0 20px 40px rgba(34,197,94,.25);
+
+}
+
+.stat-title{
+
+font-size:14px;
+
+color:#d1fae5;
+
+margin-bottom:12px;
+
+}
+
+.stat-value{
+
+font-size:34px;
+
+font-weight:700;
+
+margin-bottom:8px;
+
+}
+
+.stat-icon{
+
+font-size:34px;
+
+margin-bottom:15px;
 
 }
