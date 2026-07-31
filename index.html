@@ -552,20 +552,11 @@ innovation and teamwork.
 <button id="scrollTop">⬆</button>
 
 </footer>
-    
+
+<script>alert("JS Loaded");</script>  
 <script src="js/common.js"></script>
 
 <script>
-
-window.addEventListener("load",()=>{
-
-setTimeout(()=>{
-
-document.getElementById("loader").classList.add("loader-hide");
-
-},2000);
-
-});
 
 console.log("Counter Start");
 
@@ -621,6 +612,8 @@ function revealSections(){
 
 window.addEventListener("scroll",revealSections);
 revealSections();
+
+document.getElementById("loader").classList.add("loader-hide");
 
 </script>
     
