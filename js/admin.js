@@ -112,7 +112,7 @@ function loadPartners(partners){
 let selectedPartner = "";
 
 function showActionMenu(e, partnerId) {
-    alert("Menu clicked");
+    
     e.preventDefault();
     e.stopPropagation();
 
@@ -382,7 +382,7 @@ function loadWithdrawRequests(requests){
 
             <td>${req.name}</td>
 
-            <td>â‚¹${req.amount}</td>
+            <td>${req.amount}</td>
 
             <td>${req.status}</td>
 
@@ -685,7 +685,7 @@ clearInterval(timer);
 
 el.innerHTML=id=="walletAmount"
 
-? "â‚¹"+value
+?+value
 
 : value;
 
