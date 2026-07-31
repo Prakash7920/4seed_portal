@@ -49,11 +49,11 @@ loginForm.addEventListener("submit", async function (e) {
 
             body: JSON.stringify({
 
-                action: "login",
+            action:"login",
+            
+            loginId:partnerId,
 
-                partnerId: partnerId,
-
-                password: passwordValue
+            password:password
 
             })
 
@@ -61,25 +61,17 @@ loginForm.addEventListener("submit", async function (e) {
 
         const result = await response.json();
 
-        if (result.status === "success") {
+        if (result.status === true) {
 
-            loginBtn.innerHTML = "Login Successful";
+    localStorage.setItem("partnerId", result.partnerId);
+    localStorage.setItem("sponsorId", result.sponsorId);
+    localStorage.setItem("sponsorName", result.sponsorName);
+    localStorage.setItem("name", result.name);
+    localStorage.setItem("mobile", result.mobile);
 
-            setTimeout(() => {
+    window.location.href = "dashboard.html";
 
-                if (result.role === "admin") {
-
-                    window.location.href = "admin-dashboard.html";
-
-                } else {
-
-                    window.location.href = "dashboard.html";
-
-                }
-
-            }, 1000);
-
-        } else {
+} else {
 
             alert(result.message || "Invalid Partner ID or Password");
 
