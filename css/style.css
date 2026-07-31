@@ -3514,3 +3514,24 @@ visibility:hidden;
 pointer-events:none;
 
 }
+/* Partner Login Button Fix */
+
+.btn-secondary,
+.hero-buttons .btn-secondary,
+a.btn-secondary{
+
+    color:#ffffff !important;
+    background:transparent !important;
+    border:2px solid rgba(255,255,255,.7) !important;
+
+}
+
+.btn-secondary:hover,
+.hero-buttons .btn-secondary:hover,
+a.btn-secondary:hover{
+
+    background:#22c55e !important;
+    color:#ffffff !important;
+    border-color:#22c55e !important;
+
+}
