@@ -97,7 +97,6 @@ function loadPartners(partners){
             <td>${partner.rank || "No Rank"}</td>
             <td>${partner.status}</td>
             <td>
-                <td>
     <button class="action-btn"
         onclick="showActionMenu(event,'${partner.partnerId}')">
         <i class="fas fa-ellipsis-vertical"></i>
@@ -114,21 +113,26 @@ let selectedPartner = "";
 
 function showActionMenu(e, partnerId){
 
-e.stopPropagation();
+    e.preventDefault();
+    e.stopPropagation();
 
-selectedPartner = partnerId;
+    selectedPartner = partnerId;
 
-const menu = document.getElementById("actionMenu");
+    const menu = document.getElementById("actionMenu");
 
-menu.style.display = "block";
-menu.style.left = e.pageX + "px";
-menu.style.top = e.pageY + "px";
+    menu.style.display = "block";
 
+    menu.style.left = (e.clientX + window.scrollX) + "px";
+    menu.style.top = (e.clientY + window.scrollY) + "px";
 }
 
-document.addEventListener("click",()=>{
+document.addEventListener("click",function(e){
 
-document.getElementById("actionMenu").style.display="none";
+    if(!e.target.closest(".action-menu") &&
+       !e.target.closest(".action-btn")){
+
+        document.getElementById("actionMenu").style.display="none";
+    }
 
 });
 
