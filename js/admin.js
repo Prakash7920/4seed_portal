@@ -111,8 +111,8 @@ function loadPartners(partners){
 
 let selectedPartner = "";
 
-function showActionMenu(e, partnerId){
-
+alert("Menu clicked");
+function showActionMenu(e, partnerId) {
     e.preventDefault();
     e.stopPropagation();
 
@@ -121,19 +121,16 @@ function showActionMenu(e, partnerId){
     const menu = document.getElementById("actionMenu");
 
     menu.style.display = "block";
-
-    menu.style.left = (e.clientX + window.scrollX) + "px";
-    menu.style.top = (e.clientY + window.scrollY) + "px";
+    menu.style.position = "fixed";
+    menu.style.left = e.clientX + "px";
+    menu.style.top = e.clientY + "px";
 }
 
-document.addEventListener("click",function(e){
-
-    if(!e.target.closest(".action-menu") &&
-       !e.target.closest(".action-btn")){
-
-        document.getElementById("actionMenu").style.display="none";
+document.addEventListener("click", function (e) {
+    if (!e.target.closest(".action-btn") &&
+        !e.target.closest(".action-menu")) {
+        document.getElementById("actionMenu").style.display = "none";
     }
-
 });
 
 /*==============================
