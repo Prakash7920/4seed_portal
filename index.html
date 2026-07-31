@@ -379,5 +379,42 @@ Grow Together • Lead Together • Succeed Together
 </footer>
 
 <script src="js/common.js"></script>
+
+<script>
+
+const counters=document.querySelectorAll(".counter");
+
+counters.forEach(counter=>{
+
+const update=()=>{
+
+const target=+counter.dataset.target;
+
+const count=+counter.innerText;
+
+const speed=40;
+
+const increment=Math.ceil(target/speed);
+
+if(count<target){
+
+counter.innerText=count+increment;
+
+setTimeout(update,30);
+
+}else{
+
+counter.innerText=target+"+";
+
+}
+
+};
+
+update();
+
+});
+
+</script>
+
 </body>
 </html>
