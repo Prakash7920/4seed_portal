@@ -257,56 +257,47 @@ A
 
     <!-- Partner Management -->
 
-    <div class="card">
+    <div class="partner-header">
 
-        <div class="card-header">
-
-            <h2>Partner Management</h2>
-
-            <button class="primary-btn"
-                onclick="updateRanks()">
-
-                <i class="fas fa-ranking-star"></i>
-
-                Update Ranks
-
-            </button>
-
-        </div>
-
-        <div class="table-wrapper">
-
-            <table id="partnerTable">
-
-                <thead>
-
-                    <tr>
-
-                        <th>Partner ID</th>
-
-                        <th>Name</th>
-
-                        <th>Wallet</th>
-
-                        <th>Rank</th>
-
-                        <th>Status</th>
-
-                        <th>Action</th>
-
-                    </tr>
-
-                </thead>
-
-                <tbody>
-
-                </tbody>
-
-            </table>
-
-        </div>
-
+    <div>
+        <h2>Partner Management</h2>
+        <p>Manage all registered partners</p>
     </div>
+
+    <button class="add-partner-btn">
+        <i class="fas fa-user-plus"></i>
+        Add Partner
+    </button>
+
+</div>
+
+<div class="partner-stats">
+
+    <div class="partner-card">
+        <i class="fas fa-users"></i>
+        <h3 id="partnerTotal">0</h3>
+        <span>Total Partners</span>
+    </div>
+
+    <div class="partner-card">
+        <i class="fas fa-user-check"></i>
+        <h3 id="partnerActive">0</h3>
+        <span>Active</span>
+    </div>
+
+    <div class="partner-card">
+        <i class="fas fa-user-lock"></i>
+        <h3 id="partnerBlocked">0</h3>
+        <span>Blocked</span>
+    </div>
+
+    <div class="partner-card">
+        <i class="fas fa-award"></i>
+        <h3 id="partnerRanked">0</h3>
+        <span>Rank Achieved</span>
+    </div>
+
+</div>
 
     <!-- Withdraw -->
 
