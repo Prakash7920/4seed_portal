@@ -3,19 +3,26 @@
 // ===============================
 
 const togglePassword = document.getElementById("togglePassword");
-const password = document.getElementById("password");
 
-togglePassword.addEventListener("click", () => {
+const passwordField = document.getElementById("loginPassword");
 
-    if (password.type === "password") {
-        password.type = "text";
-        togglePassword.innerHTML = "🙈";
-    } else {
-        password.type = "password";
-        togglePassword.innerHTML = "👁";
-    }
+if(togglePassword && passwordField){
 
-});
+    togglePassword.addEventListener("click", () => {
+
+        if (passwordField.type === "password") {
+            passwordField.type = "text";
+            togglePassword.innerHTML = "🙈";
+        } else {
+            passwordField.type = "password";
+            togglePassword.innerHTML = "👁";
+        }
+
+    });
+
+}else{
+    console.warn("Password toggle not initialized: #togglePassword or #loginPassword not found on this page.");
+}
 
 // ===============================
 // Google Apps Script URL
@@ -23,20 +30,33 @@ togglePassword.addEventListener("click", () => {
 
 const WEB_APP_URL = "https://script.google.com/macros/s/AKfycby0gIWVUif3O6Vl1x4ymG8oJMXSTuIHU42pKQDibdXukTfU5uZO5TzYjOIvSX1_kk9X/exec";
 
-document
-.getElementById("loginForm")
-.addEventListener("submit", login);
+const loginForm = document.getElementById("loginForm");
+
+if(loginForm){
+    loginForm.addEventListener("submit", login);
+}else{
+    console.warn("Login form not initialized: #loginForm not found on this page.");
+}
 
 async function login(e){
 
     e.preventDefault();
 
-    const loginId = document.getElementById("loginId").value.trim();
-    const password = document.getElementById("loginPassword").value.trim();
+    const loginIdEl = document.getElementById("loginId");
+    const loginPasswordEl = document.getElementById("loginPassword");
+
+    if(!loginIdEl || !loginPasswordEl){
+        console.error("Login fields not found: check #loginId and #loginPassword exist in the HTML.");
+        alert("Something went wrong. Please refresh the page and try again.");
+        return;
+    }
+
+    const loginId = loginIdEl.value.trim();
+    const loginPasswordValue = loginPasswordEl.value.trim();
 
     console.log("=== Login Request ===");
     console.log("Login ID:", loginId);
-    console.log("Password:", password);
+    // Password intentionally NOT logged for security reasons.
 
     try{
 
@@ -45,7 +65,7 @@ async function login(e){
             body:JSON.stringify({
                 action:"login",
                 loginId:loginId,
-                password:password
+                password:loginPasswordValue
             })
         });
 
@@ -54,7 +74,7 @@ async function login(e){
         const data = await response.json();
 
         console.log("Response:", data);
-        
+
         if(data.status){
 
             console.log("✅ Login Success");
