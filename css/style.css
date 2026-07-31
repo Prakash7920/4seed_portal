@@ -16,45 +16,16 @@ color:#222;
 }
 
 .navbar{
+    width: calc(100% - 40px);
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 15px 25px;
+    box-sizing: border-box;
 
-position:fixed;
-
-top:15px;
-
-left:50%;
-
-transform:translateX(-50%);
-
-width:94%;
-
-max-width:1300px;
-
-display:flex;
-
-justify-content:space-between;
-
-align-items:center;
-
-padding:16px 30px;
-
-background:rgba(255,255,255,.12);
-
-backdrop-filter:blur(18px);
-
--webkit-backdrop-filter:blur(18px);
-
-border:1px solid rgba(255,255,255,.18);
-
-border-radius:18px;
-
-box-shadow:0 10px 30px rgba(0,0,0,.15);
-
-z-index:999;
-
-transition:.35s ease;
-
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
-
 .logo{
 
 font-size:30px;
