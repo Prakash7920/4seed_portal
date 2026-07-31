@@ -1067,37 +1067,31 @@ Team Tree
 ==================================*/
 
 .team-tree{
-
-padding:25px;
-
-background:#f8fafc;
-
-border-radius:18px;
-
-min-height:220px;
-
-overflow:auto;
-
-border:1px dashed #d1d5db;
-
-}
-.tree-node{
-    display:inline-block;
-    background:#fff;
-    border:2px solid #0F9D58;
-    border-radius:12px;
-    padding:15px;
-    margin:10px;
-    min-width:180px;
-    text-align:center;
-    box-shadow:0 5px 15px rgba(0,0,0,.1);
-    font-weight:500;
-}
-
-.team-tree{
+    background:#1f2937;
+    border-radius:18px;
+    padding:20px;
+    min-height:220px;
     display:flex;
     flex-wrap:wrap;
     gap:15px;
+    align-items:flex-start;
+}
+
+.tree-node{
+    background:#ffffff;
+    color:#111827;
+    border:2px solid #0F9D58;
+    border-radius:12px;
+    padding:15px;
+    min-width:220px;
+    box-shadow:0 5px 15px rgba(0,0,0,.15);
+    font-size:14px;
+    line-height:1.6;
+}
+
+.tree-node strong{
+    color:#0F9D58;
+    font-size:16px;
 }
 
 /*==================================
