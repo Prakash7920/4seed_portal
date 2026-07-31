@@ -37,11 +37,6 @@ clearInterval(timer);
 
 }
 
-animateValue("partnerCount",500,5);
-
-animateValue("cityCount",25,40);
-
-animateValue("teamCount",150,15);
 const menuToggle=document.getElementById("menuToggle");
 
 const navLinks=document.querySelector(".nav-links");
