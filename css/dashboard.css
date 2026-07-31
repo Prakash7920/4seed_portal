@@ -1,128 +1,179 @@
-/* =====================================
-   4Seed Premium Partner Dashboard
-===================================== */
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Poppins',sans-serif;
-}
+/* ==================================
+   4Seed Premium Dashboard V3
+================================== */
 
 body{
-
+    margin:0;
+    font-family:'Poppins',sans-serif;
     background:
-    radial-gradient(circle at top right,#22c55e22,transparent 35%),
+    radial-gradient(circle at top right,#22c55e22,transparent 30%),
     linear-gradient(135deg,#081c15,#0f5132,#14532d);
-
     color:#fff;
+}
+
+/* ==========================
+   TOPBAR
+========================== */
+
+.topbar{
+
+position:sticky;
+
+top:0;
+
+z-index:999;
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+padding:16px 20px;
+
+background:rgba(8,28,21,.85);
+
+backdrop-filter:blur(18px);
+
+border-bottom:1px solid rgba(255,255,255,.08);
 
 }
 
-/* Main Container */
+.topbar button{
 
-.dashboard{
+background:none;
 
-    padding:30px;
+border:none;
 
-}
+color:#fff;
 
-/* Welcome Card */
+font-size:26px;
 
-.welcome-card{
-
-    background:rgba(255,255,255,.08);
-
-    backdrop-filter:blur(18px);
-
-    border:1px solid rgba(255,255,255,.12);
-
-    border-radius:25px;
-
-    padding:30px;
-
-    display:flex;
-
-    justify-content:space-between;
-
-    align-items:center;
-
-    margin-bottom:30px;
-
-    box-shadow:
-    0 20px 50px rgba(0,0,0,.25);
+cursor:pointer;
 
 }
 
-.profile-info h2{
+.logo{
 
-    font-size:32px;
+display:flex;
 
-    margin-bottom:10px;
+align-items:center;
 
-}
+gap:12px;
 
-.profile-info p{
+font-size:22px;
 
-    color:#d1fae5;
-
-    margin-top:5px;
+font-weight:700;
 
 }
 
-.profile-avatar{
+.logo img{
 
-    width:90px;
+width:45px;
 
-    height:90px;
+height:45px;
 
-    border-radius:50%;
+border-radius:50%;
 
-    background:linear-gradient(135deg,#22c55e,#16a34a);
+background:#fff;
 
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    font-size:36px;
-
-    font-weight:700;
-
-    box-shadow:
-    0 10px 30px rgba(34,197,94,.35);
+padding:4px;
 
 }
-.stats-grid{
+
+/* ==========================
+   CONTAINER
+========================== */
+
+.dashboard-container{
+
+padding:20px;
+
+max-width:1200px;
+
+margin:auto;
+
+}
+
+/* ==========================
+WELCOME CARD
+========================== */
+
+.dashboard-welcome{
+
+background:linear-gradient(135deg,#16a34a,#22c55e);
+
+border-radius:24px;
+
+padding:28px;
+
+box-shadow:0 20px 45px rgba(0,0,0,.25);
+
+margin-bottom:25px;
+
+}
+
+.dashboard-welcome h2{
+
+font-size:30px;
+
+margin-bottom:10px;
+
+}
+
+.dashboard-welcome h3{
+
+font-size:22px;
+
+margin-bottom:8px;
+
+}
+
+.dashboard-welcome p{
+
+opacity:.95;
+
+margin:6px 0;
+
+}
+
+/* ==========================
+SUMMARY
+========================== */
+
+.summary{
 
 display:grid;
 
 grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
 
-gap:25px;
+gap:18px;
 
-margin-top:30px;
+margin-bottom:25px;
 
 }
 
-.stat-card{
+.wallet-card,
+.team-card{
 
 background:rgba(255,255,255,.08);
+
+border:1px solid rgba(255,255,255,.12);
+
+backdrop-filter:blur(16px);
 
 border-radius:20px;
 
 padding:25px;
 
-backdrop-filter:blur(15px);
-
-border:1px solid rgba(255,255,255,.10);
+text-align:center;
 
 transition:.35s;
 
 }
 
-.stat-card:hover{
+.wallet-card:hover,
+.team-card:hover{
 
 transform:translateY(-6px);
 
@@ -130,30 +181,502 @@ box-shadow:0 20px 40px rgba(34,197,94,.25);
 
 }
 
-.stat-title{
+.wallet-card h3,
+.team-card h3{
 
-font-size:14px;
+font-size:18px;
+
+margin-bottom:10px;
 
 color:#d1fae5;
 
-margin-bottom:12px;
-
 }
 
-.stat-value{
+.wallet-card h2,
+.team-card h2{
 
 font-size:34px;
 
 font-weight:700;
 
-margin-bottom:8px;
+}
+/* ==================================
+   MORE FEATURES BUTTON
+================================== */
+
+#toggleFeatures{
+
+width:100%;
+
+padding:18px;
+
+margin:25px 0;
+
+background:linear-gradient(135deg,#16a34a,#22c55e);
+
+border:none;
+
+border-radius:18px;
+
+color:#fff;
+
+font-size:18px;
+
+font-weight:600;
+
+cursor:pointer;
+
+transition:.35s;
+
+box-shadow:0 12px 30px rgba(34,197,94,.30);
 
 }
 
-.stat-icon{
+#toggleFeatures:hover{
+
+transform:translateY(-3px);
+
+box-shadow:0 20px 40px rgba(34,197,94,.45);
+
+}
+
+
+/* ==================================
+   FEATURE GRID
+================================== */
+
+#featureGrid{
+
+display:none;
+
+grid-template-columns:repeat(auto-fit,minmax(170px,1fr));
+
+gap:18px;
+
+margin-top:20px;
+
+}
+
+#featureGrid.show{
+
+display:grid;
+
+animation:fadeGrid .4s ease;
+
+}
+
+@keyframes fadeGrid{
+
+from{
+
+opacity:0;
+
+transform:translateY(20px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:none;
+
+}
+
+}
+
+
+/* ==================================
+   FEATURE CARD
+================================== */
+
+.dashboard-card{
+
+background:rgba(255,255,255,.08);
+
+border:1px solid rgba(255,255,255,.12);
+
+backdrop-filter:blur(16px);
+
+border-radius:20px;
+
+padding:25px;
+
+text-align:center;
+
+cursor:pointer;
+
+transition:.35s;
+
+color:#fff;
+
+}
+
+.dashboard-card:hover{
+
+transform:translateY(-6px);
+
+background:rgba(34,197,94,.18);
+
+box-shadow:0 18px 35px rgba(34,197,94,.25);
+
+}
+
+.dashboard-card h3{
+
+margin-top:12px;
+
+font-size:16px;
+
+font-weight:600;
+
+}
+
+.dashboard-card{
 
 font-size:34px;
 
-margin-bottom:15px;
+   }
+
+/* ==================================
+   BOTTOM NAVIGATION
+================================== */
+
+.bottom-nav{
+
+position:fixed;
+
+bottom:18px;
+
+left:50%;
+
+transform:translateX(-50%);
+
+width:95%;
+
+max-width:520px;
+
+background:rgba(8,28,21,.90);
+
+backdrop-filter:blur(18px);
+
+border:1px solid rgba(255,255,255,.08);
+
+border-radius:22px;
+
+padding:12px 10px;
+
+display:flex;
+
+justify-content:space-around;
+
+box-shadow:0 20px 40px rgba(0,0,0,.30);
+
+z-index:999;
+
+}
+
+.bottom-nav a{
+
+display:flex;
+
+flex-direction:column;
+
+align-items:center;
+
+gap:6px;
+
+text-decoration:none;
+
+color:#d1fae5;
+
+font-size:13px;
+
+font-weight:600;
+
+transition:.3s;
+
+}
+
+.bottom-nav a:hover{
+
+color:#22c55e;
+
+transform:translateY(-4px);
+
+}
+
+.bottom-nav a.active{
+
+color:#22c55e;
+
+}
+@media(max-width:768px){
+
+.dashboard-container{
+
+padding:15px;
+
+}
+
+.dashboard-welcome{
+
+padding:22px;
+
+}
+
+.dashboard-welcome h2{
+
+font-size:24px;
+
+}
+
+.wallet-card h2,
+.team-card h2{
+
+font-size:28px;
+
+}
+
+#featureGrid{
+
+grid-template-columns:repeat(2,1fr);
+
+}
+
+.bottom-nav{
+
+width:96%;
+
+bottom:12px;
+
+}
+
+}
+/* ==================================
+   CARD ANIMATION
+================================== */
+
+.dashboard-card,
+.wallet-card,
+.team-card,
+.dashboard-welcome{
+
+animation:cardFade .6s ease;
+
+}
+
+@keyframes cardFade{
+
+from{
+
+opacity:0;
+
+transform:translateY(25px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:none;
+
+}
+
+}
+
+
+/* ==================================
+   GLOW EFFECT
+================================== */
+
+.dashboard-card::before,
+.wallet-card::before,
+.team-card::before{
+
+content:"";
+
+position:absolute;
+
+top:0;
+
+left:-100%;
+
+width:100%;
+
+height:100%;
+
+background:linear-gradient(
+90deg,
+transparent,
+rgba(255,255,255,.15),
+transparent);
+
+transition:.7s;
+
+}
+
+.dashboard-card,
+.wallet-card,
+.team-card{
+
+position:relative;
+
+overflow:hidden;
+
+}
+
+.dashboard-card:hover::before,
+.wallet-card:hover::before,
+.team-card:hover::before{
+
+left:100%;
+
+}
+
+
+/* ==================================
+   SCROLLBAR
+================================== */
+
+::-webkit-scrollbar{
+
+width:8px;
+
+}
+
+::-webkit-scrollbar-track{
+
+background:#0f5132;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+background:#22c55e;
+
+border-radius:20px;
+
+}
+
+
+/* ==================================
+   NOTIFICATION BUTTON
+================================== */
+
+#notificationBtn{
+
+position:relative;
+
+}
+
+#notificationBtn::after{
+
+content:"";
+
+position:absolute;
+
+top:4px;
+
+right:2px;
+
+width:10px;
+
+height:10px;
+
+border-radius:50%;
+
+background:#ef4444;
+
+box-shadow:0 0 10px #ef4444;
+
+animation:pulse 1.5s infinite;
+
+}
+
+@keyframes pulse{
+
+0%{
+
+transform:scale(1);
+
+opacity:1;
+
+}
+
+50%{
+
+transform:scale(1.5);
+
+opacity:.5;
+
+}
+
+100%{
+
+transform:scale(1);
+
+opacity:1;
+
+}
+
+}
+
+
+/* ==================================
+   ACTIVE MENU
+================================== */
+
+.bottom-nav a.active{
+
+color:#22c55e;
+
+}
+
+.bottom-nav a.active::before{
+
+content:"";
+
+position:absolute;
+
+top:-8px;
+
+width:6px;
+
+height:6px;
+
+background:#22c55e;
+
+border-radius:50%;
+
+}
+
+
+/* ==================================
+   HOVER SCALE
+================================== */
+
+.dashboard-card:hover{
+
+transform:translateY(-8px) scale(1.02);
+
+}
+
+.wallet-card:hover,
+.team-card:hover{
+
+transform:translateY(-6px) scale(1.02);
+
+}
+
+
+/* ==================================
+   FOOTER SPACE
+================================== */
+
+.dashboard-container{
+
+padding-bottom:110px;
 
 }
