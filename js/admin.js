@@ -41,7 +41,7 @@ fetch(WEB_APP_URL,{
         document.getElementById("totalPartners").textContent = data.total;
         document.getElementById("activePartners").textContent = data.active;
         document.getElementById("blockedPartners").textContent = data.blocked;
-        document.getElementById("walletAmount").textContent = "â‚¹" + data.wallet;
+        document.getElementById("walletAmount").textContent = data.wallet;
 
     }
 
