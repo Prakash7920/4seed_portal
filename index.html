@@ -557,6 +557,16 @@ innovation and teamwork.
 
 <script>
 
+window.addEventListener("load",()=>{
+
+setTimeout(()=>{
+
+document.getElementById("loader").classList.add("loader-hide");
+
+},2000);
+
+});
+
 console.log("Counter Start");
 
 const counters=document.querySelectorAll(".counter");
@@ -611,8 +621,6 @@ function revealSections(){
 
 window.addEventListener("scroll",revealSections);
 revealSections();
-
-document.getElementById("loader").classList.add("loader-hide");
 
 </script>
     
