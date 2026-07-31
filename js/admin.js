@@ -558,21 +558,18 @@ function sendAnnouncement(){
 function loadTeamTree(partners){
 
     const tree = document.getElementById("teamTree");
-    
     tree.innerHTML = "";
 
-    partners.forEach(p=>{
+    partners.forEach(p => {
 
         tree.innerHTML += `
         <div class="tree-node">
             <strong>${p.partnerId}</strong><br>
-            ${p.name}<br>
-            Sponsor: ${p.sponsorId}
-        </div>
-        `;
-
+            👤 ${p.name}<br>
+            👥 Sponsor: ${p.sponsorId || "ROOT"}<br>
+            📊 Status: ${p.status}
+        </div>`;
     });
-
 }
 
 /*==============================
