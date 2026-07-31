@@ -590,19 +590,16 @@ update();
 
 });
 
-const scrollBtn=document.getElementById("scrollTop");
+const scrollBtn = document.getElementById("scrollTop");
 
-scrollBtn.onclick=()=>{
-
-window.scrollTo({
-
-top:0,
-
-behavior:"smooth"
-
-});
-
-};
+if(scrollBtn){
+    scrollBtn.onclick = () => {
+        window.scrollTo({
+            top:0,
+            behavior:"smooth"
+        });
+    };
+}
 
 const reveals=document.querySelectorAll(".reveal");
 
