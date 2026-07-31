@@ -37,6 +37,8 @@ method:"POST",
 body:JSON.stringify({
 
 action:"getGenealogy"
+  partnerId: document.getElementById("searchPartnerId").value || "4S1001"
+})
 
 })
 
@@ -48,7 +50,7 @@ action:"getGenealogy"
 
 if(data.success){
 
-genealogyData=data.tree;
+genealogyData=data.members;
 
 renderTree(genealogyData);
 
