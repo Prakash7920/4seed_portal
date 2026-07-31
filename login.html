@@ -1,98 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Partner Login - 4Seed</title>
+<title>4Seed | Login</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="css/login.css">
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-<link rel="stylesheet" href="css/style.css">
-
 </head>
 
 <body>
 
-<div class="login-container">
-
-<div class="page-header">
-
-<div class="logo">🌱</div>
-
-<h1>Welcome Back</h1>
-
-<p>Continue your 4Seed journey</p>
-
+<div class="background">
+    <div class="blob blob1"></div>
+    <div class="blob blob2"></div>
 </div>
 
-<form id="loginForm">
+<div class="login-card">
 
-<label>Partner ID / Mobile Number</label>
+    <div class="logo">
+        🌱
+        <h2>4Seed</h2>
+    </div>
 
-<input
-type="text"
-id="loginId"
-placeholder="Enter Partner ID or Mobile"
-required>
+    <h1>Welcome Back</h1>
+    <p>Login to your Partner Account</p>
 
-<label>Password</label>
+    <form id="loginForm">
 
-<input
-type="password"
-id="loginPassword"
-placeholder="Enter Password"
-required>
+        <div class="input-box">
+            <span>👤</span>
+            <input
+                type="text"
+                id="partnerId"
+                placeholder="Partner ID"
+                required>
+        </div>
 
-<div class="login-options">
+        <div class="input-box">
+            <span>🔒</span>
+            <input
+                type="password"
+                id="password"
+                placeholder="Password"
+                required>
 
-<label>
+            <button
+                type="button"
+                id="togglePassword">
+                👁
+            </button>
+        </div>
 
-<input type="checkbox">
+        <div class="options">
+            <label>
+                <input type="checkbox">
+                Remember Me
+            </label>
 
-Remember Me
+            <a href="#">
+                Forgot Password?
+            </a>
+        </div>
 
-</label>
+        <button class="login-btn" type="submit">
+            Login Securely
+        </button>
 
-<a href="#">Forgot Password?</a>
+    </form>
 
-</div>
+    <div class="divider">
+        <span>OR</span>
+    </div>
 
-<button
-type="submit"
-class="btn btn-primary">
-
-Login
-
-</button>
-
-<p class="register-link">
-
-Don't have an account?
-
-<a href="register.html">
-
-Register Now
-
-</a>
-
-</p>
-
-</form>
+    <a href="register.html" class="register-btn">
+        Create New Account
+    </a>
 
 </div>
 
 <script src="js/login.js"></script>
-<script src="js/theme.js"></script>
-<script src="js/animations.js"></script>
 
 </body>
-
 </html>
