@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>4Seed Dashboard V2</title>
-<link rel="stylesheet" href="css/theme.css">
 <link rel="stylesheet" href="css/dashboard.css">
-<link rel="stylesheet" href="css/components.css">
-<link rel="stylesheet" href="css/animations.css">
 <style>
 body{margin:0;font-family:Arial,sans-serif;background:#f4f7fb}.topbar{display:flex;justify-content:space-between;align-items:center;padding:15px;background:#16a34a;color:#fff}.logo{display:flex;align-items:center;gap:10px;font-weight:bold}.logo img{height:40px}.dashboard-container{padding:16px}.dashboard-welcome,.dashboard-card,#toggleFeatures{background:#fff;border-radius:16px;padding:18px;box-shadow:0 2px 8px rgba(0,0,0,.08)}.summary{display:grid;grid-template-columns:1fr 1fr;gap:15px;margin:15px 0}.wallet-card,.team-card{background:#16a34a;color:#fff;border-radius:16px;padding:20px;text-align:center}#toggleFeatures{width:100%;border:none;font-size:17px;font-weight:bold}#featureGrid{display:none;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:15px}#featureGrid.show{display:grid}.dashboard-card{text-align:center;cursor:pointer}.bottom-nav{position:fixed;bottom:0;left:0;right:0;background:#fff;display:flex;justify-content:space-around;padding:10px;box-shadow:0 -2px 8px rgba(0,0,0,.1)}.bottom-nav a{text-decoration:none;color:#16a34a;font-weight:bold}
 </style></head><body>
@@ -28,5 +25,5 @@ body{margin:0;font-family:Arial,sans-serif;background:#f4f7fb}.topbar{display:fl
 </div></div>
 <nav class="bottom-nav"><a href="dashboard.html">🏠 Home</a><a href="team.html">👥 Team</a><a href="referral.html">🔗 Referral</a><a href="profile.html">👤 Profile</a></nav>
 <script>const b=document.getElementById('toggleFeatures'),g=document.getElementById('featureGrid');b.onclick=()=>{g.classList.toggle('show');b.textContent=g.classList.contains('show')?'More Features ▲':'More Features ▼';};</script>
-<script src="js/dashboard.js"></script><script src="js/theme.js"></script><script src="js/animations.js"></script>
+<script src="js/dashboard.js"></script>
 </body></html>
