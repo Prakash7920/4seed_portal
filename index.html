@@ -558,6 +558,13 @@ innovation and teamwork.
 
 <script>
 
+window.onerror = function(message, source, line, column, error) {
+    alert(
+        "Error: " + message +
+        "\nLine: " + line +
+        "\nColumn: " + column
+    );
+};
 console.log("Counter Start");
 
 const counters=document.querySelectorAll(".counter");
