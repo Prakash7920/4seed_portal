@@ -1,29 +1,856 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>4Seed Dashboard V2</title>
-<link rel="stylesheet" href="css/dashboard.css">
-<style>
-body{margin:0;font-family:Arial,sans-serif;background:#f4f7fb}.topbar{display:flex;justify-content:space-between;align-items:center;padding:15px;background:#16a34a;color:#fff}.logo{display:flex;align-items:center;gap:10px;font-weight:bold}.logo img{height:40px}.dashboard-container{padding:16px}.dashboard-welcome,.dashboard-card,#toggleFeatures{background:#fff;border-radius:16px;padding:18px;box-shadow:0 2px 8px rgba(0,0,0,.08)}.summary{display:grid;grid-template-columns:1fr 1fr;gap:15px;margin:15px 0}.wallet-card,.team-card{background:#16a34a;color:#fff;border-radius:16px;padding:20px;text-align:center}#toggleFeatures{width:100%;border:none;font-size:17px;font-weight:bold}#featureGrid{display:none;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:15px}#featureGrid.show{display:grid}.dashboard-card{text-align:center;cursor:pointer}.bottom-nav{position:fixed;bottom:0;left:0;right:0;background:#fff;display:flex;justify-content:space-around;padding:10px;box-shadow:0 -2px 8px rgba(0,0,0,.1)}.bottom-nav a{text-decoration:none;color:#16a34a;font-weight:bold}
-</style></head><body>
-<header class="topbar"><button id="menuBtn">☰</button><div class="logo"><img src="images/logo.png"><span>4Seed</span></div><button id="notificationBtn">🔔</button></header>
-<div class="dashboard-container">
-<div class="dashboard-welcome"><h2>Welcome Back 👋</h2><h3 id="partnerName">Loading...</h3><p>Partner ID: <span id="partnerId">Loading...</span></p><p>Sponsor: <span id="sponsorName">Loading...</span></p></div>
-<section class="summary"><div class="wallet-card"><h3>Wallet</h3><h2 id="walletBalance">₹0</h2></div><div class="team-card"><h3>My Team</h3><h2 id="teamCount">0</h2></div></section>
-<button id="toggleFeatures">More Features ▼</button>
-<div id="featureGrid">
-<div class="dashboard-card" onclick="location.href='announcement.html'">📢<h3>Announcements</h3></div>
-<div class="dashboard-card" onclick="location.href='notification.html'">🔔<h3>Notifications</h3></div>
-<div class="dashboard-card" onclick="location.href='idcard.html'">🪪<h3>Digital ID</h3></div>
-<div class="dashboard-card" onclick="location.href='profile.html'">👤<h3>Profile</h3></div>
-<div class="dashboard-card" onclick="location.href='leaderboard.html'">🏅<h3>Leaderboard</h3></div>
-<div class="dashboard-card" onclick="location.href='income-history.html'">💵<h3>Income History</h3></div>
-<div class="dashboard-card" onclick="location.href='wallet-history.html'">📜<h3>Wallet History</h3></div>
-<div class="dashboard-card" onclick="openWithdraw()">💸<h3>Withdraw</h3></div>
-<div class="dashboard-card" onclick="location.href='myrank.html'">🏆<h3>My Rank</h3></div>
-<div class="dashboard-card" onclick="location.href='support.html'">🎫<h3>Support</h3></div>
-<div class="dashboard-card" onclick="location.href='change-password.html'">🔐<h3>Change Password</h3></div>
-<div class="dashboard-card" id="logoutBtn">🚪<h3>Logout</h3></div>
-</div></div>
-<nav class="bottom-nav"><a href="dashboard.html">🏠 Home</a><a href="team.html">👥 Team</a><a href="referral.html">🔗 Referral</a><a href="profile.html">👤 Profile</a></nav>
-<script>const b=document.getElementById('toggleFeatures'),g=document.getElementById('featureGrid');b.onclick=()=>{g.classList.toggle('show');b.textContent=g.classList.contains('show')?'More Features ▲':'More Features ▼';};</script>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width,initial-scale=1.0">
+
+<title>
+
+4Seed Partner Dashboard
+
+</title>
+
+<link rel="preconnect"
+href="https://fonts.googleapis.com">
+
+<link rel="preconnect"
+href="https://fonts.gstatic.com"
+crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
+rel="stylesheet">
+
+<link rel="stylesheet"
+href="css/theme.css">
+
+<link rel="stylesheet"
+href="css/dashboard.css">
+
+<link rel="stylesheet"
+href="css/components.css">
+
+<link rel="stylesheet"
+href="css/animations.css">
+
+</head>
+
+<body>
+
+<div class="app">
+
+<header class="topbar">
+
+<button
+id="menuBtn"
+class="icon-btn">
+
+☰
+
+</button>
+
+<div class="brand">
+
+<img
+src="images/logo.png"
+alt="4Seed Logo">
+
+<div>
+
+<h2>
+
+4Seed
+
+</h2>
+
+<p>
+
+Partner Dashboard
+
+</p>
+
+</div>
+
+</div>
+
+<button
+id="notificationBtn"
+class="icon-btn">
+
+🔔
+
+<span class="notify-badge">
+
+3
+
+</span>
+
+</button>
+
+</header>
+
+
+<main class="dashboard-container">
+
+<section class="hero-card">
+
+<div class="hero-left">
+
+<div class="hero-title">
+
+<span>
+
+WELCOME BACK
+
+</span>
+
+<h1
+id="partnerName">
+
+Loading...
+
+</h1>
+
+</div>
+
+<div class="hero-grid">
+
+<div>
+
+<label>
+
+Partner ID
+
+</label>
+
+<h3
+id="partnerId">
+
+Loading...
+
+</h3>
+
+</div>
+
+<div>
+
+<label>
+
+Sponsor
+
+</label>
+
+<h3
+id="sponsorName">
+
+Loading...
+
+</h3>
+
+</div>
+
+</div>
+
+<div class="rank-card">
+
+<div class="rank-top">
+
+<span>
+
+Current Rank
+
+</span>
+
+<strong>
+
+Silver Partner
+
+</strong>
+
+</div>
+
+<div class="progress">
+
+<div
+class="progress-fill">
+
+</div>
+
+</div>
+
+<small>
+
+68% Progress to Gold Partner
+
+</small>
+
+</div>
+
+</div>
+
+
+<div class="hero-right">
+
+<div class="avatar-ring">
+
+<div class="avatar">
+
+PM
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<section class="summary">
+
+<div class="wallet-card stat-card">
+
+<div class="stat-icon">
+
+💰
+
+</div>
+
+<div>
+
+<p>
+
+Wallet Balance
+
+</p>
+
+<h2
+id="walletBalance">
+
+₹0
+
+</h2>
+
+<span>
+
+Available Balance
+
+</span>
+
+</div>
+
+</div>
+
+<div class="team-card stat-card">
+
+<div class="stat-icon">
+
+👥
+
+</div>
+
+<div>
+
+<p>
+
+My Team
+
+</p>
+
+<h2
+id="teamCount">
+
+0
+
+</h2>
+
+<span>
+
+Total Members
+
+</span>
+
+</div>
+
+</div>
+
+</section>
+
+
+<section class="quick-action-header">
+
+<h2>
+
+⚡ Quick Actions
+
+</h2>
+
+<span>
+
+12 Services
+
+</span>
+
+</section>
+
+<section
+id="featureGrid"
+class="action-grid">
+<div class="action-card"
+onclick="location.href='announcement.html'">
+
+<div class="action-icon">
+
+📢
+
+</div>
+
+<h3>
+
+Announcements
+
+</h3>
+
+<p>
+
+Latest Company Updates
+
+</p>
+
+</div>
+
+
+<div class="action-card"
+onclick="location.href='notification.html'">
+
+<div class="action-icon">
+
+🔔
+
+</div>
+
+<h3>
+
+Notifications
+
+</h3>
+
+<p>
+
+Latest Alerts
+
+</p>
+
+</div>
+
+
+<div class="action-card"
+onclick="location.href='idcard.html'">
+
+<div class="action-icon">
+
+🪪
+
+</div>
+
+<h3>
+
+Digital ID
+
+</h3>
+
+<p>
+
+Download Partner Card
+
+</p>
+
+</div>
+
+
+<div class="action-card"
+onclick="location.href='profile.html'">
+
+<div class="action-icon">
+
+👤
+
+</div>
+
+<h3>
+
+Profile
+
+</h3>
+
+<p>
+
+Manage Account
+
+</p>
+
+</div>
+
+
+<div class="action-card"
+onclick="location.href='leaderboard.html'">
+
+<div class="action-icon">
+
+🏆
+
+</div>
+
+<h3>
+
+Leaderboard
+
+</h3>
+
+<p>
+
+Top Performers
+
+</p>
+
+</div>
+
+
+<div class="action-card"
+onclick="location.href='income-history.html'">
+
+<div class="action-icon">
+
+💵
+
+</div>
+
+<h3>
+
+Income History
+
+</h3>
+
+<p>
+
+View Earnings
+
+</p>
+
+</div>
+
+
+<div class="action-card"
+onclick="location.href='wallet-history.html'">
+
+<div class="action-icon">
+
+📜
+
+</div>
+
+<h3>
+
+Wallet History
+
+</h3>
+
+<p>
+
+Transactions
+
+</p>
+
+</div>
+
+
+<div class="action-card"
+onclick="openWithdraw()">
+
+<div class="action-icon">
+
+💸
+
+</div>
+
+<h3>
+
+Withdraw
+
+</h3>
+
+<p>
+
+Request Withdrawal
+
+</p>
+
+</div>
+
+
+<div class="action-card"
+onclick="location.href='myrank.html'">
+
+<div class="action-icon">
+
+🥇
+
+</div>
+
+<h3>
+
+My Rank
+
+</h3>
+
+<p>
+
+Rank Progress
+
+</p>
+
+</div>
+
+
+<div class="action-card"
+onclick="location.href='team.html'">
+
+<div class="action-icon">
+
+👥
+
+</div>
+
+<h3>
+
+My Team
+
+</h3>
+
+<p>
+
+Network Members
+
+</p>
+
+</div>
+
+
+<div class="action-card"
+onclick="location.href='support.html'">
+
+<div class="action-icon">
+
+🎫
+
+</div>
+
+<h3>
+
+Support
+
+</h3>
+
+<p>
+
+Help Center
+
+</p>
+
+</div>
+
+
+<div class="action-card"
+onclick="location.href='change-password.html'">
+
+<div class="action-icon">
+
+🔐
+
+</div>
+
+<h3>
+
+Change Password
+
+</h3>
+
+<p>
+
+Security Settings
+
+</p>
+
+</div>
+
+
+<div class="action-card logout-card"
+id="logoutBtn">
+
+<div class="action-icon">
+
+🚪
+
+</div>
+
+<h3>
+
+Logout
+
+</h3>
+
+<p>
+
+Secure Sign Out
+
+</p>
+
+</div>
+
+</section>
+
+
+
+<section class="recent-section">
+
+<div class="section-title">
+
+<h2>
+
+Recent Activity
+
+</h2>
+
+<a href="#">
+
+View All
+
+</a>
+
+</div>
+
+<div class="activity-card">
+
+<div class="activity-icon">
+
+✅
+
+</div>
+
+<div>
+
+<h4>
+
+Wallet Updated
+
+</h4>
+
+<p>
+
+Your wallet has been credited.
+
+</p>
+
+</div>
+
+<span>
+
+Today
+
+</span>
+
+</div>
+
+<div class="activity-card">
+
+<div class="activity-icon">
+
+👥
+
+</div>
+
+<div>
+
+<h4>
+
+New Team Member
+
+</h4>
+
+<p>
+
+One new partner joined.
+
+</p>
+
+</div>
+
+<span>
+
+Yesterday
+
+</span>
+
+</div>
+
+<div class="activity-card">
+
+<div class="activity-icon">
+
+🏆
+
+</div>
+
+<div>
+
+<h4>
+
+Rank Progress
+
+</h4>
+
+<p>
+
+You're getting closer to Gold Partner.
+
+</p>
+
+</div>
+
+<span>
+
+2 Days
+
+</span>
+
+</div>
+
+</section>
+
+<nav class="bottom-nav">
+
+<a href="dashboard.html" class="nav-item active">
+
+<div class="nav-icon">
+
+🏠
+
+</div>
+
+<span>
+
+Home
+
+</span>
+
+</a>
+
+
+<a href="team.html" class="nav-item">
+
+<div class="nav-icon">
+
+👥
+
+</div>
+
+<span>
+
+Team
+
+</span>
+
+</a>
+
+
+<a href="referral.html" class="nav-item">
+
+<div class="nav-icon">
+
+🔗
+
+</div>
+
+<span>
+
+Referral
+
+</span>
+
+</a>
+
+
+<a href="profile.html" class="nav-item">
+
+<div class="nav-icon">
+
+👤
+
+</div>
+
+<span>
+
+Profile
+
+</span>
+
+</a>
+
+</nav>
+
+</main>
+
+</div>
+
+
+
+<script>
+
+const toggleBtn =
+document.getElementById(
+"toggleFeatures"
+);
+
+const featureGrid =
+document.getElementById(
+"featureGrid"
+);
+
+if(toggleBtn){
+
+toggleBtn.onclick=()=>{
+
+featureGrid.classList.toggle("show");
+
+toggleBtn.innerHTML=
+
+featureGrid.classList.contains("show")
+
+?
+
+"Hide Features ▲"
+
+:
+
+"More Features ▼";
+
+};
+
+}
+
+</script>
+
+
 <script src="js/dashboard.js"></script>
-</body></html>
+
+<script src="js/theme.js"></script>
+
+<script src="js/animations.js"></script>
+
+</body>
+
+</html>
