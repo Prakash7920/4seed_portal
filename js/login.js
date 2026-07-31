@@ -23,72 +23,61 @@ togglePassword.addEventListener("click", () => {
 
 const WEB_APP_URL = "https://script.google.com/macros/s/AKfycby0gIWVUif3O6Vl1x4ymG8oJMXSTuIHU42pKQDibdXukTfU5uZO5TzYjOIvSX1_kk9X/exec";
 
-// ===============================
-// Login
-// ===============================
+document
+.getElementById("loginForm")
+.addEventListener("submit", login);
 
-const loginForm = document.getElementById("loginForm");
-
-loginForm.addEventListener("submit", async function (e) {
+async function login(e){
 
     e.preventDefault();
 
-    const partnerId = document.getElementById("partnerId").value.trim();
-    const passwordValue = document.getElementById("password").value;
+    const loginId = document.getElementById("loginId").value.trim();
+    const password = document.getElementById("loginPassword").value.trim();
 
-    const loginBtn = document.querySelector(".login-btn");
+    console.log("=== Login Request ===");
+    console.log("Login ID:", loginId);
+    console.log("Password:", password);
 
-    loginBtn.disabled = true;
-    loginBtn.innerHTML = "Logging in...";
+    try{
 
-    try {
-
-        const response = await fetch(WEB_APP_URL, {
-
-            method: "POST",
-
-            body: JSON.stringify({
-
-            action:"login",
-            
-            loginId:partnerId,
-
-            password:password
-
+        const response = await fetch(WEB_APP_URL,{
+            method:"POST",
+            body:JSON.stringify({
+                action:"login",
+                loginId:loginId,
+                password:password
             })
-
         });
 
-        const result = await response.json();
+        console.log("HTTP Status:", response.status);
 
-        if (result.status === true) {
+        const data = await response.json();
 
-    localStorage.setItem("partnerId", result.partnerId);
-    localStorage.setItem("sponsorId", result.sponsorId);
-    localStorage.setItem("sponsorName", result.sponsorName);
-    localStorage.setItem("name", result.name);
-    localStorage.setItem("mobile", result.mobile);
+        console.log("Response:", data);
+        
+        if(data.status){
 
-    window.location.href = "dashboard.html";
+            console.log("✅ Login Success");
 
-} else {
+            localStorage.setItem("partner", JSON.stringify(data));
+            localStorage.setItem("partnerId", data.partnerId);
 
-            alert(result.message || "Invalid Partner ID or Password");
+            window.location.href="dashboard.html";
 
-            loginBtn.disabled = false;
-            loginBtn.innerHTML = "Login Securely";
+        }else{
+
+            console.error("❌ Login Failed");
+            console.error("Server Response:", data);
+
+            alert("Invalid Partner ID or Password");
 
         }
 
-    } catch (err) {
+    }catch(err){
 
-        alert("Unable to connect to server.");
-
-        console.error(err);
-
-        loginBtn.disabled = false;
-        loginBtn.innerHTML = "Login Securely";
+        console.error("❌ Fetch Error:", err);
+        alert(err.message);
 
     }
 
-});
+}
