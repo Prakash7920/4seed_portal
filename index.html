@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -553,27 +554,13 @@ innovation and teamwork.
 
 </footer>
 
-<script>alert("JS Loaded");</script>  
 <script src="js/common.js"></script>
 
 <script>
 
-window.onerror = function(message, source, line, column, error) {
-    alert(
-        "Error: " + message +
-        "\nLine: " + line +
-        "\nColumn: " + column
-    );
-};
-console.log("Counter Start");
-
 const counters=document.querySelectorAll(".counter");
 
-console.log("Counter OK");
-
 const scrollBtn=document.getElementById("scrollTop");
-
-console.log("Scroll Button",scrollBtn);
 
 if(scrollBtn){
     scrollBtn.onclick=()=>{
@@ -620,7 +607,22 @@ function revealSections(){
 window.addEventListener("scroll",revealSections);
 revealSections();
 
-document.getElementById("loader").classList.add("loader-hide");
+// Hide loader once everything (images, fonts, etc.) has finished loading
+function hideLoader(){
+    const loader=document.getElementById("loader");
+    if(loader){
+        loader.classList.add("loader-hide");
+    }
+}
+
+if(document.readyState==="complete"){
+    hideLoader();
+}else{
+    window.addEventListener("load",hideLoader);
+}
+
+// Safety fallback in case something else hangs (e.g. slow/broken asset)
+setTimeout(hideLoader,4000);
 
 </script>
     
