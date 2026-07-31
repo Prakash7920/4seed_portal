@@ -21,7 +21,7 @@ togglePassword.addEventListener("click", () => {
 // Google Apps Script URL
 // ===============================
 
-const WEB_APP_URL = "YOUR_GOOGLE_APPS_SCRIPT_URL";
+const WEB_APP_URL = "https://script.google.com/macros/s/AKfycby0gIWVUif3O6Vl1x4ymG8oJMXSTuIHU42pKQDibdXukTfU5uZO5TzYjOIvSX1_kk9X/exec";
 
 // ===============================
 // Login
