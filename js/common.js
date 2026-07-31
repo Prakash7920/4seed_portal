@@ -1,6 +1,9 @@
+// Navbar background change on scroll
 window.addEventListener("scroll", function () {
 
     const nav = document.querySelector(".navbar");
+
+    if (!nav) return;
 
     if (window.scrollY > 80) {
 
@@ -15,57 +18,14 @@ window.addEventListener("scroll", function () {
     }
 
 });
-function animateValue(id,end,speed){
 
-let current=0;
-
-const obj=document.getElementById(id);
-
-const timer=setInterval(()=>{
-
-current++;
-
-obj.innerHTML=current+"+";
-
-if(current>=end){
-
-clearInterval(timer);
-
-}
-
-},speed);
-
-}
-
+// Mobile menu toggle
 const menuToggle=document.getElementById("menuToggle");
 
 const navLinks=document.querySelector(".nav-links");
 
-menuToggle.addEventListener("click",()=>{
-
-navLinks.classList.toggle("active");
-
-});
-const reveals=document.querySelectorAll(".reveal");
-
-window.addEventListener("scroll",revealSections);
-
-function revealSections(){
-
-reveals.forEach(section=>{
-
-const top=section.getBoundingClientRect().top;
-
-const windowHeight=window.innerHeight;
-
-if(top<windowHeight-120){
-
-section.classList.add("active");
-
+if(menuToggle && navLinks){
+    menuToggle.addEventListener("click",()=>{
+        navLinks.classList.toggle("active");
+    });
 }
-
-});
-
-}
-
-revealSections();
