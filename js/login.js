@@ -1,60 +1,102 @@
-const WEB_APP_URL = "https://script.google.com/macros/s/AKfycby0gIWVUif3O6Vl1x4ymG8oJMXSTuIHU42pKQDibdXukTfU5uZO5TzYjOIvSX1_kk9X/exec";
+// ===============================
+// Show / Hide Password
+// ===============================
 
-document
-.getElementById("loginForm")
-.addEventListener("submit", login);
+const togglePassword = document.getElementById("togglePassword");
+const password = document.getElementById("password");
 
-async function login(e){
+togglePassword.addEventListener("click", () => {
+
+    if (password.type === "password") {
+        password.type = "text";
+        togglePassword.innerHTML = "🙈";
+    } else {
+        password.type = "password";
+        togglePassword.innerHTML = "👁";
+    }
+
+});
+
+// ===============================
+// Google Apps Script URL
+// ===============================
+
+const WEB_APP_URL = "YOUR_GOOGLE_APPS_SCRIPT_URL";
+
+// ===============================
+// Login
+// ===============================
+
+const loginForm = document.getElementById("loginForm");
+
+loginForm.addEventListener("submit", async function (e) {
 
     e.preventDefault();
 
-    const loginId = document.getElementById("loginId").value.trim();
-    const password = document.getElementById("loginPassword").value.trim();
+    const partnerId = document.getElementById("partnerId").value.trim();
+    const passwordValue = document.getElementById("password").value;
 
-    console.log("=== Login Request ===");
-    console.log("Login ID:", loginId);
-    console.log("Password:", password);
+    const loginBtn = document.querySelector(".login-btn");
 
-    try{
+    loginBtn.disabled = true;
+    loginBtn.innerHTML = "Logging in...";
 
-        const response = await fetch(WEB_APP_URL,{
-            method:"POST",
-            body:JSON.stringify({
-                action:"login",
-                loginId:loginId,
-                password:password
+    try {
+
+        const response = await fetch(WEB_APP_URL, {
+
+            method: "POST",
+
+            body: JSON.stringify({
+
+                action: "login",
+
+                partnerId: partnerId,
+
+                password: passwordValue
+
             })
+
         });
 
-        console.log("HTTP Status:", response.status);
+        const result = await response.json();
 
-        const data = await response.json();
+        if (result.status === "success") {
 
-        console.log("Response:", data);
-        
-        if(data.status){
+            loginBtn.innerHTML = "Login Successful";
 
-            console.log("✅ Login Success");
+            setTimeout(() => {
 
-            localStorage.setItem("partner", JSON.stringify(data));
-            localStorage.setItem("partnerId", data.partnerId);
+                if (result.role === "admin") {
 
-            window.location.href="dashboard.html";
+                    window.location.href = "admin-dashboard.html";
 
-        }else{
+                } else {
 
-            console.error("❌ Login Failed");
-            console.error("Server Response:", data);
+                    window.location.href = "dashboard.html";
 
-            alert("Invalid Partner ID or Password");
+                }
+
+            }, 1000);
+
+        } else {
+
+            alert(result.message || "Invalid Partner ID or Password");
+
+            loginBtn.disabled = false;
+            loginBtn.innerHTML = "Login Securely";
 
         }
 
-    }catch(err){
+    } catch (err) {
 
-        console.error("❌ Fetch Error:", err);
-        alert(err.message);
+        alert("Unable to connect to server.");
+
+        console.error(err);
+
+        loginBtn.disabled = false;
+        loginBtn.innerHTML = "Login Securely";
 
     }
 
-}
+});
