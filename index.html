@@ -18,6 +18,24 @@
 
 <body>
 
+<div id="loader">
+
+    <div class="loader-content">
+
+        <div class="seed-logo">🌱</div>
+
+        <h2>4Seed</h2>
+
+        <div class="loader-bar">
+
+            <div class="loader-progress"></div>
+
+        </div>
+
+    </div>
+
+</div>
+    
 <!-- Navigation -->
 
 <header>
@@ -616,8 +634,16 @@ el.classList.add("active");
 window.addEventListener("scroll",revealOnScroll);
 
 revealOnScroll();
+window.addEventListener("load",()=>{
 
-</script>
+setTimeout(()=>{
 
+document.getElementById("loader").classList.add("loader-hide");
+
+},2000);
+
+});
+<script>
+    
 </body>
 </html>
