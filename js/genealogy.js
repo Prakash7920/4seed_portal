@@ -30,49 +30,32 @@ loadTree();
 
 function loadTree(){
 
-fetch(WEB_APP_URL,{
+    console.log("Loading started");
 
-method:"POST",
+    fetch(WEB_APP_URL,{
+        method:"POST",
+        body:JSON.stringify({
+            action:"getGenealogy",
+            partnerId:"4S1001"  
+        })
+    })
+    .then(res=>{
+        console.log(res);
+        return res.json();
+    })
+    .then(data=>{
+        console.log(data);
 
-body:JSON.stringify({
-
-action:"getGenealogy"
-  partnerId: document.getElementById("searchPartnerId").value || "4S1001"
-})
-
-})
-
-})
-
-.then(r=>r.json())
-
-.then(data=>{
-
-if(data.success){
-
-genealogyData=data.members;
-
-renderTree(genealogyData);
-
-}else{
-
-document.getElementById("genealogyTree").innerHTML=
-
-"<h3>No Data Found</h3>";
-
-}
-
-})
-
-.catch(err=>{
-
-console.error(err);
-
-document.getElementById("genealogyTree").innerHTML=
-
-"<h3>Unable to Load Tree</h3>";
-
-});
+        if(data.success){
+            renderTree(data.members); 
+        }else{
+            document.getElementById("genealogyTree").innerHTML="No Data";
+        }
+    })
+    .catch(err=>{
+        console.error(err);
+        document.getElementById("genealogyTree").innerHTML="Error";
+    });
 
 }
 
