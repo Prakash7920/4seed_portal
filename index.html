@@ -63,6 +63,7 @@
 <!-- Hero -->
 
 <section class="hero">
+    <section class="hero reveal">
 
     <div class="hero-bg"></div>
 
@@ -156,6 +157,7 @@
 <!-- Statistics -->
 
 <section class="stats-section">
+    <section class="stats-section reveal">
 
 <div class="section-heading">
 
@@ -197,40 +199,10 @@
 
 </section>
 
-<!-- About Section -->
-
-<section class="about reveal">
-<div class="section-title">
-<h2>About 4Seed</h2>
-<p>
-4Seed is a modern digital partner platform designed to help individuals grow through teamwork, leadership, and smart business opportunities.
-</p>
-</div>
-
-<div class="about-grid">
-
-<div class="card">
-<h3>🌱 Our Mission</h3>
-<p>
-Create a trusted community where every partner has the opportunity to learn, grow, and achieve success together.
-</p>
-</div>
-
-<div class="card">
-<h3>🚀 Our Vision</h3>
-<p>
-Build one of the most trusted and innovative digital partner ecosystems with transparency and long-term value.
-</p>
-</div>
-
-</div>
-
-</section>
-
-
 <!-- Features -->
 
 <section class="features-section">
+    <section class="features-section reveal">
 
 <div class="section-heading">
 
@@ -299,6 +271,7 @@ A powerful digital ecosystem designed for every partner.
 </section>
 
 <section class="timeline-section">
+    <section class="timeline-section reveal">
 
 <div class="section-heading">
 
@@ -355,6 +328,7 @@ A powerful digital ecosystem designed for every partner.
 </section>
 
 <section class="dashboard-preview">
+    <section class="dashboard-preview reveal">
 
 <div class="section-heading">
 
@@ -421,6 +395,7 @@ A clean and powerful dashboard built for partners and administrators.
 </section>
 
 <section class="trust-section">
+    <section class="trust-section reveal">
 
     <div class="section-heading">
 
@@ -463,49 +438,7 @@ A clean and powerful dashboard built for partners and administrators.
     </div>
 
 </section>
-    
-<!-- How It Works -->
-
-<section class="process reveal">
-
-<div class="section-title">
-<h2>How It Works</h2>
-<p>
-Become a partner in just four simple steps.
-</p>
-</div>
-
-<div class="process-grid">
-
-<div class="process-card">
-<div class="step-number">1</div>
-<h3>Register</h3>
-<p>Create your partner account using the registration form.</p>
-</div>
-
-<div class="process-card">
-<div class="step-number">2</div>
-<h3>Verify Sponsor</h3>
-<p>Your sponsor information is verified automatically.</p>
-</div>
-
-<div class="process-card">
-<div class="step-number">3</div>
-<h3>Receive Partner ID</h3>
-<p>A unique Partner ID is generated instantly.</p>
-</div>
-
-<div class="process-card">
-<div class="step-number">4</div>
-<h3>Start Growing</h3>
-<p>Login to your dashboard and begin building your network.</p>
-</div>
-
-</div>
-
-</section>
-
-
+     
 <!-- Call To Action -->
 
 <section class="cta reveal">
@@ -525,6 +458,7 @@ Register Now
 <!-- Footer -->
 
 <footer class="premium-footer">
+    <footer class="premium-footer reveal">
 
 <div class="footer-container">
 
@@ -644,6 +578,44 @@ counter.innerText=target+"+";
 update();
 
 });
+
+const scrollBtn=document.getElementById("scrollTop");
+
+scrollBtn.onclick=()=>{
+
+window.scrollTo({
+
+top:0,
+
+behavior:"smooth"
+
+});
+
+};
+
+const reveals=document.querySelectorAll(".reveal");
+
+function revealOnScroll(){
+
+const windowHeight=window.innerHeight;
+
+reveals.forEach(el=>{
+
+const top=el.getBoundingClientRect().top;
+
+if(top<windowHeight-120){
+
+el.classList.add("active");
+
+}
+
+});
+
+}
+
+window.addEventListener("scroll",revealOnScroll);
+
+revealOnScroll();
 
 </script>
 
