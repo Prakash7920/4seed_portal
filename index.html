@@ -582,6 +582,36 @@ const reveals=document.querySelectorAll(".reveal");
 
 console.log("Reveal OK");
 
+// Counter Animation
+counters.forEach(counter=>{
+    const update=()=>{
+        const target=+counter.dataset.target;
+        const count=+counter.innerText;
+        const increment=Math.ceil(target/100);
+
+        if(count<target){
+            counter.innerText=count+increment;
+            setTimeout(update,20);
+        }else{
+            counter.innerText=target;
+        }
+    };
+    update();
+});
+
+// Reveal Animation
+function revealSections(){
+    reveals.forEach(section=>{
+        const top=section.getBoundingClientRect().top;
+        if(top<window.innerHeight-120){
+            section.classList.add("active");
+        }
+    });
+}
+
+window.addEventListener("scroll",revealSections);
+revealSections();
+
 window.addEventListener("load",()=>{
 
 setTimeout(()=>{
